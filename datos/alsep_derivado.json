@@ -1,0 +1,80 @@
+[
+  {
+    "apollo": 11,
+    "conjunto": "EASEP",
+    "encendido": "1969-07-21",
+    "apagado": "1969-08-27",
+    "estado": "Apagado",
+    "vida_diseno_dias": 14,
+    "dias_calendario_hasta_apagado": 37,
+    "razon_duracion_diseno": 2.64,
+    "downlink_mhz": 2276.5,
+    "uplink_mhz": 2119.0,
+    "fuente": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+  },
+  {
+    "apollo": 12,
+    "conjunto": "ALSEP A",
+    "encendido": "1969-11-19",
+    "apagado": "1977-09-30",
+    "estado": "Apagado",
+    "vida_diseno_dias": 365,
+    "dias_calendario_hasta_apagado": 2872,
+    "razon_duracion_diseno": 7.87,
+    "downlink_mhz": 2278.5,
+    "uplink_mhz": 2119.0,
+    "fuente": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+  },
+  {
+    "apollo": 14,
+    "conjunto": "ALSEP C",
+    "encendido": "1971-02-05",
+    "apagado": null,
+    "estado": "Fallo en enero de 1976 (día no especificado)",
+    "vida_diseno_dias": 365,
+    "dias_calendario_hasta_apagado": null,
+    "razon_duracion_diseno": null,
+    "downlink_mhz": 2279.5,
+    "uplink_mhz": 2119.0,
+    "fuente": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+  },
+  {
+    "apollo": 15,
+    "conjunto": "ALSEP A-2",
+    "encendido": "1971-07-31",
+    "apagado": "1977-09-30",
+    "estado": "Apagado",
+    "vida_diseno_dias": 365,
+    "dias_calendario_hasta_apagado": 2253,
+    "razon_duracion_diseno": 6.17,
+    "downlink_mhz": 2278.0,
+    "uplink_mhz": 2119.0,
+    "fuente": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+  },
+  {
+    "apollo": 16,
+    "conjunto": "ALSEP D",
+    "encendido": "1972-04-21",
+    "apagado": "1977-09-30",
+    "estado": "Apagado",
+    "vida_diseno_dias": 365,
+    "dias_calendario_hasta_apagado": 1988,
+    "razon_duracion_diseno": 5.45,
+    "downlink_mhz": 2276.0,
+    "uplink_mhz": 2119.0,
+    "fuente": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+  },
+  {
+    "apollo": 17,
+    "conjunto": "ALSEP E",
+    "encendido": "1972-12-12",
+    "apagado": "1977-09-30",
+    "estado": "Apagado",
+    "vida_diseno_dias": 730,
+    "dias_calendario_hasta_apagado": 1753,
+    "razon_duracion_diseno": 2.4,
+    "downlink_mhz": 2275.5,
+    "uplink_mhz": 2119.0,
+    "fuente": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+  }
+]

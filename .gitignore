@@ -1,0 +1,12 @@
+# Avoid committing third-party videos and imported/proprietary CAD.
+*.mp4
+*.SLDASM
+*.SLDPRT
+*.stp
+*.step
+*.glb
+*.stl
+*.obj
+*.zip
+__pycache__/
+.DS_Store

@@ -1,0 +1,1 @@
+{"name":"relics-9-arcade-educativo","version":"9.0.0","private":true,"description":"Web + salas websocket sin paquetes npm","scripts":{"start":"node server.js"},"engines":{"node":">=18"}}
