@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="RELICS icono">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#071e35"/><stop offset="1" stop-color="#04101f"/></linearGradient><linearGradient id="r" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#81f5e0"/><stop offset="1" stop-color="#33a5c8"/></linearGradient></defs>
+<rect width="512" height="512" rx="110" fill="url(#g)"/><circle cx="256" cy="244" r="146" fill="none" stroke="#2b5d75" stroke-width="9"/><path d="M92 325 Q256 87 418 326" fill="none" stroke="url(#r)" stroke-width="22" stroke-linecap="round"/><circle cx="256" cy="243" r="79" fill="#17384f" stroke="#70e8da" stroke-width="11"/><path d="M227 199 L274 245 L239 293" fill="none" stroke="#e7fff9" stroke-linecap="round" stroke-linejoin="round" stroke-width="21"/><circle cx="374" cy="135" r="12" fill="#ffcf77"/><circle cx="127" cy="151" r="7" fill="#d4faff"/>
+<text x="256" y="410" fill="#f5fcff" font-family="sans-serif" font-size="55" font-weight="800" letter-spacing="9" text-anchor="middle">RELICS</text>
+</svg>

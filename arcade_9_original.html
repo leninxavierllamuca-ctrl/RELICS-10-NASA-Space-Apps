@@ -1,0 +1,3117 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#070d1a"><meta name="description" content="RELICS 9: videojuegos de la Luna, Apollo 11, Apollo 17 y ALSEP con 225 preguntas, niveles y puntaje.">
+<title>RELICS 9 · ARCADE CIENTÍFICO</title>
+<style>
+:root{--bg:#060a15;--panel:#111a2d;--panel2:#15233b;--line:#304661;--text:#f1f7ff;--sub:#a6bed4;--mint:#62e3d1;--gold:#f5c672;--rose:#ff7889;--blue:#6ea9fb;--ok:#91f5b1}*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif}body{background:radial-gradient(ellipse at 12% 0%,#12243f 0%,transparent 46%),radial-gradient(ellipse at 93% 30%,#101b2d 0%,transparent 43%),var(--bg)}button,input{font:inherit}button{cursor:pointer;color:inherit}button:disabled{opacity:.42;cursor:not-allowed}a{color:var(--mint)}button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-offset:2px}.shell{max-width:1310px;margin:auto;padding:0 20px}header{position:sticky;top:0;z-index:20;background:#07101def;border-bottom:1px solid #283c55;backdrop-filter:blur(15px)}.head{height:75px;display:flex;align-items:center;justify-content:space-between;gap:15px}.brand{border:0;background:none;text-align:left;display:flex;align-items:center;gap:12px;padding:0}.emblem{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;background:linear-gradient(155deg,#174b63,#101a37);border:1px solid #427a91;font-size:25px}.brand b{font-size:23px;letter-spacing:.18em}.brand small{display:block;color:var(--sub);font-size:10px;letter-spacing:.16em;font-weight:750}.topactions{display:flex;gap:8px;align-items:center}.topactions button{background:#12263c;border:1px solid #315471;border-radius:12px;padding:10px 12px;font-size:12px;font-weight:800}.topactions button:hover{border-color:var(--mint)}.status{font-size:12px;color:var(--mint);display:inline-flex;align-items:center;gap:8px}.status i{width:7px;height:7px;border-radius:50%;background:var(--mint);box-shadow:0 0 12px var(--mint)}main{padding:30px 0 80px}.eyebrow{text-transform:uppercase;letter-spacing:.16em;color:var(--mint);font-weight:850;font-size:12px}.hero{display:grid;grid-template-columns:1.35fr .9fr;gap:22px;align-items:stretch;margin-bottom:24px}.hero-copy,.hero-visual{border:1px solid #31516f;background:linear-gradient(140deg,#122037,#091323);border-radius:22px;padding:35px;overflow:hidden;position:relative}.hero h1{font-size:clamp(30px,4.8vw,63px);line-height:1.06;letter-spacing:-.04em;margin:13px 0 18px}.hero h1 em{color:var(--mint);font-style:normal}.hero p{color:#bfd0e0;max-width:56ch;line-height:1.65;font-size:15px}.chiplane{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px}.chip{border:1px solid #376074;background:#11334a55;border-radius:100px;padding:9px 12px;font-size:12px;color:#d9f9f6;font-weight:800}.hero-visual{padding:0;min-height:320px;background:#020812}.hero-visual:after,.photo:after{content:'FOTOGRAFÍA HISTÓRICA NASA · NO GENERADA';position:absolute;bottom:0;left:0;right:0;background:linear-gradient(0deg,#010711ee,transparent);font-size:10px;color:white;padding:36px 18px 16px;letter-spacing:.10em;font-weight:800}.hero-visual img{width:100%;height:100%;object-fit:cover;display:block}.section-head{display:flex;align-items:end;justify-content:space-between;gap:14px;margin:30px 0 16px}.section-head h2{font-size:27px;margin:5px 0}.section-head p{font-size:13px;color:var(--sub);margin:0}.stats{display:flex;flex-wrap:wrap;gap:10px}.stat{border:1px solid #314a66;background:#101d30;border-radius:12px;padding:10px 16px;min-width:110px}.stat small{display:block;font-size:10px;color:var(--sub);text-transform:uppercase;letter-spacing:.12em}.stat strong{font-size:21px;color:var(--gold)}.missions{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.mission{border:1px solid #33516c;background:#101d31;border-radius:20px;overflow:hidden;transition:transform .2s,border .2s;cursor:pointer;display:block;text-align:left;padding:0}.mission:hover,.mission.active{transform:translateY(-3px);border-color:var(--mint)}.mission.active{box-shadow:0 0 0 1px var(--mint),0 12px 30px #0005}.photo{height:170px;position:relative;overflow:hidden;background:#101d31}.photo img{width:100%;height:100%;object-fit:cover}.missbody{padding:18px}.missbody small{font-size:11px;letter-spacing:.14em;color:var(--mint);font-weight:850}.missbody h3{font-size:23px;margin:8px 0}.missbody p{font-size:13px;color:var(--sub);line-height:1.55;min-height:58px;margin:0 0 15px}.minitags{display:flex;gap:8px;flex-wrap:wrap}.minitags span{font-size:11px;border-radius:9px;padding:7px 9px;background:#20344d;color:#c8e3f7}.setup{border:1px solid #355776;background:#101d31;border-radius:20px;padding:22px;margin-top:19px}.setup-grid{display:grid;grid-template-columns:1fr 1.25fr;gap:20px}.setup h3{margin:0 0 10px}.difficulty{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.diff{background:#102840;border:1px solid #315473;border-radius:13px;padding:13px 9px;text-align:center}.diff strong{display:block;font-size:15px}.diff small{color:#afc7d8;font-size:10px}.diff.active{background:#174c56;border-color:var(--mint)}.pilot-row{display:flex;gap:12px;align-items:center;margin-top:15px;flex-wrap:wrap}label.small{font-size:11px;color:var(--sub);font-weight:750}.nick{background:#081321;border:1px solid #41617b;border-radius:10px;padding:12px 14px;color:white;max-width:210px}.button-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:17px}.btn{border:0;border-radius:12px;padding:13px 17px;font-weight:850;display:inline-flex;align-items:center;gap:8px;justify-content:center;min-height:46px}.primary{background:linear-gradient(110deg,#57e3d2,#28adbd);color:#052332}.secondary{background:#142f47;border:1px solid #41647f;color:#e3f3ff}.gold{background:linear-gradient(110deg,#f7d58f,#c89c48);color:#1b1a14}.primary:hover,.gold:hover{filter:brightness(1.09)}.info{background:#122639;border:1px solid #2f4c69;border-radius:12px;padding:16px;color:#b4c9da;font-size:13px;line-height:1.6}.info strong{color:var(--gold)}.hidden{display:none!important}.game-shell{margin-top:20px;border:1px solid #376580;border-radius:20px;overflow:hidden;background:#06111f}.game-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:17px 19px;flex-wrap:wrap;background:#122036}.game-head h2{margin:0;font-size:21px}.game-head small{color:var(--sub);font-size:11px}.game-hud{display:flex;flex-wrap:wrap;gap:8px}.game-hud span{font-size:12px;border:1px solid #2f4e67;background:#0b1d30;border-radius:9px;padding:9px 11px;font-weight:750}.game-hud b{color:var(--mint)}.game-wrap{position:relative}.game-wrap canvas{display:block;width:100%;height:auto;aspect-ratio:16/6;background:#030c15;touch-action:none}.overlayhint{position:absolute;left:14px;bottom:14px;color:#c5deed;font-size:11px;padding:8px 10px;background:#03121bcc;border:1px solid #32607a;border-radius:8px;max-width:75%}.game-bottom{padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}.game-controls{display:flex;gap:7px;flex-wrap:wrap}.control{background:#1b3e55;border:1px solid #477997;border-radius:12px;min-width:59px;min-height:51px;font-size:18px;touch-action:none;user-select:none}.control:active{background:#36a6ab;color:#051820}.caption{font-size:12px;color:var(--sub);max-width:54ch;line-height:1.45}.qback{position:fixed;inset:0;background:#020810e9;z-index:90;display:flex;align-items:center;justify-content:center;padding:15px;overflow-y:auto}.qcard{width:min(720px,100%);max-height:calc(100dvh - 30px);overflow-y:auto;border:1px solid #4a7b8f;border-radius:22px;background:linear-gradient(150deg,#172942,#0d1528);padding:25px;box-shadow:0 30px 90px #000c}.qtop{display:flex;align-items:center;justify-content:space-between;gap:10px}.qcounter{font-size:11px;letter-spacing:.12em;color:var(--mint);font-weight:900}.qtime{font-weight:900;color:var(--gold);background:#3b2b16;border:1px solid #866534;border-radius:10px;padding:8px 14px}.progressbar{width:100%;height:8px;border-radius:20px;background:#2b4156;overflow:hidden;margin:17px 0 16px}.progressbar>div{height:100%;background:linear-gradient(90deg,#42d2b9,#fdcb68);transition:width .25s}.qcard h2{font-size:clamp(18px,2.9vw,26px);line-height:1.4;letter-spacing:-.01em}.opts{display:grid;gap:9px}.opt{display:flex;text-align:left;align-items:center;gap:11px;background:#162d45;border:1px solid #345775;border-radius:13px;padding:15px;font-weight:650;font-size:14px;line-height:1.5;min-height:55px}.opt:hover:not(:disabled){border-color:var(--mint);background:#1f3e55}.opt b{display:grid;place-items:center;flex:0 0 29px;height:29px;border-radius:8px;background:#31516a;color:#d7f7ff}.opt.correct{border-color:#7bf7a3;background:#134333}.opt.wrong{border-color:#ff7a8c;background:#482338}.qanswer{margin-top:14px;padding:15px 17px;border:1px solid #43647a;border-radius:12px;background:#091e31;font-size:13px;line-height:1.65}.qanswer strong{font-size:16px;color:var(--mint)}.qanswer a{font-size:12px}.qactions{display:flex;justify-content:space-between;gap:9px;margin-top:17px;align-items:center}.qactions small{color:var(--sub)}.localboard{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:19px}.board{background:#0e1d31;border:1px solid #344b66;border-radius:18px;padding:18px}.board h3{font-size:18px;margin:0 0 12px}.board table{width:100%;border-collapse:collapse;font-size:12px}.board td,.board th{text-align:left;padding:9px 5px;border-bottom:1px solid #30415a}.board th{color:var(--sub)}.board td:last-child,.board th:last-child{text-align:right;color:var(--gold);font-weight:800}.onlineform{display:grid;grid-template-columns:1fr 1fr;gap:9px}.onlineform input{width:100%;background:#061424;border:1px solid #3f5d78;border-radius:9px;color:#fff;padding:10px}.onlineform .btn{font-size:12px;min-height:38px;padding:9px}.online-meta{font-size:12px;color:var(--sub);line-height:1.65;margin-top:12px}.credits{font-size:12px;color:#a6c4d3;line-height:1.65;margin:30px 0 5px}.credits a{margin-right:14px}.modal-title{font-size:28px;margin:12px 0}.medal{font-size:68px}.wide-info{margin-top:20px}.photo-credit{font-size:11px;color:var(--sub)}
+@media(max-width:900px){.hero{grid-template-columns:1fr}.hero-visual{min-height:235px}.missions{grid-template-columns:1fr 1fr}.setup-grid{grid-template-columns:1fr}.localboard{grid-template-columns:1fr}.topactions .status{display:none}}@media(max-width:640px){.shell{padding:0 12px}.head{height:64px}.brand b{font-size:20px}.brand small{font-size:8px}.topactions button{font-size:11px;padding:9px}.topactions .mobilehide{display:none}main{padding-top:16px}.hero-copy{padding:25px 19px}.hero h1{font-size:35px}.hero-visual{min-height:194px}.missions{grid-template-columns:1fr}.photo{height:170px}.missbody p{min-height:0}.section-head{align-items:start;flex-direction:column}.setup{padding:15px}.difficulty{gap:5px}.diff{padding:13px 5px}.game-head{padding:13px}.game-head h2{font-size:17px}.game-wrap canvas{aspect-ratio:16/9}.game-hud span{font-size:11px;padding:7px}.game-bottom{padding:12px}.control{min-width:57px;min-height:48px}.qcard{padding:18px 14px}.opt{padding:12px;font-size:13px}.onlineform{grid-template-columns:1fr}.stats{width:100%}.stat{flex:1}}
+</style><style>/* Sin conectividad, se ve una ilustración vectorial explícitamente señalada; nunca una falsa foto NASA. */
+.hero-visual,.photo{background:radial-gradient(circle at 65% 42%,#2b5666 0%,transparent 28%),radial-gradient(circle at 17% 12%,#122d52 0%,transparent 40%),linear-gradient(145deg,#152742,#04101d)}
+.hero-visual::before,.photo::before{content:'☾';display:grid;place-items:center;position:absolute;inset:0;color:#88ecdc;font-size:clamp(90px,14vw,180px);text-shadow:0 0 60px #7be5d044;opacity:.83;pointer-events:none;background-image:radial-gradient(circle at 10% 25%,#c5eaff 0 1px,transparent 2px),radial-gradient(circle at 75% 20%,#c5eaff 0 1px,transparent 2px),radial-gradient(circle at 87% 57%,#c5eaff 0 1px,transparent 2px)}
+#pick-eagle .photo::before{content:'🚀';font-size:90px}#pick-lrv .photo::before{content:'🛞';font-size:90px}#pick-alsep .photo::before{content:'📡';font-size:90px}
+.hero-visual img,.photo img{position:relative;z-index:1}.hero-visual::after,.photo::after{z-index:2}.hero-visual::after,.photo::after{content:'ILUSTRACIÓN DE APOYO · FOTOS NASA CON INTERNET';color:#d5e3ec}.hero-visual.loaded::after,.photo.loaded::after{content:'FOTOGRAFÍA HISTÓRICA NASA';color:white}.hero-visual.missing::after,.photo.missing::after{content:'ILUSTRACIÓN DE APOYO · FOTO NASA SOLO CON INTERNET';color:#d5e3ec}
+</style>
+</head>
+<body>
+<header><div class="head shell"><button class="brand" onclick="R9.home()"><span class="emblem">✦</span><span><b>RELICS</b><small>ARCADE CIENTÍFICO · V9.0</small></span></button><div class="topactions"><span class="status"><i></i> MODO EDUCATIVO</span><button onclick="R9.showBoard()">🏆 RANKING</button><button class="mobilehide" onclick="R9.showHelp()">❔ AYUDA</button></div></div></header>
+<main class="shell">
+<section class="hero" id="intro"><div class="hero-copy"><div class="eyebrow">NASA · Luna · Ciencia aplicada</div><h1>No solo observes.<br><em>Supera la misión.</em></h1><p>Ahora tú pilotas, exploras y defiendes experimentos lunares. Cada respuesta correcta activa poderes, repara equipos y suma puntos. Tres videojuegos distintos, tres dificultades y <strong>225 preguntas explicadas</strong>.</p><div class="chiplane"><span class="chip">🚀 3 juegos arcade</span><span class="chip">📚 25 preguntas × nivel × juego</span><span class="chip">🥇 XP, rachas y ranking</span><span class="chip">📱 Móvil y PC</span></div></div><div class="hero-visual"><img src="https://assets.science.nasa.gov/content/dam/science/psd/lunar-science/2023/09/eugene_cernan-full-a.jpg" alt="Fotografía histórica de NASA: Eugene Cernan en el vehículo lunar Apollo 17" onload="this.parentNode.classList.add('loaded')" onerror="this.style.display='none';this.parentNode.classList.add('missing')" loading="lazy"></div></section>
+<section id="selection"><div class="section-head"><div><div class="eyebrow">Elige tu desafío</div><h2>3 misiones. 3 formas de jugar.</h2><p>Pilotaje, exploración y defensa táctica. Elige una tarjeta para continuar.</p></div><div class="stats"><div class="stat"><small>XP acumulado</small><strong id="totalXP">0</strong></div><div class="stat"><small>Récord</small><strong id="highScore">0</strong></div><div class="stat"><small>Respuestas</small><strong id="answeredTotal">0</strong></div></div></div>
+<div class="missions">
+<button class="mission active" id="pick-eagle" onclick="R9.pick('eagle')"><div class="photo"><img alt="Apollo 11 módulo Eagle, NASA, imagen real" src="https://assets.science.nasa.gov/dynamicimage/assets/science/psd/lunar-science/2023/09/as11_44_6642.jpg?crop=faces%2Cfocalpoint&amp;fit=crop&amp;h=540&amp;w=960" onload="this.parentNode.classList.add('loaded')" onerror="this.style.display='none';this.parentNode.classList.add('missing')" loading="lazy"></div><div class="missbody"><small>01 · APOLLO 11</small><h3>🚀 Operación Eagle</h3><p>Pilota el módulo y consigue un aterrizaje controlado. Aprende física para recuperar combustible.</p><div class="minitags"><span>Física</span><span>Control de vuelo</span><span>25 preguntas/nivel</span></div></div></button>
+<button class="mission" id="pick-lrv" onclick="R9.pick('lrv')"><div class="photo"><img alt="Apollo 17 rover LRV, fotografía NASA" src="https://assets.science.nasa.gov/content/dam/science/psd/lunar-science/2023/09/eugene_cernan-full-a.jpg" onload="this.parentNode.classList.add('loaded')" onerror="this.style.display='none';this.parentNode.classList.add('missing')" loading="lazy"></div><div class="missbody"><small>02 · APOLLO 17</small><h3>🛞 Carrera LRV-3</h3><p>Conduce por tres carriles, recoge muestras, esquiva cráteres y aprende a planificar el regreso.</p><div class="minitags"><span>Geología</span><span>Navegación</span><span>25 preguntas/nivel</span></div></div></button>
+<button class="mission" id="pick-alsep" onclick="R9.pick('alsep')"><div class="photo"><img alt="Apollo 17 ALSEP, fotografía lunar de la misión NASA" src="https://lroc.sese.asu.edu/news/uploads/AS17-134-20504.alsep1_.png" onload="this.parentNode.classList.add('loaded')" onerror="this.style.display='none';this.parentNode.classList.add('missing')" loading="lazy"></div><div class="missbody"><small>03 · EXPERIMENTOS LUNARES</small><h3>📡 Defensa ALSEP</h3><p>Coloca sismómetros y antenas para proteger la estación de interferencias ficticias. La ciencia te da energía.</p><div class="minitags"><span>Telemetría</span><span>Energía</span><span>25 preguntas/nivel</span></div></div></button>
+</div>
+<div class="setup" id="setup"><div class="setup-grid"><div><div class="eyebrow">Configuración del jugador</div><h3 id="chooseTitle">OPERACIÓN EAGLE</h3><label class="small" for="nickname">IDENTIFICADOR DEL EXPLORADOR</label><div class="pilot-row"><input class="nick" id="nickname" maxlength="18" placeholder="Tu nombre" value="Explorador"><span class="photo-credit">El progreso se guarda en este dispositivo.</span></div></div><div><div class="eyebrow">Elige dificultad</div><h3>¿Qué tan difícil será la misión?</h3><div class="difficulty"><button class="diff active" id="diff-facil" onclick="R9.difficulty('facil')"><strong>🟢 FÁCIL</strong><small>Conceptos · 35 s</small></button><button class="diff" id="diff-normal" onclick="R9.difficulty('normal')"><strong>🟠 NORMAL</strong><small>Aplicación · 50 s</small></button><button class="diff" id="diff-dificil" onclick="R9.difficulty('dificil')"><strong>🔴 DIFÍCIL</strong><small>Cálculos · 70 s</small></button></div></div></div><div class="button-row"><button class="btn primary" id="startArcade" onclick="R9.start('arcade')">▶ INICIAR VIDEOJUEGO</button><button class="btn gold" id="startExam" onclick="R9.start('reto25')">🧠 RETO DE 25 PREGUNTAS</button><button class="btn secondary" onclick="R9.showBoard()">🏆 VER PUNTUACIONES</button></div></div>
+</section>
+<section class="game-shell hidden" id="arena"><div class="game-head"><div><div class="eyebrow" id="arenaTag">MISIÓN 01</div><h2 id="arenaTitle">Operación Eagle</h2><small id="arenaDiff">Fácil</small></div><div class="game-hud"><span>⭐ XP <b id="hudXP">0</b></span><span>🔬 <b id="hudAnswers">0</b>/25</span><span>🔥 Racha <b id="hudStreak">0</b></span><span id="resourceLabel">⛽ <b id="hudFuel">100</b></span><span>❤️ <b id="hudLife">3</b></span></div></div><div class="game-wrap"><canvas id="gameCanvas" width="1000" height="400" role="img" aria-label="Escena del videojuego"></canvas><div class="overlayhint" id="missionHint">Pilota con las flechas. Aprende para recuperar recursos.</div></div><div class="game-bottom"><div class="game-controls" id="touchControls"></div><div class="caption" id="missionCaption">Representación didáctica estilizada; los gráficos del juego no son fotografías NASA.</div><div class="game-controls"><button class="btn gold" id="questionBtn" onclick="R9.ask()">🧠 RESPONDER +RECURSOS</button><button class="btn secondary" onclick="R9.end(true)">✕ SALIR</button></div></div></section>
+<section class="localboard hidden" id="board"><div class="board"><h3>🏆 Ranking de este dispositivo</h3><table><thead><tr><th>#</th><th>Jugador · juego · nivel</th><th>Puntos</th></tr></thead><tbody id="localRows"><tr><td colspan="3">Aún no hay partidas.</td></tr></tbody></table><div class="button-row"><button class="btn secondary" onclick="R9.export()">⬇ EXPORTAR PUNTAJES CSV</button><button class="btn secondary" onclick="R9.hideBoard()">CERRAR</button></div></div><div class="board"><h3>🌍 Sala competitiva online</h3><p style="font-size:12px;color:var(--sub);line-height:1.6">Para ver a otros jugadores en vivo se necesita un servidor publicado o ejecutándose en la misma red. El HTML local funciona sin servidor.</p><div class="onlineform"><input id="serverUrl" placeholder="wss://tu-servidor/ws" aria-label="Servidor WebSocket"><input id="roomCode" placeholder="Código de sala (vacío = nueva)" maxlength="6" aria-label="Código de sala"><button class="btn primary" onclick="R9.join()">CREAR / UNIRME</button><button class="btn secondary" onclick="R9.leave()">SALIR DE SALA</button></div><div class="online-meta" id="onlineStatus">Sin conexión. Las puntuaciones son locales.</div><table><thead><tr><th>Jugador conectado</th><th>Juego</th><th>XP</th></tr></thead><tbody id="onlineRows"></tbody></table></div></section>
+<section class="wide-info info" id="learning"><strong>¿Cómo se aprende jugando?</strong> Cada respuesta da una explicación científica y un enlace a la fuente NASA. En las simulaciones se usan valores ficticios y se indica expresamente. Las amenazas de ALSEP son una mecánica de juego, no incidentes históricos. Las fotos son documentos reales de NASA/LROC, mientras que el lienzo del juego son ilustraciones vectoriales programadas, no imágenes históricas.</section>
+<p class="credits">FUENTES: <a href="https://www.nasa.gov/mission/apollo-11/" target="_blank" rel="noopener">NASA · Apollo 11</a><a href="https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/" target="_blank" rel="noopener">NASA · Apollo 17</a><a href="https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm" target="_blank" rel="noopener">NASA · Experimentos ALSEP</a><a href="https://ntrs.nasa.gov/api/citations/20250006905/downloads/NIAC_2020_PhII_Akin_BioBot.pdf" target="_blank" rel="noopener">NASA · Distancia LRV</a>. Actividad didáctica independiente, sin afiliación oficial con NASA.</p>
+</main>
+<div class="qback hidden" id="questionModal" role="dialog" aria-modal="true" aria-labelledby="questionText"><div class="qcard"><div class="qtop"><span class="qcounter" id="questionCounter">EAGLE · PREGUNTA 01 DE 25</span><span class="qtime" id="questionTimer">35 s</span></div><div class="progressbar"><div id="qProgress" style="width:0%"></div></div><h2 id="questionText">¿Qué sabes de la misión?</h2><div class="opts" id="answerChoices"></div><div class="qanswer hidden" id="answerExplained"></div><div class="qactions"><small id="answerStats">Piensa antes de responder.</small><button class="btn primary hidden" id="nextQuestion" onclick="R9.nextQuestion()">CONTINUAR →</button></div></div></div>
+<div class="qback hidden" id="finishModal" role="dialog" aria-modal="true"><div class="qcard" style="text-align:center"><div class="medal" id="endMedal">🏅</div><div class="eyebrow">INFORME DE MISIÓN</div><h2 class="modal-title" id="endTitle">Misión completada</h2><p id="endMsg" style="color:var(--sub);line-height:1.7"></p><div class="stats" style="justify-content:center;margin-bottom:22px"><div class="stat"><small>XP</small><strong id="endXP">0</strong></div><div class="stat"><small>Aciertos</small><strong id="endCorrect">0</strong></div><div class="stat"><small>Preguntas</small><strong id="endCount">0</strong></div></div><div class="button-row" style="justify-content:center"><button class="btn primary" onclick="R9.retry()">↻ VOLVER A JUGAR</button><button class="btn secondary" onclick="R9.home()">ELEGIR MISIÓN</button><button class="btn gold" onclick="R9.showBoard()">🏆 RANKING</button></div></div></div>
+<div class="qback hidden" id="helpModal" role="dialog" aria-modal="true"><div class="qcard"><h2>🛰️ Manual de misión</h2><p><strong>Eagle:</strong> mantén pulsado 🚀 o ↑ para frenar, y ← → para aterrizar sobre la plataforma iluminada sin chocar.</p><p><strong>LRV-3:</strong> cambia de carril con ↑/↓ y esquiva rocas mientras recoges muestras azules.</p><p><strong>ALSEP:</strong> elige instrumento y toca una celda; coloca defensas para bloquear anomalías ficticias. Contesta preguntas para recargar energía.</p><p>El modo <strong>RETO DE 25 PREGUNTAS</strong> permite completar las 25 de un juego en el nivel escogido. Las respuestas muestran explicaciones y fuentes.</p><p>Compatible con teclado o controles táctiles.</p><button class="btn primary" onclick="document.getElementById('helpModal').classList.add('hidden')">ENTENDIDO</button></div></div>
+<script>window.RELICS_BANK={
+  "eagle": {
+    "facil": [
+      {
+        "id": "eagle-facil-01",
+        "q": "¿En qué año alunizó Apollo 11?",
+        "o": [
+          "1975",
+          "1969",
+          "1972",
+          "1965"
+        ],
+        "a": 1,
+        "why": "Apollo 11 alunizó el 20 de julio de 1969.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-facil-02",
+        "q": "¿Cómo se llamaba el módulo lunar de Apollo 11?",
+        "o": [
+          "Columbia",
+          "Eagle",
+          "Odyssey",
+          "Saturn V"
+        ],
+        "a": 1,
+        "why": "Eagle fue el módulo lunar; Columbia fue el módulo de mando.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-facil-03",
+        "q": "¿Qué parte del módulo lunar quedó sobre la Luna?",
+        "o": [
+          "La etapa de descenso",
+          "El módulo de mando",
+          "La etapa de ascenso",
+          "El cohete Saturn V"
+        ],
+        "a": 0,
+        "why": "La etapa de descenso sirvió como plataforma y permaneció en la superficie.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-facil-04",
+        "q": "¿Qué etapa llevó a Armstrong y Aldrin de regreso a la órbita lunar?",
+        "o": [
+          "La etapa de descenso",
+          "El rover lunar",
+          "La etapa de ascenso",
+          "El escudo térmico"
+        ],
+        "a": 2,
+        "why": "La etapa de ascenso tenía su propio motor para despegar de la Luna.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-facil-05",
+        "q": "¿Quién permaneció orbitando la Luna en Columbia?",
+        "o": [
+          "Neil Armstrong",
+          "Michael Collins",
+          "Gene Cernan",
+          "Buzz Aldrin"
+        ],
+        "a": 1,
+        "why": "Collins pilotó el módulo de mando mientras sus compañeros descendían.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-facil-06",
+        "q": "¿Qué astronautas bajaron juntos a la superficie lunar?",
+        "o": [
+          "Armstrong y Aldrin",
+          "Aldrin y Schmitt",
+          "Collins y Cernan",
+          "Armstrong y Collins"
+        ],
+        "a": 0,
+        "why": "Armstrong y Aldrin descendieron en Eagle; Collins quedó en órbita.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-facil-07",
+        "q": "¿Cuál era el nombre del módulo de mando de Apollo 11?",
+        "o": [
+          "Eagle",
+          "Intrepid",
+          "Columbia",
+          "Challenger"
+        ],
+        "a": 2,
+        "why": "Columbia permaneció en órbita lunar con Michael Collins.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-facil-08",
+        "q": "¿En qué cuerpo celeste aterrizó Eagle?",
+        "o": [
+          "Venus",
+          "Mercurio",
+          "Marte",
+          "La Luna"
+        ],
+        "a": 3,
+        "why": "Apollo 11 realizó el primer alunizaje tripulado.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-facil-09",
+        "q": "¿Qué permite a un cohete acelerar en el vacío?",
+        "o": [
+          "Empujarse contra el aire",
+          "Usar el viento lunar",
+          "Apoyarse sobre nubes",
+          "Expulsar gases a gran velocidad"
+        ],
+        "a": 3,
+        "why": "El motor obtiene impulso al expulsar masa; no necesita aire externo.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-facil-10",
+        "q": "¿Por qué el módulo lunar tenía patas de aterrizaje?",
+        "o": [
+          "Para generar radio",
+          "Para propulsarse en órbita",
+          "Para apoyar el vehículo sobre el suelo",
+          "Para recoger luz solar"
+        ],
+        "a": 2,
+        "why": "Las patas amortiguaban y distribuían las cargas al tocar el suelo.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-facil-11",
+        "q": "¿Qué tripulante pisó primero la Luna durante Apollo 11?",
+        "o": [
+          "Michael Collins",
+          "Neil Armstrong",
+          "Buzz Aldrin",
+          "Harrison Schmitt"
+        ],
+        "a": 1,
+        "why": "Armstrong fue la primera persona en pisar la superficie lunar.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-facil-12",
+        "q": "¿Qué motor se usó para regresar de la superficie lunar?",
+        "o": [
+          "El del rover",
+          "El del módulo de mando",
+          "El de la etapa de ascenso",
+          "El de Saturn V"
+        ],
+        "a": 2,
+        "why": "La etapa de ascenso incorporaba un motor independiente.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-facil-13",
+        "q": "¿Cuál fue el propósito principal del acoplamiento en órbita lunar?",
+        "o": [
+          "Reunirse con el módulo de mando",
+          "Medir terremotos terrestres",
+          "Repostar combustible lunar",
+          "Aterrizar en Marte"
+        ],
+        "a": 0,
+        "why": "Después del ascenso, Eagle se reunió con Columbia para regresar a casa.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-facil-14",
+        "q": "¿Qué es el propelente de un motor cohete?",
+        "o": [
+          "La antena de comunicaciones",
+          "El tren de aterrizaje",
+          "Solo la estructura metálica",
+          "Los materiales que el motor consume para generar empuje"
+        ],
+        "a": 3,
+        "why": "El propelente aporta la masa y energía necesarias para la propulsión química.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-facil-15",
+        "q": "¿Qué sucede con la masa de un cohete mientras quema propelente?",
+        "o": [
+          "Aumenta continuamente",
+          "Se vuelve cero inmediatamente",
+          "Disminuye",
+          "Se mantiene siempre igual"
+        ],
+        "a": 2,
+        "why": "La nave pierde masa al expulsar propelente.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-facil-16",
+        "q": "¿Cuál es la unidad de una variación de velocidad, Δv?",
+        "o": [
+          "Metros por segundo",
+          "Julios por segundo",
+          "Kilogramos",
+          "Grados Celsius"
+        ],
+        "a": 0,
+        "why": "Δv es un cambio de velocidad y se mide en m/s.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-facil-17",
+        "q": "¿Qué magnitud describe el impulso específico en el sistema habitual?",
+        "o": [
+          "Vatios",
+          "Metros cuadrados",
+          "Segundos",
+          "Kilogramos por metro"
+        ],
+        "a": 2,
+        "why": "El impulso específico Isp suele expresarse en segundos.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-facil-18",
+        "q": "¿Cuál es la aceleración de la gravedad lunar aproximada?",
+        "o": [
+          "3,71 m/s²",
+          "1,62 m/s²",
+          "24,8 m/s²",
+          "9,81 m/s²"
+        ],
+        "a": 1,
+        "why": "La gravedad superficial lunar es aproximadamente 1,62 m/s².",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-facil-19",
+        "q": "¿Cómo es la atmósfera lunar comparada con la terrestre?",
+        "o": [
+          "Más densa que la de Venus",
+          "Tan densa como la terrestre",
+          "Mayormente oxígeno respirable",
+          "Extremadamente tenue"
+        ],
+        "a": 3,
+        "why": "La Luna posee una exosfera extremadamente tenue, sin aire para respirar.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-facil-20",
+        "q": "¿Qué acción debe lograr una nave al aterrizar suavemente?",
+        "o": [
+          "Eliminar toda su masa",
+          "Aumentar al máximo su velocidad",
+          "Apagar comunicaciones todo el tiempo",
+          "Reducir suficientemente la velocidad al contacto"
+        ],
+        "a": 3,
+        "why": "Un aterrizaje controlado requiere limitar la velocidad de contacto.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-facil-21",
+        "q": "¿Qué nave lanzó la misión Apollo 11 desde la Tierra?",
+        "o": [
+          "Space Shuttle",
+          "Atlas V",
+          "Saturn V",
+          "Falcon 9"
+        ],
+        "a": 2,
+        "why": "Apollo 11 despegó sobre un cohete Saturn V.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-facil-22",
+        "q": "¿Qué significan las siglas LM en los documentos Apollo?",
+        "o": [
+          "Lunar Module",
+          "Laser Mission",
+          "Launch Monitor",
+          "Landing Meteor"
+        ],
+        "a": 0,
+        "why": "LM corresponde a Lunar Module, o módulo lunar.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-facil-23",
+        "q": "¿Qué hacía la etapa de descenso antes de quedar en la Luna?",
+        "o": [
+          "Ayudaba a frenar el descenso",
+          "Regresaba sola a la Tierra",
+          "Generaba oxígeno atmosférico",
+          "Transportaba astronautas a Marte"
+        ],
+        "a": 0,
+        "why": "Su motor permitía reducir la velocidad durante el alunizaje.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-facil-24",
+        "q": "¿Qué medio conecta físicamente dos naves en órbita?",
+        "o": [
+          "Un paracaídas abierto",
+          "Una carretera lunar",
+          "Una cuerda en la superficie",
+          "Un sistema de acoplamiento"
+        ],
+        "a": 3,
+        "why": "El acoplamiento permitía transferir a la tripulación al módulo de mando.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-facil-25",
+        "q": "¿Por qué la etapa de descenso de Eagle es un artefacto histórico?",
+        "o": [
+          "Fue el primer rover marciano",
+          "Fue destruida por un océano lunar",
+          "Permanece como vestigio del primer alunizaje tripulado",
+          "Volvió intacta a la Tierra"
+        ],
+        "a": 2,
+        "why": "La etapa quedó en el lugar de alunizaje de Apollo 11 y fue fotografiada desde órbita lunar.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      }
+    ],
+    "normal": [
+      {
+        "id": "eagle-normal-01",
+        "q": "Misión simulada 1: tienes 180 kg de propelente y consumes 55 kg. ¿Cuánto queda?",
+        "o": [
+          "180 kg",
+          "125 kg",
+          "145 kg",
+          "105 kg"
+        ],
+        "a": 1,
+        "why": "Saldo = 180 − 55 = 125 kg. Datos inventados para practicar, no valores históricos de Apollo 11.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-normal-02",
+        "q": "Misión simulada 2: tienes 210 kg de propelente y consumes 60 kg. ¿Cuánto queda?",
+        "o": [
+          "170 kg",
+          "130 kg",
+          "210 kg",
+          "150 kg"
+        ],
+        "a": 3,
+        "why": "Saldo = 210 − 60 = 150 kg. Datos inventados para practicar, no valores históricos de Apollo 11.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-normal-03",
+        "q": "Misión simulada 3: tienes 240 kg de propelente y consumes 65 kg. ¿Cuánto queda?",
+        "o": [
+          "175 kg",
+          "195 kg",
+          "155 kg",
+          "240 kg"
+        ],
+        "a": 0,
+        "why": "Saldo = 240 − 65 = 175 kg. Datos inventados para practicar, no valores históricos de Apollo 11.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-normal-04",
+        "q": "Misión simulada 4: tienes 270 kg de propelente y consumes 70 kg. ¿Cuánto queda?",
+        "o": [
+          "180 kg",
+          "200 kg",
+          "270 kg",
+          "220 kg"
+        ],
+        "a": 1,
+        "why": "Saldo = 270 − 70 = 200 kg. Datos inventados para practicar, no valores históricos de Apollo 11.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-normal-05",
+        "q": "Misión simulada 5: tienes 300 kg de propelente y consumes 75 kg. ¿Cuánto queda?",
+        "o": [
+          "225 kg",
+          "300 kg",
+          "245 kg",
+          "205 kg"
+        ],
+        "a": 0,
+        "why": "Saldo = 300 − 75 = 225 kg. Datos inventados para practicar, no valores históricos de Apollo 11.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-normal-06",
+        "q": "Misión simulada 6: tienes 330 kg de propelente y consumes 80 kg. ¿Cuánto queda?",
+        "o": [
+          "330 kg",
+          "230 kg",
+          "250 kg",
+          "270 kg"
+        ],
+        "a": 2,
+        "why": "Saldo = 330 − 80 = 250 kg. Datos inventados para practicar, no valores históricos de Apollo 11.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-normal-07",
+        "q": "Misión simulada 7: tienes 360 kg de propelente y consumes 85 kg. ¿Cuánto queda?",
+        "o": [
+          "360 kg",
+          "295 kg",
+          "275 kg",
+          "255 kg"
+        ],
+        "a": 2,
+        "why": "Saldo = 360 − 85 = 275 kg. Datos inventados para practicar, no valores históricos de Apollo 11.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-normal-08",
+        "q": "Misión simulada 8: tienes 390 kg de propelente y consumes 90 kg. ¿Cuánto queda?",
+        "o": [
+          "390 kg",
+          "300 kg",
+          "320 kg",
+          "280 kg"
+        ],
+        "a": 1,
+        "why": "Saldo = 390 − 90 = 300 kg. Datos inventados para practicar, no valores históricos de Apollo 11.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-normal-09",
+        "q": "Misión simulada 9: tienes 420 kg de propelente y consumes 95 kg. ¿Cuánto queda?",
+        "o": [
+          "345 kg",
+          "305 kg",
+          "420 kg",
+          "325 kg"
+        ],
+        "a": 3,
+        "why": "Saldo = 420 − 95 = 325 kg. Datos inventados para practicar, no valores históricos de Apollo 11.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-normal-10",
+        "q": "Durante un descenso ficticio, el motor funciona 4 s dentro de un intervalo de 14 s. ¿Cuántos segundos permanece apagado?",
+        "o": [
+          "14 s",
+          "11 s",
+          "10 s",
+          "12 s"
+        ],
+        "a": 2,
+        "why": "Tiempo sin motor = 14 − 4 = 10 s. Es un problema de control temporal.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-normal-11",
+        "q": "Durante un descenso ficticio, el motor funciona 5 s dentro de un intervalo de 15 s. ¿Cuántos segundos permanece apagado?",
+        "o": [
+          "10 s",
+          "15 s",
+          "11 s",
+          "12 s"
+        ],
+        "a": 0,
+        "why": "Tiempo sin motor = 15 − 5 = 10 s. Es un problema de control temporal.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-normal-12",
+        "q": "Durante un descenso ficticio, el motor funciona 6 s dentro de un intervalo de 16 s. ¿Cuántos segundos permanece apagado?",
+        "o": [
+          "10 s",
+          "12 s",
+          "16 s",
+          "11 s"
+        ],
+        "a": 0,
+        "why": "Tiempo sin motor = 16 − 6 = 10 s. Es un problema de control temporal.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-normal-13",
+        "q": "Durante un descenso ficticio, el motor funciona 3 s dentro de un intervalo de 17 s. ¿Cuántos segundos permanece apagado?",
+        "o": [
+          "15 s",
+          "14 s",
+          "17 s",
+          "16 s"
+        ],
+        "a": 1,
+        "why": "Tiempo sin motor = 17 − 3 = 14 s. Es un problema de control temporal.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-normal-14",
+        "q": "Durante un descenso ficticio, el motor funciona 4 s dentro de un intervalo de 18 s. ¿Cuántos segundos permanece apagado?",
+        "o": [
+          "16 s",
+          "14 s",
+          "18 s",
+          "15 s"
+        ],
+        "a": 1,
+        "why": "Tiempo sin motor = 18 − 4 = 14 s. Es un problema de control temporal.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-normal-15",
+        "q": "Durante un descenso ficticio, el motor funciona 5 s dentro de un intervalo de 19 s. ¿Cuántos segundos permanece apagado?",
+        "o": [
+          "15 s",
+          "19 s",
+          "14 s",
+          "16 s"
+        ],
+        "a": 2,
+        "why": "Tiempo sin motor = 19 − 5 = 14 s. Es un problema de control temporal.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-normal-16",
+        "q": "Durante un descenso ficticio, el motor funciona 6 s dentro de un intervalo de 20 s. ¿Cuántos segundos permanece apagado?",
+        "o": [
+          "16 s",
+          "20 s",
+          "15 s",
+          "14 s"
+        ],
+        "a": 3,
+        "why": "Tiempo sin motor = 20 − 6 = 14 s. Es un problema de control temporal.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-normal-17",
+        "q": "Durante un descenso ficticio, el motor funciona 3 s dentro de un intervalo de 21 s. ¿Cuántos segundos permanece apagado?",
+        "o": [
+          "18 s",
+          "20 s",
+          "21 s",
+          "19 s"
+        ],
+        "a": 0,
+        "why": "Tiempo sin motor = 21 − 3 = 18 s. Es un problema de control temporal.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-normal-18",
+        "q": "Para una nave hipotética de 200 kg, ¿qué fuerza neta produce una aceleración de 2 m/s²? Usa F = m·a.",
+        "o": [
+          "202 N",
+          "600 N",
+          "400 N",
+          "200 N"
+        ],
+        "a": 2,
+        "why": "Por la segunda ley de Newton: 200 × 2 = 400 N. Es una simplificación sin considerar otras fuerzas.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-normal-19",
+        "q": "Para una nave hipotética de 240 kg, ¿qué fuerza neta produce una aceleración de 3 m/s²? Usa F = m·a.",
+        "o": [
+          "480 N",
+          "960 N",
+          "720 N",
+          "243 N"
+        ],
+        "a": 2,
+        "why": "Por la segunda ley de Newton: 240 × 3 = 720 N. Es una simplificación sin considerar otras fuerzas.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-normal-20",
+        "q": "Para una nave hipotética de 280 kg, ¿qué fuerza neta produce una aceleración de 4 m/s²? Usa F = m·a.",
+        "o": [
+          "1120 N",
+          "1400 N",
+          "840 N",
+          "284 N"
+        ],
+        "a": 0,
+        "why": "Por la segunda ley de Newton: 280 × 4 = 1120 N. Es una simplificación sin considerar otras fuerzas.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-normal-21",
+        "q": "Para una nave hipotética de 320 kg, ¿qué fuerza neta produce una aceleración de 5 m/s²? Usa F = m·a.",
+        "o": [
+          "1280 N",
+          "1600 N",
+          "325 N",
+          "1920 N"
+        ],
+        "a": 1,
+        "why": "Por la segunda ley de Newton: 320 × 5 = 1600 N. Es una simplificación sin considerar otras fuerzas.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-normal-22",
+        "q": "Para una nave hipotética de 360 kg, ¿qué fuerza neta produce una aceleración de 2 m/s²? Usa F = m·a.",
+        "o": [
+          "1080 N",
+          "362 N",
+          "360 N",
+          "720 N"
+        ],
+        "a": 3,
+        "why": "Por la segunda ley de Newton: 360 × 2 = 720 N. Es una simplificación sin considerar otras fuerzas.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-normal-23",
+        "q": "Para una nave hipotética de 400 kg, ¿qué fuerza neta produce una aceleración de 3 m/s²? Usa F = m·a.",
+        "o": [
+          "800 N",
+          "1600 N",
+          "403 N",
+          "1200 N"
+        ],
+        "a": 3,
+        "why": "Por la segunda ley de Newton: 400 × 3 = 1200 N. Es una simplificación sin considerar otras fuerzas.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-normal-24",
+        "q": "Para una nave hipotética de 440 kg, ¿qué fuerza neta produce una aceleración de 4 m/s²? Usa F = m·a.",
+        "o": [
+          "1320 N",
+          "1760 N",
+          "2200 N",
+          "444 N"
+        ],
+        "a": 1,
+        "why": "Por la segunda ley de Newton: 440 × 4 = 1760 N. Es una simplificación sin considerar otras fuerzas.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-normal-25",
+        "q": "Para una nave hipotética de 480 kg, ¿qué fuerza neta produce una aceleración de 5 m/s²? Usa F = m·a.",
+        "o": [
+          "485 N",
+          "1920 N",
+          "2400 N",
+          "2880 N"
+        ],
+        "a": 2,
+        "why": "Por la segunda ley de Newton: 480 × 5 = 2400 N. Es una simplificación sin considerar otras fuerzas.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      }
+    ],
+    "dificil": [
+      {
+        "id": "eagle-dificil-01",
+        "q": "En un cohete hipotético: Isp=280 s, m₀/mf=1.5. Calcula Δv ideal = Isp·9,81·ln(m₀/mf), redondeando al m/s.",
+        "o": [
+          "1336 m/s",
+          "4120 m/s",
+          "1114 m/s",
+          "955 m/s"
+        ],
+        "a": 2,
+        "why": "Δv = 280 × 9,81 × ln(1.5) ≈ 1114 m/s. No incluye pérdidas gravitatorias o guiado.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-dificil-02",
+        "q": "En un cohete hipotético: Isp=290 s, m₀/mf=1.8. Calcula Δv ideal = Isp·9,81·ln(m₀/mf), redondeando al m/s.",
+        "o": [
+          "2007 m/s",
+          "1442 m/s",
+          "5121 m/s",
+          "1672 m/s"
+        ],
+        "a": 3,
+        "why": "Δv = 290 × 9,81 × ln(1.8) ≈ 1672 m/s. No incluye pérdidas gravitatorias o guiado.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-dificil-03",
+        "q": "En un cohete hipotético: Isp=300 s, m₀/mf=2.0. Calcula Δv ideal = Isp·9,81·ln(m₀/mf), redondeando al m/s.",
+        "o": [
+          "2040 m/s",
+          "1768 m/s",
+          "2448 m/s",
+          "5886 m/s"
+        ],
+        "a": 0,
+        "why": "Δv = 300 × 9,81 × ln(2.0) ≈ 2040 m/s. No incluye pérdidas gravitatorias o guiado.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-dificil-04",
+        "q": "En un cohete hipotético: Isp=310 s, m₀/mf=2.2. Calcula Δv ideal = Isp·9,81·ln(m₀/mf), redondeando al m/s.",
+        "o": [
+          "2877 m/s",
+          "2088 m/s",
+          "6690 m/s",
+          "2398 m/s"
+        ],
+        "a": 3,
+        "why": "Δv = 310 × 9,81 × ln(2.2) ≈ 2398 m/s. No incluye pérdidas gravitatorias o guiado.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-dificil-05",
+        "q": "En un cohete hipotético: Isp=320 s, m₀/mf=2.5. Calcula Δv ideal = Isp·9,81·ln(m₀/mf), redondeando al m/s.",
+        "o": [
+          "2517 m/s",
+          "2876 m/s",
+          "7848 m/s",
+          "3452 m/s"
+        ],
+        "a": 1,
+        "why": "Δv = 320 × 9,81 × ln(2.5) ≈ 2876 m/s. No incluye pérdidas gravitatorias o guiado.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-dificil-06",
+        "q": "En un cohete hipotético: Isp=280 s, m₀/mf=2.8. Calcula Δv ideal = Isp·9,81·ln(m₀/mf), redondeando al m/s.",
+        "o": [
+          "2424 m/s",
+          "2828 m/s",
+          "7691 m/s",
+          "3394 m/s"
+        ],
+        "a": 1,
+        "why": "Δv = 280 × 9,81 × ln(2.8) ≈ 2828 m/s. No incluye pérdidas gravitatorias o guiado.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-dificil-07",
+        "q": "En un cohete hipotético: Isp=290 s, m₀/mf=1.5. Calcula Δv ideal = Isp·9,81·ln(m₀/mf), redondeando al m/s.",
+        "o": [
+          "4267 m/s",
+          "1154 m/s",
+          "994 m/s",
+          "1384 m/s"
+        ],
+        "a": 1,
+        "why": "Δv = 290 × 9,81 × ln(1.5) ≈ 1154 m/s. No incluye pérdidas gravitatorias o guiado.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-dificil-08",
+        "q": "En un cohete hipotético: Isp=300 s, m₀/mf=1.8. Calcula Δv ideal = Isp·9,81·ln(m₀/mf), redondeando al m/s.",
+        "o": [
+          "1730 m/s",
+          "1499 m/s",
+          "5297 m/s",
+          "2076 m/s"
+        ],
+        "a": 0,
+        "why": "Δv = 300 × 9,81 × ln(1.8) ≈ 1730 m/s. No incluye pérdidas gravitatorias o guiado.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-dificil-09",
+        "q": "En un cohete hipotético: Isp=310 s, m₀/mf=2.0. Calcula Δv ideal = Isp·9,81·ln(m₀/mf), redondeando al m/s.",
+        "o": [
+          "6082 m/s",
+          "2530 m/s",
+          "2108 m/s",
+          "1836 m/s"
+        ],
+        "a": 2,
+        "why": "Δv = 310 × 9,81 × ln(2.0) ≈ 2108 m/s. No incluye pérdidas gravitatorias o guiado.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-dificil-10",
+        "q": "En un cohete hipotético: Isp=320 s, m₀/mf=2.2. Calcula Δv ideal = Isp·9,81·ln(m₀/mf), redondeando al m/s.",
+        "o": [
+          "2166 m/s",
+          "2970 m/s",
+          "6906 m/s",
+          "2475 m/s"
+        ],
+        "a": 3,
+        "why": "Δv = 320 × 9,81 × ln(2.2) ≈ 2475 m/s. No incluye pérdidas gravitatorias o guiado.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-dificil-11",
+        "q": "En un cohete hipotético: Isp=280 s, m₀/mf=2.5. Calcula Δv ideal = Isp·9,81·ln(m₀/mf), redondeando al m/s.",
+        "o": [
+          "3020 m/s",
+          "2517 m/s",
+          "6867 m/s",
+          "2157 m/s"
+        ],
+        "a": 1,
+        "why": "Δv = 280 × 9,81 × ln(2.5) ≈ 2517 m/s. No incluye pérdidas gravitatorias o guiado.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-dificil-12",
+        "q": "En un cohete hipotético: Isp=290 s, m₀/mf=2.8. Calcula Δv ideal = Isp·9,81·ln(m₀/mf), redondeando al m/s.",
+        "o": [
+          "3515 m/s",
+          "7966 m/s",
+          "2929 m/s",
+          "2525 m/s"
+        ],
+        "a": 2,
+        "why": "Δv = 290 × 9,81 × ln(2.8) ≈ 2929 m/s. No incluye pérdidas gravitatorias o guiado.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-dificil-13",
+        "q": "La etapa ficticia tiene masa inicial 1800 kg y masa final 1200 kg. ¿Cuánta masa expulsó?",
+        "o": [
+          "1800 kg",
+          "660 kg",
+          "520 kg",
+          "600 kg"
+        ],
+        "a": 3,
+        "why": "Masa consumida = 1800 − 1200 = 600 kg. La ecuación del cohete utiliza ambas masas.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-dificil-14",
+        "q": "La etapa ficticia tiene masa inicial 1940 kg y masa final 1280 kg. ¿Cuánta masa expulsó?",
+        "o": [
+          "660 kg",
+          "720 kg",
+          "580 kg",
+          "1940 kg"
+        ],
+        "a": 0,
+        "why": "Masa consumida = 1940 − 1280 = 660 kg. La ecuación del cohete utiliza ambas masas.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-dificil-15",
+        "q": "La etapa ficticia tiene masa inicial 2080 kg y masa final 1360 kg. ¿Cuánta masa expulsó?",
+        "o": [
+          "640 kg",
+          "2080 kg",
+          "780 kg",
+          "720 kg"
+        ],
+        "a": 3,
+        "why": "Masa consumida = 2080 − 1360 = 720 kg. La ecuación del cohete utiliza ambas masas.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-dificil-16",
+        "q": "La etapa ficticia tiene masa inicial 2220 kg y masa final 1440 kg. ¿Cuánta masa expulsó?",
+        "o": [
+          "700 kg",
+          "840 kg",
+          "780 kg",
+          "2220 kg"
+        ],
+        "a": 2,
+        "why": "Masa consumida = 2220 − 1440 = 780 kg. La ecuación del cohete utiliza ambas masas.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-dificil-17",
+        "q": "La etapa ficticia tiene masa inicial 2360 kg y masa final 1520 kg. ¿Cuánta masa expulsó?",
+        "o": [
+          "760 kg",
+          "2360 kg",
+          "840 kg",
+          "900 kg"
+        ],
+        "a": 2,
+        "why": "Masa consumida = 2360 − 1520 = 840 kg. La ecuación del cohete utiliza ambas masas.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-dificil-18",
+        "q": "La etapa ficticia tiene masa inicial 2500 kg y masa final 1600 kg. ¿Cuánta masa expulsó?",
+        "o": [
+          "2500 kg",
+          "820 kg",
+          "960 kg",
+          "900 kg"
+        ],
+        "a": 3,
+        "why": "Masa consumida = 2500 − 1600 = 900 kg. La ecuación del cohete utiliza ambas masas.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-dificil-19",
+        "q": "La etapa ficticia tiene masa inicial 2640 kg y masa final 1680 kg. ¿Cuánta masa expulsó?",
+        "o": [
+          "1020 kg",
+          "960 kg",
+          "2640 kg",
+          "880 kg"
+        ],
+        "a": 1,
+        "why": "Masa consumida = 2640 − 1680 = 960 kg. La ecuación del cohete utiliza ambas masas.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-dificil-20",
+        "q": "La etapa ficticia tiene masa inicial 2780 kg y masa final 1760 kg. ¿Cuánta masa expulsó?",
+        "o": [
+          "940 kg",
+          "1020 kg",
+          "1080 kg",
+          "2780 kg"
+        ],
+        "a": 1,
+        "why": "Masa consumida = 2780 − 1760 = 1020 kg. La ecuación del cohete utiliza ambas masas.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-dificil-21",
+        "q": "Un vehículo de 500 kg se posa en la Luna (g=1,62 m/s²). ¿Cuál es su peso aproximado? No confundas masa y peso.",
+        "o": [
+          "308,6 N",
+          "4905,0 N",
+          "500 N",
+          "810,0 N"
+        ],
+        "a": 3,
+        "why": "Peso lunar = masa × gravedad lunar = 500 × 1,62 = 810.0 N.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-dificil-22",
+        "q": "Un vehículo de 620 kg se posa en la Luna (g=1,62 m/s²). ¿Cuál es su peso aproximado? No confundas masa y peso.",
+        "o": [
+          "1004,4 N",
+          "620 N",
+          "6082,2 N",
+          "382,7 N"
+        ],
+        "a": 0,
+        "why": "Peso lunar = masa × gravedad lunar = 620 × 1,62 = 1004.4 N.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-dificil-23",
+        "q": "Un vehículo de 740 kg se posa en la Luna (g=1,62 m/s²). ¿Cuál es su peso aproximado? No confundas masa y peso.",
+        "o": [
+          "1198,8 N",
+          "740 N",
+          "7259,4 N",
+          "456,8 N"
+        ],
+        "a": 0,
+        "why": "Peso lunar = masa × gravedad lunar = 740 × 1,62 = 1198.8 N.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-dificil-24",
+        "q": "Un vehículo de 860 kg se posa en la Luna (g=1,62 m/s²). ¿Cuál es su peso aproximado? No confundas masa y peso.",
+        "o": [
+          "860 N",
+          "8436,6 N",
+          "530,9 N",
+          "1393,2 N"
+        ],
+        "a": 3,
+        "why": "Peso lunar = masa × gravedad lunar = 860 × 1,62 = 1393.2 N.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      },
+      {
+        "id": "eagle-dificil-25",
+        "q": "Un vehículo de 980 kg se posa en la Luna (g=1,62 m/s²). ¿Cuál es su peso aproximado? No confundas masa y peso.",
+        "o": [
+          "980 N",
+          "604,9 N",
+          "9613,8 N",
+          "1587,6 N"
+        ],
+        "a": 3,
+        "why": "Peso lunar = masa × gravedad lunar = 980 × 1,62 = 1587.6 N.",
+        "source": "https://www.nasa.gov/mission/apollo-11/"
+      }
+    ]
+  },
+  "lrv": {
+    "facil": [
+      {
+        "id": "lrv-facil-01",
+        "q": "¿En qué misión se utilizó el LRV-3?",
+        "o": [
+          "Apollo 12",
+          "Apollo 11",
+          "Apollo 14",
+          "Apollo 17"
+        ],
+        "a": 3,
+        "why": "El tercer rover lunar tripulado voló con Apollo 17.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-facil-02",
+        "q": "¿En qué año recorrió la Luna el LRV-3?",
+        "o": [
+          "1969",
+          "1981",
+          "1972",
+          "1975"
+        ],
+        "a": 2,
+        "why": "Apollo 17 exploró Taurus-Littrow en diciembre de 1972.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-facil-03",
+        "q": "¿Cuántas ruedas tenía el vehículo lunar Apollo?",
+        "o": [
+          "Ocho",
+          "Dos",
+          "Cuatro",
+          "Seis"
+        ],
+        "a": 2,
+        "why": "El Lunar Roving Vehicle utilizaba cuatro ruedas.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-facil-04",
+        "q": "¿Qué astronauta comandó Apollo 17?",
+        "o": [
+          "Eugene Cernan",
+          "Michael Collins",
+          "Neil Armstrong",
+          "Jim Lovell"
+        ],
+        "a": 0,
+        "why": "Gene Cernan comandó Apollo 17.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-facil-05",
+        "q": "¿Quién acompañó a Cernan sobre la superficie lunar?",
+        "o": [
+          "John Glenn",
+          "Buzz Aldrin",
+          "Michael Collins",
+          "Harrison Schmitt"
+        ],
+        "a": 3,
+        "why": "Schmitt, geólogo, exploró Taurus-Littrow junto a Cernan.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-facil-06",
+        "q": "¿Cómo se llamaba la zona del alunizaje de Apollo 17?",
+        "o": [
+          "Valles Marineris",
+          "Mare Tranquillitatis",
+          "Taurus-Littrow",
+          "Olympus Mons"
+        ],
+        "a": 2,
+        "why": "Apollo 17 aterrizó en el valle Taurus-Littrow.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-facil-07",
+        "q": "¿Qué permitía el LRV?",
+        "o": [
+          "Volver a la Tierra",
+          "Excavar hasta el núcleo lunar",
+          "Explorar lugares más alejados del módulo lunar",
+          "Volar sobre la Luna"
+        ],
+        "a": 2,
+        "why": "El rover amplió el área explorada por los astronautas.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-facil-08",
+        "q": "¿Qué material estudiaban con frecuencia en las paradas científicas?",
+        "o": [
+          "Vegetación lunar",
+          "Rocas y regolito",
+          "Agua de un océano superficial",
+          "Nieve lunar"
+        ],
+        "a": 1,
+        "why": "Los astronautas recogieron muestras geológicas de la superficie.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-facil-09",
+        "q": "¿Por qué necesitaba orientación y planificación de rutas?",
+        "o": [
+          "Para regresar al módulo lunar de forma segura",
+          "Para seguir señales GPS lunar",
+          "Porque había carreteras y semáforos",
+          "Para evitar tráfico terrestre"
+        ],
+        "a": 0,
+        "why": "No existía un sistema GPS lunar y la tripulación debía cuidar las rutas de retorno.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-facil-10",
+        "q": "¿Qué tipo de vehículo era el LRV-3?",
+        "o": [
+          "Eléctrico",
+          "Diésel",
+          "Vapor",
+          "De gasolina"
+        ],
+        "a": 0,
+        "why": "El LRV utilizaba motores eléctricos y baterías.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-facil-11",
+        "q": "¿Qué distancia total aproximada recorrió Apollo 17 en el LRV?",
+        "o": [
+          "35,9 km",
+          "359 km",
+          "3,5 km",
+          "1.000 km"
+        ],
+        "a": 0,
+        "why": "Una tabla técnica NASA recoge 35,9 km en Apollo 17.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-facil-12",
+        "q": "¿En qué cuerpo celeste condujo el LRV?",
+        "o": [
+          "Marte",
+          "Europa",
+          "La Luna",
+          "Titán"
+        ],
+        "a": 2,
+        "why": "El LRV fue conducido por astronautas sobre la Luna.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-facil-13",
+        "q": "¿Qué instrumento ayudaba a transmitir imágenes del rover?",
+        "o": [
+          "Un telescopio espacial orbital",
+          "Un radar meteorológico terrestre",
+          "Un periscopio submarino",
+          "Una cámara de televisión"
+        ],
+        "a": 3,
+        "why": "El LRV montó una cámara para transmitir imágenes a la Tierra.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-facil-14",
+        "q": "¿Qué significa EVA en exploración espacial?",
+        "o": [
+          "Estación de vuelo automático",
+          "Energía de vapor auxiliar",
+          "Elevador vertical de ascenso",
+          "Actividad extravehicular"
+        ],
+        "a": 3,
+        "why": "EVA se refiere a las actividades realizadas fuera de la nave.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-facil-15",
+        "q": "¿Qué peligro existe al atravesar un cráter profundo?",
+        "o": [
+          "Perder presión de neumáticos de aire",
+          "Quedar atrapado o perder estabilidad",
+          "Nadar en agua",
+          "Quedarse sin gravedad"
+        ],
+        "a": 1,
+        "why": "El relieve y las pendientes afectan la seguridad del vehículo.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-facil-16",
+        "q": "¿Qué queda en la Luna después de la misión Apollo 17?",
+        "o": [
+          "El cohete Saturn V completo",
+          "El módulo de mando",
+          "El rover LRV-3",
+          "La cápsula de retorno terrestre"
+        ],
+        "a": 2,
+        "why": "El rover no fue recuperado y permanece en la superficie lunar.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-facil-17",
+        "q": "¿Por qué un traje espacial era indispensable para conducir el rover?",
+        "o": [
+          "Por lluvia constante",
+          "Por alta presión de oxígeno ambiental",
+          "Por el vacío y las temperaturas extremas",
+          "Por tormentas tropicales"
+        ],
+        "a": 2,
+        "why": "La Luna no ofrece una atmósfera respirable ni protección ambiental humana.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-facil-18",
+        "q": "¿Qué equipo ayuda a comunicarse con astronautas lejanos?",
+        "o": [
+          "El guardabarros",
+          "La pala de muestreo",
+          "La llanta",
+          "La antena"
+        ],
+        "a": 3,
+        "why": "Las antenas facilitan los enlaces de radio.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-facil-19",
+        "q": "¿Qué hacen los astronautas cuando encuentran una muestra geológica importante?",
+        "o": [
+          "La convierten en combustible",
+          "La arrojan al espacio",
+          "La descartan sin observar",
+          "Documentan ubicación y características"
+        ],
+        "a": 3,
+        "why": "El contexto de una muestra es crucial para su valor científico.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-facil-20",
+        "q": "¿Qué afectaría primero la tracción del rover en terreno suelto?",
+        "o": [
+          "Las propiedades del suelo",
+          "La humedad de lluvia",
+          "Las mareas oceánicas terrestres",
+          "La presión atmosférica lunar"
+        ],
+        "a": 0,
+        "why": "El regolito y las pendientes afectan el contacto rueda-suelo.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-facil-21",
+        "q": "¿Qué es el regolito lunar?",
+        "o": [
+          "El motor principal del rover",
+          "Una capa de agua líquida",
+          "Material suelto sobre la superficie",
+          "Un tipo de atmósfera densa"
+        ],
+        "a": 2,
+        "why": "El regolito incluye fragmentos de rocas y polvo producidos por impactos.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-facil-22",
+        "q": "¿Qué mide un odómetro?",
+        "o": [
+          "Distancia recorrida",
+          "Temperatura de un cráter",
+          "Altura del Sol",
+          "Cantidad de oxígeno"
+        ],
+        "a": 0,
+        "why": "El odómetro registra la distancia que avanza un vehículo.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-facil-23",
+        "q": "¿Qué operación es esencial antes de alejarse del módulo?",
+        "o": [
+          "Eliminar el mapa",
+          "Planificar autonomía y retorno",
+          "Vaciar todas las baterías",
+          "Desconectar la radio permanentemente"
+        ],
+        "a": 1,
+        "why": "Hay que reservar recursos para regresar.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-facil-24",
+        "q": "¿Qué permite comparar muestras de varios puntos?",
+        "o": [
+          "Conocer el clima terrestre del próximo año",
+          "Comprender diferencias geológicas",
+          "Crear una atmósfera lunar",
+          "Medir la órbita de Júpiter directamente"
+        ],
+        "a": 1,
+        "why": "Comparar rocas de distintos sitios ayuda a reconstruir la historia geológica.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-facil-25",
+        "q": "¿Cuál fue la última misión tripulada del programa Apollo que llegó a la Luna?",
+        "o": [
+          "Apollo 17",
+          "Apollo 16",
+          "Apollo 11",
+          "Apollo 13"
+        ],
+        "a": 0,
+        "why": "Apollo 17 fue la última misión tripulada de alunizaje del programa Apollo.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      }
+    ],
+    "normal": [
+      {
+        "id": "lrv-normal-01",
+        "q": "Un rover hipotético viaja a 2 km/h durante 4 h. ¿Qué distancia recorre, suponiendo velocidad constante?",
+        "o": [
+          "10 km",
+          "15 km",
+          "6 km",
+          "8 km"
+        ],
+        "a": 3,
+        "why": "Distancia = velocidad × tiempo = 2 × 4 = 8 km.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-normal-02",
+        "q": "Un rover hipotético viaja a 3 km/h durante 5 h. ¿Qué distancia recorre, suponiendo velocidad constante?",
+        "o": [
+          "18 km",
+          "8 km",
+          "12 km",
+          "15 km"
+        ],
+        "a": 3,
+        "why": "Distancia = velocidad × tiempo = 3 × 5 = 15 km.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-normal-03",
+        "q": "Un rover hipotético viaja a 4 km/h durante 6 h. ¿Qué distancia recorre, suponiendo velocidad constante?",
+        "o": [
+          "10 km",
+          "28 km",
+          "20 km",
+          "24 km"
+        ],
+        "a": 3,
+        "why": "Distancia = velocidad × tiempo = 4 × 6 = 24 km.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-normal-04",
+        "q": "Un rover hipotético viaja a 5 km/h durante 7 h. ¿Qué distancia recorre, suponiendo velocidad constante?",
+        "o": [
+          "12 km",
+          "30 km",
+          "35 km",
+          "40 km"
+        ],
+        "a": 2,
+        "why": "Distancia = velocidad × tiempo = 5 × 7 = 35 km.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-normal-05",
+        "q": "Un rover hipotético viaja a 2 km/h durante 8 h. ¿Qué distancia recorre, suponiendo velocidad constante?",
+        "o": [
+          "14 km",
+          "16 km",
+          "18 km",
+          "10 km"
+        ],
+        "a": 1,
+        "why": "Distancia = velocidad × tiempo = 2 × 8 = 16 km.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-normal-06",
+        "q": "Un rover hipotético viaja a 3 km/h durante 9 h. ¿Qué distancia recorre, suponiendo velocidad constante?",
+        "o": [
+          "24 km",
+          "27 km",
+          "30 km",
+          "12 km"
+        ],
+        "a": 1,
+        "why": "Distancia = velocidad × tiempo = 3 × 9 = 27 km.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-normal-07",
+        "q": "Un rover hipotético viaja a 4 km/h durante 10 h. ¿Qué distancia recorre, suponiendo velocidad constante?",
+        "o": [
+          "36 km",
+          "40 km",
+          "44 km",
+          "14 km"
+        ],
+        "a": 1,
+        "why": "Distancia = velocidad × tiempo = 4 × 10 = 40 km.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-normal-08",
+        "q": "Un rover hipotético viaja a 5 km/h durante 11 h. ¿Qué distancia recorre, suponiendo velocidad constante?",
+        "o": [
+          "60 km",
+          "16 km",
+          "55 km",
+          "50 km"
+        ],
+        "a": 2,
+        "why": "Distancia = velocidad × tiempo = 5 × 11 = 55 km.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-normal-09",
+        "q": "Un rover hipotético viaja a 2 km/h durante 12 h. ¿Qué distancia recorre, suponiendo velocidad constante?",
+        "o": [
+          "26 km",
+          "24 km",
+          "22 km",
+          "14 km"
+        ],
+        "a": 1,
+        "why": "Distancia = velocidad × tiempo = 2 × 12 = 24 km.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-normal-10",
+        "q": "Una ruta educativa admite un total de 28 km y ya avanzaste 4 km. ¿Cuántos kilómetros restan?",
+        "o": [
+          "24 km",
+          "31 km",
+          "28 km",
+          "22 km"
+        ],
+        "a": 0,
+        "why": "Distancia por recorrer = 28 − 4 = 24 km.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-normal-11",
+        "q": "Una ruta educativa admite un total de 30 km y ya avanzaste 5 km. ¿Cuántos kilómetros restan?",
+        "o": [
+          "30 km",
+          "25 km",
+          "23 km",
+          "32 km"
+        ],
+        "a": 1,
+        "why": "Distancia por recorrer = 30 − 5 = 25 km.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-normal-12",
+        "q": "Una ruta educativa admite un total de 32 km y ya avanzaste 6 km. ¿Cuántos kilómetros restan?",
+        "o": [
+          "26 km",
+          "32 km",
+          "33 km",
+          "24 km"
+        ],
+        "a": 0,
+        "why": "Distancia por recorrer = 32 − 6 = 26 km.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-normal-13",
+        "q": "Una ruta educativa admite un total de 34 km y ya avanzaste 3 km. ¿Cuántos kilómetros restan?",
+        "o": [
+          "38 km",
+          "29 km",
+          "31 km",
+          "34 km"
+        ],
+        "a": 2,
+        "why": "Distancia por recorrer = 34 − 3 = 31 km.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-normal-14",
+        "q": "Una ruta educativa admite un total de 36 km y ya avanzaste 4 km. ¿Cuántos kilómetros restan?",
+        "o": [
+          "36 km",
+          "30 km",
+          "32 km",
+          "39 km"
+        ],
+        "a": 2,
+        "why": "Distancia por recorrer = 36 − 4 = 32 km.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-normal-15",
+        "q": "Una ruta educativa admite un total de 38 km y ya avanzaste 5 km. ¿Cuántos kilómetros restan?",
+        "o": [
+          "33 km",
+          "38 km",
+          "40 km",
+          "31 km"
+        ],
+        "a": 0,
+        "why": "Distancia por recorrer = 38 − 5 = 33 km.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-normal-16",
+        "q": "Una ruta educativa admite un total de 40 km y ya avanzaste 6 km. ¿Cuántos kilómetros restan?",
+        "o": [
+          "32 km",
+          "41 km",
+          "40 km",
+          "34 km"
+        ],
+        "a": 3,
+        "why": "Distancia por recorrer = 40 − 6 = 34 km.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-normal-17",
+        "q": "Una ruta educativa admite un total de 42 km y ya avanzaste 3 km. ¿Cuántos kilómetros restan?",
+        "o": [
+          "37 km",
+          "46 km",
+          "42 km",
+          "39 km"
+        ],
+        "a": 3,
+        "why": "Distancia por recorrer = 42 − 3 = 39 km.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-normal-18",
+        "q": "En un ejercicio de navegación, debes recorrer 12 km a 5 km/h. ¿Cuántos minutos necesitas?",
+        "o": [
+          "114 min",
+          "2 min",
+          "174 min",
+          "144 min"
+        ],
+        "a": 3,
+        "why": "Tiempo = 12/5 h = 144 minutos; se supone velocidad constante.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-normal-19",
+        "q": "En un ejercicio de navegación, debes recorrer 14 km a 3 km/h. ¿Cuántos minutos necesitas?",
+        "o": [
+          "280 min",
+          "310 min",
+          "250 min",
+          "5 min"
+        ],
+        "a": 0,
+        "why": "Tiempo = 14/3 h = 280 minutos; se supone velocidad constante.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-normal-20",
+        "q": "En un ejercicio de navegación, debes recorrer 16 km a 4 km/h. ¿Cuántos minutos necesitas?",
+        "o": [
+          "270 min",
+          "4 min",
+          "210 min",
+          "240 min"
+        ],
+        "a": 3,
+        "why": "Tiempo = 16/4 h = 240 minutos; se supone velocidad constante.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-normal-21",
+        "q": "En un ejercicio de navegación, debes recorrer 18 km a 5 km/h. ¿Cuántos minutos necesitas?",
+        "o": [
+          "246 min",
+          "186 min",
+          "4 min",
+          "216 min"
+        ],
+        "a": 3,
+        "why": "Tiempo = 18/5 h = 216 minutos; se supone velocidad constante.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-normal-22",
+        "q": "En un ejercicio de navegación, debes recorrer 20 km a 3 km/h. ¿Cuántos minutos necesitas?",
+        "o": [
+          "430 min",
+          "370 min",
+          "7 min",
+          "400 min"
+        ],
+        "a": 3,
+        "why": "Tiempo = 20/3 h = 400 minutos; se supone velocidad constante.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-normal-23",
+        "q": "En un ejercicio de navegación, debes recorrer 22 km a 4 km/h. ¿Cuántos minutos necesitas?",
+        "o": [
+          "330 min",
+          "6 min",
+          "360 min",
+          "300 min"
+        ],
+        "a": 0,
+        "why": "Tiempo = 22/4 h = 330 minutos; se supone velocidad constante.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-normal-24",
+        "q": "En un ejercicio de navegación, debes recorrer 24 km a 5 km/h. ¿Cuántos minutos necesitas?",
+        "o": [
+          "318 min",
+          "288 min",
+          "258 min",
+          "5 min"
+        ],
+        "a": 1,
+        "why": "Tiempo = 24/5 h = 288 minutos; se supone velocidad constante.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-normal-25",
+        "q": "En un ejercicio de navegación, debes recorrer 26 km a 3 km/h. ¿Cuántos minutos necesitas?",
+        "o": [
+          "520 min",
+          "9 min",
+          "490 min",
+          "550 min"
+        ],
+        "a": 0,
+        "why": "Tiempo = 26/3 h = 520 minutos; se supone velocidad constante.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      }
+    ],
+    "dificil": [
+      {
+        "id": "lrv-dificil-01",
+        "q": "Ruta simulada: recorres 32 km hacia el objetivo a 4 km/h y vuelves al mismo punto a 3 km/h. ¿Cuántos minutos dura el regreso?",
+        "o": [
+          "480 min",
+          "580 min",
+          "640 min",
+          "700 min"
+        ],
+        "a": 2,
+        "why": "Regreso = 32/3 h = 640 min. Se usa la velocidad de vuelta, no la de ida.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-dificil-02",
+        "q": "Ruta simulada: recorres 45 km hacia el objetivo a 5 km/h y vuelves al mismo punto a 4 km/h. ¿Cuántos minutos dura el regreso?",
+        "o": [
+          "735 min",
+          "540 min",
+          "675 min",
+          "615 min"
+        ],
+        "a": 2,
+        "why": "Regreso = 45/4 h = 675 min. Se usa la velocidad de vuelta, no la de ida.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-dificil-03",
+        "q": "Ruta simulada: recorres 60 km hacia el objetivo a 6 km/h y vuelves al mismo punto a 5 km/h. ¿Cuántos minutos dura el regreso?",
+        "o": [
+          "660 min",
+          "780 min",
+          "720 min",
+          "600 min"
+        ],
+        "a": 2,
+        "why": "Regreso = 60/5 h = 720 min. Se usa la velocidad de vuelta, no la de ida.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-dificil-04",
+        "q": "Ruta simulada: recorres 44 km hacia el objetivo a 4 km/h y vuelves al mismo punto a 3 km/h. ¿Cuántos minutos dura el regreso?",
+        "o": [
+          "940 min",
+          "660 min",
+          "880 min",
+          "820 min"
+        ],
+        "a": 2,
+        "why": "Regreso = 44/3 h = 880 min. Se usa la velocidad de vuelta, no la de ida.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-dificil-05",
+        "q": "Ruta simulada: recorres 60 km hacia el objetivo a 5 km/h y vuelves al mismo punto a 4 km/h. ¿Cuántos minutos dura el regreso?",
+        "o": [
+          "720 min",
+          "900 min",
+          "960 min",
+          "840 min"
+        ],
+        "a": 1,
+        "why": "Regreso = 60/4 h = 900 min. Se usa la velocidad de vuelta, no la de ida.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-dificil-06",
+        "q": "Ruta simulada: recorres 78 km hacia el objetivo a 6 km/h y vuelves al mismo punto a 5 km/h. ¿Cuántos minutos dura el regreso?",
+        "o": [
+          "936 min",
+          "876 min",
+          "780 min",
+          "996 min"
+        ],
+        "a": 0,
+        "why": "Regreso = 78/5 h = 936 min. Se usa la velocidad de vuelta, no la de ida.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-dificil-07",
+        "q": "Ruta simulada: recorres 56 km hacia el objetivo a 4 km/h y vuelves al mismo punto a 3 km/h. ¿Cuántos minutos dura el regreso?",
+        "o": [
+          "840 min",
+          "1120 min",
+          "1180 min",
+          "1060 min"
+        ],
+        "a": 1,
+        "why": "Regreso = 56/3 h = 1120 min. Se usa la velocidad de vuelta, no la de ida.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-dificil-08",
+        "q": "Ruta simulada: recorres 75 km hacia el objetivo a 5 km/h y vuelves al mismo punto a 4 km/h. ¿Cuántos minutos dura el regreso?",
+        "o": [
+          "1125 min",
+          "1185 min",
+          "1065 min",
+          "900 min"
+        ],
+        "a": 0,
+        "why": "Regreso = 75/4 h = 1125 min. Se usa la velocidad de vuelta, no la de ida.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-dificil-09",
+        "q": "Ruta simulada: recorres 96 km hacia el objetivo a 6 km/h y vuelves al mismo punto a 5 km/h. ¿Cuántos minutos dura el regreso?",
+        "o": [
+          "1152 min",
+          "1212 min",
+          "1092 min",
+          "960 min"
+        ],
+        "a": 0,
+        "why": "Regreso = 96/5 h = 1152 min. Se usa la velocidad de vuelta, no la de ida.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-dificil-10",
+        "q": "Ruta simulada: recorres 68 km hacia el objetivo a 4 km/h y vuelves al mismo punto a 3 km/h. ¿Cuántos minutos dura el regreso?",
+        "o": [
+          "1300 min",
+          "1360 min",
+          "1020 min",
+          "1420 min"
+        ],
+        "a": 1,
+        "why": "Regreso = 68/3 h = 1360 min. Se usa la velocidad de vuelta, no la de ida.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-dificil-11",
+        "q": "Ruta simulada: recorres 90 km hacia el objetivo a 5 km/h y vuelves al mismo punto a 4 km/h. ¿Cuántos minutos dura el regreso?",
+        "o": [
+          "1080 min",
+          "1290 min",
+          "1410 min",
+          "1350 min"
+        ],
+        "a": 3,
+        "why": "Regreso = 90/4 h = 1350 min. Se usa la velocidad de vuelta, no la de ida.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-dificil-12",
+        "q": "Ruta simulada: recorres 114 km hacia el objetivo a 6 km/h y vuelves al mismo punto a 5 km/h. ¿Cuántos minutos dura el regreso?",
+        "o": [
+          "1308 min",
+          "1140 min",
+          "1428 min",
+          "1368 min"
+        ],
+        "a": 3,
+        "why": "Regreso = 114/5 h = 1368 min. Se usa la velocidad de vuelta, no la de ida.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-dificil-13",
+        "q": "Ruta simulada: recorres 80 km hacia el objetivo a 4 km/h y vuelves al mismo punto a 3 km/h. ¿Cuántos minutos dura el regreso?",
+        "o": [
+          "1600 min",
+          "1200 min",
+          "1660 min",
+          "1540 min"
+        ],
+        "a": 0,
+        "why": "Regreso = 80/3 h = 1600 min. Se usa la velocidad de vuelta, no la de ida.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-dificil-14",
+        "q": "En un rover ficticio tienes 150 unidades de energía. Gastas 28 en la ida y 35 en el regreso. ¿Cuánto queda?",
+        "o": [
+          "87 unidades",
+          "115 unidades",
+          "122 unidades",
+          "94 unidades"
+        ],
+        "a": 0,
+        "why": "Energía restante = 150 − 28 − 35 = 87.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-dificil-15",
+        "q": "En un rover ficticio tienes 170 unidades de energía. Gastas 31 en la ida y 37 en el regreso. ¿Cuánto queda?",
+        "o": [
+          "133 unidades",
+          "102 unidades",
+          "139 unidades",
+          "109 unidades"
+        ],
+        "a": 1,
+        "why": "Energía restante = 170 − 31 − 37 = 102.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-dificil-16",
+        "q": "En un rover ficticio tienes 190 unidades de energía. Gastas 34 en la ida y 39 en el regreso. ¿Cuánto queda?",
+        "o": [
+          "151 unidades",
+          "156 unidades",
+          "124 unidades",
+          "117 unidades"
+        ],
+        "a": 3,
+        "why": "Energía restante = 190 − 34 − 39 = 117.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-dificil-17",
+        "q": "En un rover ficticio tienes 210 unidades de energía. Gastas 37 en la ida y 41 en el regreso. ¿Cuánto queda?",
+        "o": [
+          "139 unidades",
+          "169 unidades",
+          "132 unidades",
+          "173 unidades"
+        ],
+        "a": 2,
+        "why": "Energía restante = 210 − 37 − 41 = 132.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-dificil-18",
+        "q": "En un rover ficticio tienes 230 unidades de energía. Gastas 40 en la ida y 43 en el regreso. ¿Cuánto queda?",
+        "o": [
+          "190 unidades",
+          "154 unidades",
+          "187 unidades",
+          "147 unidades"
+        ],
+        "a": 3,
+        "why": "Energía restante = 230 − 40 − 43 = 147.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-dificil-19",
+        "q": "En un rover ficticio tienes 250 unidades de energía. Gastas 43 en la ida y 45 en el regreso. ¿Cuánto queda?",
+        "o": [
+          "207 unidades",
+          "169 unidades",
+          "162 unidades",
+          "205 unidades"
+        ],
+        "a": 2,
+        "why": "Energía restante = 250 − 43 − 45 = 162.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-dificil-20",
+        "q": "En un rover ficticio tienes 270 unidades de energía. Gastas 46 en la ida y 47 en el regreso. ¿Cuánto queda?",
+        "o": [
+          "184 unidades",
+          "224 unidades",
+          "223 unidades",
+          "177 unidades"
+        ],
+        "a": 3,
+        "why": "Energía restante = 270 − 46 − 47 = 177.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-dificil-21",
+        "q": "En un rover ficticio tienes 290 unidades de energía. Gastas 49 en la ida y 49 en el regreso. ¿Cuánto queda?",
+        "o": [
+          "241 unidades",
+          "192 unidades",
+          "199 unidades",
+          "206 unidades"
+        ],
+        "a": 1,
+        "why": "Energía restante = 290 − 49 − 49 = 192.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-dificil-22",
+        "q": "Comparación didáctica con los 35,9 km documentados de Apollo 17: si un recorrido fuera de 8 km, ¿cuál sería la diferencia?",
+        "o": [
+          "24,9 km",
+          "30,9 km",
+          "43,9 km",
+          "27,9 km"
+        ],
+        "a": 3,
+        "why": "La diferencia respecto al recorrido histórico es 35,9 − 8 = 27.9 km.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-dificil-23",
+        "q": "Comparación didáctica con los 35,9 km documentados de Apollo 17: si un recorrido fuera de 11 km, ¿cuál sería la diferencia?",
+        "o": [
+          "24,9 km",
+          "46,9 km",
+          "21,9 km",
+          "27,9 km"
+        ],
+        "a": 0,
+        "why": "La diferencia respecto al recorrido histórico es 35,9 − 11 = 24.9 km.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-dificil-24",
+        "q": "Comparación didáctica con los 35,9 km documentados de Apollo 17: si un recorrido fuera de 14 km, ¿cuál sería la diferencia?",
+        "o": [
+          "49,9 km",
+          "18,9 km",
+          "24,9 km",
+          "21,9 km"
+        ],
+        "a": 3,
+        "why": "La diferencia respecto al recorrido histórico es 35,9 − 14 = 21.9 km.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      },
+      {
+        "id": "lrv-dificil-25",
+        "q": "Comparación didáctica con los 35,9 km documentados de Apollo 17: si un recorrido fuera de 17 km, ¿cuál sería la diferencia?",
+        "o": [
+          "21,9 km",
+          "18,9 km",
+          "15,9 km",
+          "52,9 km"
+        ],
+        "a": 1,
+        "why": "La diferencia respecto al recorrido histórico es 35,9 − 17 = 18.9 km.",
+        "source": "https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/"
+      }
+    ]
+  },
+  "alsep": {
+    "facil": [
+      {
+        "id": "alsep-facil-01",
+        "q": "¿Qué significa ALSEP?",
+        "o": [
+          "Advanced Lunar Surface Energy Plant",
+          "Apollo Lunar Satellite Escape Program",
+          "Apollo Lunar Surface Experiments Package",
+          "Automatic Launch Spacecraft Engine Program"
+        ],
+        "a": 2,
+        "why": "ALSEP significa paquete de experimentos científicos para la superficie lunar.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-facil-02",
+        "q": "¿Dónde instalaban los astronautas los instrumentos ALSEP?",
+        "o": [
+          "Dentro del Sol",
+          "En Marte",
+          "En la superficie lunar",
+          "En el fondo del océano"
+        ],
+        "a": 2,
+        "why": "Las estaciones ALSEP se desplegaban junto a sitios de alunizaje.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-facil-03",
+        "q": "¿Qué instrumento detecta vibraciones del terreno lunar?",
+        "o": [
+          "Altímetro de avión",
+          "Medidor de velocidad del viento terrestre",
+          "Telescopio óptico",
+          "Sismómetro"
+        ],
+        "a": 3,
+        "why": "Los sismómetros registraban movimientos sísmicos de la Luna.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-facil-04",
+        "q": "¿Qué permitía a muchas estaciones ALSEP funcionar tras la partida de los astronautas?",
+        "o": [
+          "Una fuente eléctrica RTG",
+          "Un cable conectado a la Tierra",
+          "Un motor de automóvil",
+          "Un generador eólico lunar"
+        ],
+        "a": 0,
+        "why": "Un generador termoeléctrico de radioisótopos aportaba energía eléctrica.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-facil-05",
+        "q": "¿Qué significa RTG?",
+        "o": [
+          "Red de transmisión geográfica",
+          "Radar de tránsito galáctico",
+          "Reflector térmico de gravedad",
+          "Generador termoeléctrico de radioisótopos"
+        ],
+        "a": 3,
+        "why": "El RTG transforma calor de desintegración radiactiva en electricidad.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-facil-06",
+        "q": "¿Cuál era la función de la estación central ALSEP?",
+        "o": [
+          "Extraer hielo del suelo terrestre",
+          "Aterrizar el cohete",
+          "Coordinar instrumentos y transmisión de datos",
+          "Transportar astronautas a órbita"
+        ],
+        "a": 2,
+        "why": "La estación central controlaba y enviaba telemetría de los instrumentos.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-facil-07",
+        "q": "¿Qué planeta estudiaban directamente las estaciones ALSEP?",
+        "o": [
+          "Venus",
+          "Marte",
+          "Neptuno",
+          "Ninguno: estudiaban la Luna"
+        ],
+        "a": 3,
+        "why": "ALSEP era un conjunto de instrumentos para ciencia lunar.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-facil-08",
+        "q": "¿Qué se puede estudiar con la señal de un sismómetro lunar?",
+        "o": [
+          "La composición de las nubes terrestres",
+          "Las órbitas de todos los exoplanetas",
+          "La temperatura del núcleo solar directamente",
+          "La estructura interna de la Luna"
+        ],
+        "a": 3,
+        "why": "Las ondas sísmicas aportan información del interior lunar.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-facil-09",
+        "q": "¿Cuál fue la primera misión que instaló un ALSEP completo?",
+        "o": [
+          "Apollo 12",
+          "Apollo 13",
+          "Apollo 11",
+          "Apollo 8"
+        ],
+        "a": 0,
+        "why": "Apollo 11 llevó el conjunto más simple EASEP; el ALSEP completo comenzó con Apollo 12.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-facil-10",
+        "q": "¿Qué desplegó Apollo 11 en lugar del ALSEP completo?",
+        "o": [
+          "LRV-3",
+          "EASEP",
+          "Dawn",
+          "Pioneer 10"
+        ],
+        "a": 1,
+        "why": "EASEP era una versión temprana y más limitada de experimentos lunares.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-facil-11",
+        "q": "¿En qué año se terminaron las operaciones de recepción de ALSEP?",
+        "o": [
+          "1969",
+          "1977",
+          "1988",
+          "2005"
+        ],
+        "a": 1,
+        "why": "El cierre del programa de operaciones ALSEP ocurrió en septiembre de 1977.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-facil-12",
+        "q": "¿Cuál de estas misiones sí dejó una estación ALSEP completa?",
+        "o": [
+          "Apollo 15",
+          "Apollo 13",
+          "Apollo 8",
+          "Apollo 10"
+        ],
+        "a": 0,
+        "why": "Apollo 15 fue una de las misiones que instaló instrumentos ALSEP.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-facil-13",
+        "q": "¿Cuál de estas misiones no logró un alunizaje?",
+        "o": [
+          "Apollo 15",
+          "Apollo 17",
+          "Apollo 13",
+          "Apollo 12"
+        ],
+        "a": 2,
+        "why": "Apollo 13 regresó sin aterrizar en la Luna.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-facil-14",
+        "q": "¿Qué permite observar un experimento de flujo térmico?",
+        "o": [
+          "Las corrientes marinas terrestres",
+          "La cantidad de lluvia",
+          "Cómo se transmite calor en el subsuelo",
+          "La presión atmosférica en Venus"
+        ],
+        "a": 2,
+        "why": "El flujo térmico da pistas de la energía que emerge del interior lunar.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-facil-15",
+        "q": "¿Cuál es la función de una antena en ALSEP?",
+        "o": [
+          "Mover las rocas",
+          "Crear gravedad artificial",
+          "Encender un motor de ascenso",
+          "Transmitir datos por radio"
+        ],
+        "a": 3,
+        "why": "La antena enviaba información de los instrumentos hasta la Tierra.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-facil-16",
+        "q": "¿Qué es la telemetría?",
+        "o": [
+          "Una forma de soldar rocas",
+          "Un sistema de frenos",
+          "Recolección manual de combustible",
+          "Transmisión de medidas obtenidas por instrumentos"
+        ],
+        "a": 3,
+        "why": "La telemetría transporta lecturas científicas a distancia.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-facil-17",
+        "q": "¿Qué detecta un magnetómetro?",
+        "o": [
+          "Cantidad de agua por litro",
+          "Longitud de las sombras exclusivamente",
+          "Ruido de motores",
+          "Campo magnético"
+        ],
+        "a": 3,
+        "why": "Un magnetómetro mide propiedades del campo magnético.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-facil-18",
+        "q": "¿Qué hizo posible estudiar años después de terminadas las misiones?",
+        "o": [
+          "Archivar datos científicos",
+          "Destruir los instrumentos",
+          "Ocultar las mediciones",
+          "Eliminar todos los registros"
+        ],
+        "a": 0,
+        "why": "La preservación de datos permite nuevos análisis independientes.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-facil-19",
+        "q": "¿Qué instrumento emplea un reflector pasivo en la superficie lunar?",
+        "o": [
+          "Una cámara térmica activa",
+          "Un retroreflector láser",
+          "Un generador eólico",
+          "Un motor cohete"
+        ],
+        "a": 1,
+        "why": "Los retroreflectores reflejan pulsos láser y no necesitan alimentación eléctrica.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-facil-20",
+        "q": "¿En qué unidad se mide normalmente la potencia eléctrica?",
+        "o": [
+          "Grados",
+          "Segundos",
+          "Vatios",
+          "Kilómetros"
+        ],
+        "a": 2,
+        "why": "La potencia eléctrica se expresa en vatios (W).",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-facil-21",
+        "q": "¿Qué es una onda sísmica?",
+        "o": [
+          "Un cohete a reacción",
+          "Un mapa de órbitas",
+          "Un haz de luz solar",
+          "Una perturbación que viaja por el interior o la superficie"
+        ],
+        "a": 3,
+        "why": "Las ondas sísmicas transportan energía por un medio material.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-facil-22",
+        "q": "¿Qué misión desplegó un ALSEP en Taurus-Littrow?",
+        "o": [
+          "Apollo 11",
+          "Apollo 8",
+          "Apollo 13",
+          "Apollo 17"
+        ],
+        "a": 3,
+        "why": "Apollo 17 instaló su estación científica en Taurus-Littrow.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-facil-23",
+        "q": "¿Qué mide un sensor de temperatura?",
+        "o": [
+          "Masa total de la Tierra",
+          "Estado térmico de su entorno",
+          "Presión de una cápsula espacial siempre",
+          "Velocidad de la luz"
+        ],
+        "a": 1,
+        "why": "La temperatura es una propiedad física que muchos experimentos registran.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-facil-24",
+        "q": "¿Por qué una medición necesita fecha o tiempo asociado?",
+        "o": [
+          "Para convertir vatios en metros",
+          "Para relacionarla con otros eventos",
+          "Para cambiar automáticamente la gravedad",
+          "Para ocupar más memoria sin utilidad"
+        ],
+        "a": 1,
+        "why": "Las marcas temporales permiten correlacionar eventos científicos.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-facil-25",
+        "q": "¿En qué consiste una medición científica reproducible?",
+        "o": [
+          "En modificar resultados hasta gusten",
+          "En evitar publicar métodos",
+          "En borrar los errores instrumentales",
+          "En registrar el método y datos verificables"
+        ],
+        "a": 3,
+        "why": "La trazabilidad y el método documentado permiten revisar hallazgos.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      }
+    ],
+    "normal": [
+      {
+        "id": "alsep-normal-01",
+        "q": "En una estación ALSEP simulada, 2 sensores consumen 12 W cada uno. ¿Cuál es la potencia total?",
+        "o": [
+          "36 W",
+          "24 W",
+          "12 W",
+          "14 W"
+        ],
+        "a": 1,
+        "why": "Potencia total = 2 × 12 = 24 W. Es un escenario, no una ficha técnica histórica.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-normal-02",
+        "q": "En una estación ALSEP simulada, 3 sensores consumen 16 W cada uno. ¿Cuál es la potencia total?",
+        "o": [
+          "48 W",
+          "64 W",
+          "19 W",
+          "32 W"
+        ],
+        "a": 0,
+        "why": "Potencia total = 3 × 16 = 48 W. Es un escenario, no una ficha técnica histórica.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-normal-03",
+        "q": "En una estación ALSEP simulada, 4 sensores consumen 20 W cada uno. ¿Cuál es la potencia total?",
+        "o": [
+          "24 W",
+          "60 W",
+          "100 W",
+          "80 W"
+        ],
+        "a": 3,
+        "why": "Potencia total = 4 × 20 = 80 W. Es un escenario, no una ficha técnica histórica.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-normal-04",
+        "q": "En una estación ALSEP simulada, 5 sensores consumen 24 W cada uno. ¿Cuál es la potencia total?",
+        "o": [
+          "96 W",
+          "144 W",
+          "29 W",
+          "120 W"
+        ],
+        "a": 3,
+        "why": "Potencia total = 5 × 24 = 120 W. Es un escenario, no una ficha técnica histórica.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-normal-05",
+        "q": "En una estación ALSEP simulada, 2 sensores consumen 28 W cada uno. ¿Cuál es la potencia total?",
+        "o": [
+          "28 W",
+          "84 W",
+          "30 W",
+          "56 W"
+        ],
+        "a": 3,
+        "why": "Potencia total = 2 × 28 = 56 W. Es un escenario, no una ficha técnica histórica.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-normal-06",
+        "q": "En una estación ALSEP simulada, 3 sensores consumen 32 W cada uno. ¿Cuál es la potencia total?",
+        "o": [
+          "128 W",
+          "96 W",
+          "35 W",
+          "64 W"
+        ],
+        "a": 1,
+        "why": "Potencia total = 3 × 32 = 96 W. Es un escenario, no una ficha técnica histórica.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-normal-07",
+        "q": "En una estación ALSEP simulada, 4 sensores consumen 36 W cada uno. ¿Cuál es la potencia total?",
+        "o": [
+          "180 W",
+          "40 W",
+          "108 W",
+          "144 W"
+        ],
+        "a": 3,
+        "why": "Potencia total = 4 × 36 = 144 W. Es un escenario, no una ficha técnica histórica.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-normal-08",
+        "q": "En una estación ALSEP simulada, 5 sensores consumen 40 W cada uno. ¿Cuál es la potencia total?",
+        "o": [
+          "240 W",
+          "160 W",
+          "45 W",
+          "200 W"
+        ],
+        "a": 3,
+        "why": "Potencia total = 5 × 40 = 200 W. Es un escenario, no una ficha técnica histórica.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-normal-09",
+        "q": "En una estación ALSEP simulada, 2 sensores consumen 44 W cada uno. ¿Cuál es la potencia total?",
+        "o": [
+          "132 W",
+          "46 W",
+          "88 W",
+          "44 W"
+        ],
+        "a": 2,
+        "why": "Potencia total = 2 × 44 = 88 W. Es un escenario, no una ficha técnica histórica.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-normal-10",
+        "q": "Un instrumento ficticio registra 30 muestras de 8 bits cada una. ¿Cuántos bits de datos produce?",
+        "o": [
+          "30 bits",
+          "248 bits",
+          "240 bits",
+          "232 bits"
+        ],
+        "a": 2,
+        "why": "Volumen = 30 × 8 = 240 bits. No se añaden cabeceras de transmisión.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-normal-11",
+        "q": "Un instrumento ficticio registra 35 muestras de 12 bits cada una. ¿Cuántos bits de datos produce?",
+        "o": [
+          "35 bits",
+          "420 bits",
+          "408 bits",
+          "432 bits"
+        ],
+        "a": 1,
+        "why": "Volumen = 35 × 12 = 420 bits. No se añaden cabeceras de transmisión.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-normal-12",
+        "q": "Un instrumento ficticio registra 40 muestras de 16 bits cada una. ¿Cuántos bits de datos produce?",
+        "o": [
+          "624 bits",
+          "640 bits",
+          "656 bits",
+          "40 bits"
+        ],
+        "a": 1,
+        "why": "Volumen = 40 × 16 = 640 bits. No se añaden cabeceras de transmisión.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-normal-13",
+        "q": "Un instrumento ficticio registra 45 muestras de 8 bits cada una. ¿Cuántos bits de datos produce?",
+        "o": [
+          "352 bits",
+          "368 bits",
+          "45 bits",
+          "360 bits"
+        ],
+        "a": 3,
+        "why": "Volumen = 45 × 8 = 360 bits. No se añaden cabeceras de transmisión.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-normal-14",
+        "q": "Un instrumento ficticio registra 50 muestras de 12 bits cada una. ¿Cuántos bits de datos produce?",
+        "o": [
+          "588 bits",
+          "600 bits",
+          "50 bits",
+          "612 bits"
+        ],
+        "a": 1,
+        "why": "Volumen = 50 × 12 = 600 bits. No se añaden cabeceras de transmisión.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-normal-15",
+        "q": "Un instrumento ficticio registra 55 muestras de 16 bits cada una. ¿Cuántos bits de datos produce?",
+        "o": [
+          "880 bits",
+          "55 bits",
+          "896 bits",
+          "864 bits"
+        ],
+        "a": 0,
+        "why": "Volumen = 55 × 16 = 880 bits. No se añaden cabeceras de transmisión.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-normal-16",
+        "q": "Un instrumento ficticio registra 60 muestras de 8 bits cada una. ¿Cuántos bits de datos produce?",
+        "o": [
+          "60 bits",
+          "472 bits",
+          "488 bits",
+          "480 bits"
+        ],
+        "a": 3,
+        "why": "Volumen = 60 × 8 = 480 bits. No se añaden cabeceras de transmisión.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-normal-17",
+        "q": "Un instrumento ficticio registra 65 muestras de 12 bits cada una. ¿Cuántos bits de datos produce?",
+        "o": [
+          "792 bits",
+          "65 bits",
+          "768 bits",
+          "780 bits"
+        ],
+        "a": 3,
+        "why": "Volumen = 65 × 12 = 780 bits. No se añaden cabeceras de transmisión.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-normal-18",
+        "q": "En una cronología abreviada, una estación empieza en 1969 y se compara con el cierre ALSEP de 1977. ¿Cuántos años de calendario hay entre ambas fechas?",
+        "o": [
+          "7 años",
+          "8 años",
+          "1977 años",
+          "9 años"
+        ],
+        "a": 1,
+        "why": "Diferencia de años de calendario = 1977 − 1969 = 8; no equivale a duración operativa exacta.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-normal-19",
+        "q": "En una cronología abreviada, una estación empieza en 1970 y se compara con el cierre ALSEP de 1977. ¿Cuántos años de calendario hay entre ambas fechas?",
+        "o": [
+          "8 años",
+          "6 años",
+          "7 años",
+          "1977 años"
+        ],
+        "a": 2,
+        "why": "Diferencia de años de calendario = 1977 − 1970 = 7; no equivale a duración operativa exacta.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-normal-20",
+        "q": "En una cronología abreviada, una estación empieza en 1971 y se compara con el cierre ALSEP de 1977. ¿Cuántos años de calendario hay entre ambas fechas?",
+        "o": [
+          "1977 años",
+          "6 años",
+          "7 años",
+          "5 años"
+        ],
+        "a": 1,
+        "why": "Diferencia de años de calendario = 1977 − 1971 = 6; no equivale a duración operativa exacta.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-normal-21",
+        "q": "En una cronología abreviada, una estación empieza en 1972 y se compara con el cierre ALSEP de 1977. ¿Cuántos años de calendario hay entre ambas fechas?",
+        "o": [
+          "5 años",
+          "6 años",
+          "4 años",
+          "1977 años"
+        ],
+        "a": 0,
+        "why": "Diferencia de años de calendario = 1977 − 1972 = 5; no equivale a duración operativa exacta.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-normal-22",
+        "q": "En una cronología abreviada, una estación empieza en 1973 y se compara con el cierre ALSEP de 1977. ¿Cuántos años de calendario hay entre ambas fechas?",
+        "o": [
+          "1977 años",
+          "5 años",
+          "3 años",
+          "4 años"
+        ],
+        "a": 3,
+        "why": "Diferencia de años de calendario = 1977 − 1973 = 4; no equivale a duración operativa exacta.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-normal-23",
+        "q": "En una cronología abreviada, una estación empieza en 1974 y se compara con el cierre ALSEP de 1977. ¿Cuántos años de calendario hay entre ambas fechas?",
+        "o": [
+          "3 años",
+          "1977 años",
+          "4 años",
+          "2 años"
+        ],
+        "a": 0,
+        "why": "Diferencia de años de calendario = 1977 − 1974 = 3; no equivale a duración operativa exacta.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-normal-24",
+        "q": "En una cronología abreviada, una estación empieza en 1975 y se compara con el cierre ALSEP de 1977. ¿Cuántos años de calendario hay entre ambas fechas?",
+        "o": [
+          "2 años",
+          "1 años",
+          "3 años",
+          "1977 años"
+        ],
+        "a": 0,
+        "why": "Diferencia de años de calendario = 1977 − 1975 = 2; no equivale a duración operativa exacta.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-normal-25",
+        "q": "En una cronología abreviada, una estación empieza en 1976 y se compara con el cierre ALSEP de 1977. ¿Cuántos años de calendario hay entre ambas fechas?",
+        "o": [
+          "1 años",
+          "1977 años",
+          "2 años",
+          "0 años"
+        ],
+        "a": 0,
+        "why": "Diferencia de años de calendario = 1977 − 1976 = 1; no equivale a duración operativa exacta.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      }
+    ],
+    "dificil": [
+      {
+        "id": "alsep-dificil-01",
+        "q": "Telemetría hipotética: 12 muestras/s, 16 bits/muestra durante 30 s. ¿Cuántos bits útiles produce?",
+        "o": [
+          "5952 bits",
+          "5568 bits",
+          "2880 bits",
+          "5760 bits"
+        ],
+        "a": 3,
+        "why": "Datos = 12 × 16 × 30 = 5760 bits sin sobrecarga de protocolo.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-dificil-02",
+        "q": "Telemetría hipotética: 18 muestras/s, 24 bits/muestra durante 40 s. ¿Cuántos bits útiles produce?",
+        "o": [
+          "16848 bits",
+          "8640 bits",
+          "17712 bits",
+          "17280 bits"
+        ],
+        "a": 3,
+        "why": "Datos = 18 × 24 × 40 = 17280 bits sin sobrecarga de protocolo.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-dificil-03",
+        "q": "Telemetría hipotética: 24 muestras/s, 32 bits/muestra durante 50 s. ¿Cuántos bits útiles produce?",
+        "o": [
+          "39168 bits",
+          "19200 bits",
+          "37632 bits",
+          "38400 bits"
+        ],
+        "a": 3,
+        "why": "Datos = 24 × 32 × 50 = 38400 bits sin sobrecarga de protocolo.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-dificil-04",
+        "q": "Telemetría hipotética: 30 muestras/s, 16 bits/muestra durante 60 s. ¿Cuántos bits útiles produce?",
+        "o": [
+          "14400 bits",
+          "29280 bits",
+          "28800 bits",
+          "28320 bits"
+        ],
+        "a": 2,
+        "why": "Datos = 30 × 16 × 60 = 28800 bits sin sobrecarga de protocolo.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-dificil-05",
+        "q": "Telemetría hipotética: 12 muestras/s, 24 bits/muestra durante 70 s. ¿Cuántos bits útiles produce?",
+        "o": [
+          "20160 bits",
+          "19872 bits",
+          "20448 bits",
+          "10080 bits"
+        ],
+        "a": 0,
+        "why": "Datos = 12 × 24 × 70 = 20160 bits sin sobrecarga de protocolo.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-dificil-06",
+        "q": "Telemetría hipotética: 18 muestras/s, 32 bits/muestra durante 30 s. ¿Cuántos bits útiles produce?",
+        "o": [
+          "17856 bits",
+          "17280 bits",
+          "8640 bits",
+          "16704 bits"
+        ],
+        "a": 1,
+        "why": "Datos = 18 × 32 × 30 = 17280 bits sin sobrecarga de protocolo.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-dificil-07",
+        "q": "Telemetría hipotética: 24 muestras/s, 16 bits/muestra durante 40 s. ¿Cuántos bits útiles produce?",
+        "o": [
+          "15744 bits",
+          "14976 bits",
+          "15360 bits",
+          "7680 bits"
+        ],
+        "a": 2,
+        "why": "Datos = 24 × 16 × 40 = 15360 bits sin sobrecarga de protocolo.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-dificil-08",
+        "q": "Telemetría hipotética: 30 muestras/s, 24 bits/muestra durante 50 s. ¿Cuántos bits útiles produce?",
+        "o": [
+          "36720 bits",
+          "35280 bits",
+          "36000 bits",
+          "18000 bits"
+        ],
+        "a": 2,
+        "why": "Datos = 30 × 24 × 50 = 36000 bits sin sobrecarga de protocolo.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-dificil-09",
+        "q": "Telemetría hipotética: 12 muestras/s, 32 bits/muestra durante 60 s. ¿Cuántos bits útiles produce?",
+        "o": [
+          "23424 bits",
+          "11520 bits",
+          "23040 bits",
+          "22656 bits"
+        ],
+        "a": 2,
+        "why": "Datos = 12 × 32 × 60 = 23040 bits sin sobrecarga de protocolo.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-dificil-10",
+        "q": "Telemetría hipotética: 18 muestras/s, 16 bits/muestra durante 70 s. ¿Cuántos bits útiles produce?",
+        "o": [
+          "19872 bits",
+          "20160 bits",
+          "10080 bits",
+          "20448 bits"
+        ],
+        "a": 1,
+        "why": "Datos = 18 × 16 × 70 = 20160 bits sin sobrecarga de protocolo.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-dificil-11",
+        "q": "Telemetría hipotética: 24 muestras/s, 24 bits/muestra durante 30 s. ¿Cuántos bits útiles produce?",
+        "o": [
+          "17856 bits",
+          "16704 bits",
+          "8640 bits",
+          "17280 bits"
+        ],
+        "a": 3,
+        "why": "Datos = 24 × 24 × 30 = 17280 bits sin sobrecarga de protocolo.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-dificil-12",
+        "q": "Balance ficticio de potencia: RTG 80 W; sensores consumen 20 W y 25 W. ¿Qué margen queda?",
+        "o": [
+          "42 W",
+          "55 W",
+          "35 W",
+          "60 W"
+        ],
+        "a": 2,
+        "why": "Margen = 80 − 20 − 25 = 35 W; modelo de ingeniería didáctico.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-dificil-13",
+        "q": "Balance ficticio de potencia: RTG 90 W; sensores consumen 23 W y 27 W. ¿Qué margen queda?",
+        "o": [
+          "67 W",
+          "47 W",
+          "40 W",
+          "63 W"
+        ],
+        "a": 2,
+        "why": "Margen = 90 − 23 − 27 = 40 W; modelo de ingeniería didáctico.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-dificil-14",
+        "q": "Balance ficticio de potencia: RTG 100 W; sensores consumen 26 W y 29 W. ¿Qué margen queda?",
+        "o": [
+          "45 W",
+          "71 W",
+          "52 W",
+          "74 W"
+        ],
+        "a": 0,
+        "why": "Margen = 100 − 26 − 29 = 45 W; modelo de ingeniería didáctico.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-dificil-15",
+        "q": "Balance ficticio de potencia: RTG 110 W; sensores consumen 29 W y 31 W. ¿Qué margen queda?",
+        "o": [
+          "79 W",
+          "81 W",
+          "57 W",
+          "50 W"
+        ],
+        "a": 3,
+        "why": "Margen = 110 − 29 − 31 = 50 W; modelo de ingeniería didáctico.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-dificil-16",
+        "q": "Balance ficticio de potencia: RTG 120 W; sensores consumen 32 W y 33 W. ¿Qué margen queda?",
+        "o": [
+          "88 W",
+          "62 W",
+          "87 W",
+          "55 W"
+        ],
+        "a": 3,
+        "why": "Margen = 120 − 32 − 33 = 55 W; modelo de ingeniería didáctico.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-dificil-17",
+        "q": "Balance ficticio de potencia: RTG 130 W; sensores consumen 35 W y 35 W. ¿Qué margen queda?",
+        "o": [
+          "74 W",
+          "95 W",
+          "67 W",
+          "60 W"
+        ],
+        "a": 3,
+        "why": "Margen = 130 − 35 − 35 = 60 W; modelo de ingeniería didáctico.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-dificil-18",
+        "q": "Balance ficticio de potencia: RTG 140 W; sensores consumen 38 W y 37 W. ¿Qué margen queda?",
+        "o": [
+          "72 W",
+          "103 W",
+          "102 W",
+          "65 W"
+        ],
+        "a": 3,
+        "why": "Margen = 140 − 38 − 37 = 65 W; modelo de ingeniería didáctico.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-dificil-19",
+        "q": "Balance ficticio de potencia: RTG 150 W; sensores consumen 41 W y 39 W. ¿Qué margen queda?",
+        "o": [
+          "70 W",
+          "111 W",
+          "77 W",
+          "109 W"
+        ],
+        "a": 0,
+        "why": "Margen = 150 − 41 − 39 = 70 W; modelo de ingeniería didáctico.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-dificil-20",
+        "q": "Enlace Tierra–Luna hipotético de 350,000 km de distancia, con luz a 300.000 km/s. ¿Cuánto tarda una señal en ir y volver? Redondea a una décima.",
+        "o": [
+          "1,2 s",
+          "1,8 s",
+          "3,3 s",
+          "2,3 s"
+        ],
+        "a": 3,
+        "why": "Tiempo ida y vuelta = 2 × 350,000 / 300.000 ≈ 2.3 s.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-dificil-21",
+        "q": "Enlace Tierra–Luna hipotético de 360,000 km de distancia, con luz a 300.000 km/s. ¿Cuánto tarda una señal en ir y volver? Redondea a una décima.",
+        "o": [
+          "3,4 s",
+          "2,4 s",
+          "1,2 s",
+          "1,9 s"
+        ],
+        "a": 1,
+        "why": "Tiempo ida y vuelta = 2 × 360,000 / 300.000 ≈ 2.4 s.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-dificil-22",
+        "q": "Enlace Tierra–Luna hipotético de 370,000 km de distancia, con luz a 300.000 km/s. ¿Cuánto tarda una señal en ir y volver? Redondea a una décima.",
+        "o": [
+          "2,5 s",
+          "1,2 s",
+          "3,5 s",
+          "2,0 s"
+        ],
+        "a": 0,
+        "why": "Tiempo ida y vuelta = 2 × 370,000 / 300.000 ≈ 2.5 s.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-dificil-23",
+        "q": "Enlace Tierra–Luna hipotético de 380,000 km de distancia, con luz a 300.000 km/s. ¿Cuánto tarda una señal en ir y volver? Redondea a una décima.",
+        "o": [
+          "1,3 s",
+          "2,0 s",
+          "2,5 s",
+          "3,5 s"
+        ],
+        "a": 2,
+        "why": "Tiempo ida y vuelta = 2 × 380,000 / 300.000 ≈ 2.5 s.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-dificil-24",
+        "q": "Enlace Tierra–Luna hipotético de 390,000 km de distancia, con luz a 300.000 km/s. ¿Cuánto tarda una señal en ir y volver? Redondea a una décima.",
+        "o": [
+          "1,3 s",
+          "2,1 s",
+          "3,6 s",
+          "2,6 s"
+        ],
+        "a": 3,
+        "why": "Tiempo ida y vuelta = 2 × 390,000 / 300.000 ≈ 2.6 s.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      },
+      {
+        "id": "alsep-dificil-25",
+        "q": "Enlace Tierra–Luna hipotético de 400,000 km de distancia, con luz a 300.000 km/s. ¿Cuánto tarda una señal en ir y volver? Redondea a una décima.",
+        "o": [
+          "3,7 s",
+          "2,7 s",
+          "2,2 s",
+          "1,3 s"
+        ],
+        "a": 1,
+        "why": "Tiempo ida y vuelta = 2 × 400,000 / 300.000 ≈ 2.7 s.",
+        "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm"
+      }
+    ]
+  }
+};</script>
+<script>/* RELICS 9 - Arcade científico. Simulaciones vectoriales ficticias + preguntas educativas. */
+(()=>{'use strict';
+const BANK=window.RELICS_BANK;
+const E=id=>document.getElementById(id), canvas=E('gameCanvas'),ctx=canvas.getContext('2d');
+const NAMES={eagle:'Operación Eagle',lrv:'Carrera LRV-3',alsep:'Defensa ALSEP'};
+const SOURCES={eagle:'https://www.nasa.gov/mission/apollo-11/',lrv:'https://science.nasa.gov/resource/apollo-17-gene-cernan-in-lunar-roving-vehicle/',alsep:'https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm'};
+const LIMIT={facil:35,normal:50,dificil:70};
+let mission='eagle',difficulty='facil',mode='arcade',active=false,paused=false,score=0,correct=0,asked=0,streak=0,timeRemaining=0,qTimer=null,question=null,answered=false,game={},lastFrame=0,animation=0,keys={},player='Explorador',ws=null,room='',serverConnected=false;
+const rng=()=>Math.random(),clamp=(x,a,b)=>Math.min(b,Math.max(a,x));
+function safe(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function getStore(k,def){try{return JSON.parse(localStorage.getItem(k))??def}catch(_){return def}}
+function saveStore(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(_){}}
+function scores(){return getStore('relics9_results',[])}
+function setText(id,t){E(id).textContent=String(t)}
+function hide(id){E(id).classList.add('hidden')}
+function show(id){E(id).classList.remove('hidden')}
+function focusScroll(id){E(id).scrollIntoView({behavior:'smooth',block:'start'})}
+function pick(m){if(active)return;mission=m;['eagle','lrv','alsep'].forEach(x=>E('pick-'+x).classList.toggle('active',x===m));setText('chooseTitle',NAMES[m].toUpperCase())}
+function selectDifficulty(d){if(active)return;difficulty=d;['facil','normal','dificil'].forEach(x=>E('diff-'+x).classList.toggle('active',x===d))}
+function stats(){const s=scores();setText('totalXP',getStore('relics9_totalxp',0).toLocaleString('es'));setText('highScore',Math.max(0,...s.map(x=>x.score)).toLocaleString('es'));setText('answeredTotal',getStore('relics9_answers',0))}
+function setupGame(){if(mission==='eagle')game={x:.19,y:.09,vx:.025,vy:.02,fuel:100,life:3,success:0,crashes:0,elapsed:0};
+ if(mission==='lrv')game={lane:1,life:3,fuel:100,samples:0,items:[],spawn:0,elapsed:0,invulnerable:0};
+ if(mission==='alsep')game={life:6,energy:125,wave:1,towers:[],mobs:[],count:0,kills:0,spawn:0,elapsed:0,tool:'sismo',between:false};
+ drawControls();setText('arenaTitle',NAMES[mission]);setText('arenaTag',mission==='eagle'?'01 · APOLLO 11':mission==='lrv'?'02 · APOLLO 17':'03 · CIENCIA LUNAR');setText('arenaDiff',difficulty==='facil'?'NIVEL FÁCIL':difficulty==='normal'?'NIVEL NORMAL':'NIVEL DIFÍCIL');
+ setText('missionHint',mission==='eagle'?'Aterriza en la plataforma azul con baja velocidad. ↑ propulsor · ← → lateral.':mission==='lrv'?'↑ ↓ Cambiar carril · recoge muestras azules · esquiva rocas rojas.':'Selecciona un instrumento y toca una celda. Impide que las anomalías lleguen al borde izquierdo.');
+ setText('missionCaption',mission==='eagle'?'Física simplificada y vehículo ilustrado, no reproducción exacta del vuelo Apollo 11.':mission==='lrv'?'Carrera ficticia para aprender sobre geología y seguridad de exploración.':'Tower defense metafórico: las anomalías no representan sucesos históricos ALSEP.');
+ hud();}
+function start(m){mode=m;player=E('nickname').value.trim().slice(0,18)||'Explorador';active=true;paused=false;score=0;correct=0;asked=0;streak=0;question=null;answered=false;clearInterval(qTimer);hide('finishModal');hide('questionModal');hide('board');setupGame();hide('selection');hide('intro');show('arena');focusScroll('arena');
+ if(mode==='reto25'){paused=true;setText('missionHint','MODO RETO: completa las 25 preguntas sin repetir. Respuestas explicadas.');ask();}}
+function drawControls(){let html='';
+ if(mission==='eagle')html='<button class="control" data-hold="left" aria-label="Mover izquierda">◀</button><button class="control" data-hold="up" aria-label="Encender propulsor">🚀</button><button class="control" data-hold="right" aria-label="Mover derecha">▶</button>';
+ if(mission==='lrv')html='<button class="control" data-tap="up" aria-label="Subir carril">▲</button><button class="control" data-tap="down" aria-label="Bajar carril">▼</button>';
+ if(mission==='alsep')html='<button class="control" data-tool="sismo" aria-label="Seleccionar sismómetro">📉 40</button><button class="control" data-tool="antena" aria-label="Seleccionar antena">📡 45</button><button class="control" data-tool="rtg" aria-label="Seleccionar generador RTG">⚡ 35</button>';
+ E('touchControls').innerHTML=html;
+ E('touchControls').querySelectorAll('[data-hold]').forEach(btn=>{const k=btn.dataset.hold;const press=e=>{e.preventDefault();keys[k]=true;btn.setPointerCapture?.(e.pointerId)};const release=e=>{keys[k]=false};btn.addEventListener('pointerdown',press);for(const type of ['pointerup','pointercancel','lostpointercapture','pointerleave'])btn.addEventListener(type,release)});
+ E('touchControls').querySelectorAll('[data-tap]').forEach(btn=>btn.onclick=()=>changeLane(btn.dataset.tap));
+ E('touchControls').querySelectorAll('[data-tool]').forEach(btn=>btn.onclick=()=>{game.tool=btn.dataset.tool;chooseTool()});chooseTool();}
+function chooseTool(){E('touchControls').querySelectorAll('[data-tool]').forEach(b=>b.style.borderColor=b.dataset.tool===game.tool?'#62e3d1':'#477997')}
+function changeLane(direction){if(!active||paused||mission!=='lrv')return;game.lane=clamp(game.lane+(direction==='up'?-1:1),0,2)}
+function hud(){setText('hudXP',score);setText('hudAnswers',asked);setText('hudStreak',streak);
+ let resource=mission==='alsep'?`🔋 <b>${Math.floor(game.energy)}</b>`:mission==='lrv'?`⚡ <b>${Math.floor(game.fuel)}</b>`:`⛽ <b>${Math.floor(game.fuel)}</b>`;
+ E('resourceLabel').innerHTML=resource;setText('hudLife',game.life||0);}
+function addXP(n){score+=n;hud();publishScore();}
+function ask(){if(!active||question)return;if(asked>=25){if(mode==='reto25')end(false);else toast('Ya resolviste las 25 preguntas de esta misión.');return}
+ question=BANK[mission][difficulty][asked];answered=false;paused=true;timeRemaining=LIMIT[difficulty];show('questionModal');hide('answerExplained');hide('nextQuestion');setText('questionText',question.q);setText('questionCounter',`${NAMES[mission].toUpperCase()} · ${difficulty.toUpperCase()} · ${String(asked+1).padStart(2,'0')} / 25`);E('qProgress').style.width=(asked/25*100)+'%';setText('answerStats',`Aciertos: ${correct} · Racha: ${streak}`);E('answerChoices').innerHTML=question.o.map((opt,i)=>`<button type="button" class="opt" data-answer="${i}"><b>${'ABCD'[i]}</b><span>${safe(opt)}</span></button>`).join('');E('answerChoices').querySelectorAll('[data-answer]').forEach(el=>el.onclick=()=>answer(Number(el.dataset.answer)));
+ clearInterval(qTimer);setText('questionTimer',timeRemaining+' s');qTimer=setInterval(()=>{if(answered)return;timeRemaining--;setText('questionTimer',timeRemaining+' s');if(timeRemaining<=0)answer(-1)},1000);
+ E('questionText').focus?.();}
+function answer(chosen){if(!question||answered)return;answered=true;clearInterval(qTimer);asked++;
+ const yes=chosen===question.a;const gain=yes?({facil:90,normal:160,dificil:250}[difficulty]+streak*20+Math.floor(timeRemaining*1.5)):0;
+ if(yes){correct++;streak++;addXP(gain);if(mission==='eagle')game.fuel=clamp(game.fuel+18,0,100);if(mission==='lrv')game.fuel=clamp(game.fuel+22,0,100);if(mission==='alsep')game.energy+=55;}
+ else{streak=0}
+ const buttons=[...E('answerChoices').querySelectorAll('.opt')];buttons.forEach((b,i)=>{b.disabled=true;if(i===question.a)b.classList.add('correct');else if(i===chosen)b.classList.add('wrong')});
+ const title=yes?`✅ ¡Respuesta correcta! +${gain} XP`:(chosen===-1?'⌛ Tiempo agotado':'📖 Ahora conoces la respuesta');
+ E('answerExplained').innerHTML=`<strong>${title}</strong><p>${safe(question.why)}</p><a href="${question.source}" target="_blank" rel="noopener">Ver referencia científica de la misión ↗</a>`;show('answerExplained');show('nextQuestion');setText('answerStats',`${correct}/${asked} aciertos · ¡sigue explorando!`);setText('nextQuestion',mode==='reto25'&&asked<25?'SIGUIENTE PREGUNTA →':'CONTINUAR MISIÓN →');
+ let total=getStore('relics9_answers',0);saveStore('relics9_answers',total+1);hud();stats();}
+function nextQuestion(){hide('questionModal');clearInterval(qTimer);question=null;if(mode==='reto25'){if(asked>=25){end(false);return}ask();return}paused=false;}
+function toast(msg){setText('missionHint',msg)}
+function end(cancel=false){if(!active)return;clearInterval(qTimer);hide('questionModal');question=null;paused=true;active=false;keys={};
+ const rank={name:player,mission:NAMES[mission],level:difficulty,mode,score,correct,questions:asked,date:new Date().toISOString()};
+ const entries=scores();if(asked||score){entries.push(rank);entries.sort((a,b)=>b.score-a.score);saveStore('relics9_results',entries.slice(0,100));saveStore('relics9_totalxp',getStore('relics9_totalxp',0)+score)}
+ setText('endMedal',cancel?'🛰️':correct>=20?'🏆':score>1000?'🥇':'🏅');setText('endTitle',cancel?'Informe de misión interrumpida':mode==='reto25'?'Reto científico finalizado':mission==='eagle'?'Módulo lunar asegurado':mission==='lrv'?'Exploración completada':'Archivo ALSEP protegido');setText('endMsg',`Explorador ${player}: obtuviste ${score} XP y respondiste correctamente ${correct} de ${asked} preguntas. Puedes repetir otra dificultad para superar tu récord. Las preguntas ayudan a comprender la ciencia tras el juego.`);setText('endXP',score);setText('endCorrect',correct);setText('endCount',asked);show('finishModal');stats();drawBoard();publishScore();}
+function retry(){hide('finishModal');show('selection');show('intro');start(mode)}
+function home(){active=false;paused=false;question=null;keys={};clearInterval(qTimer);hide('questionModal');hide('finishModal');hide('arena');hide('board');show('selection');show('intro');stats();window.scrollTo({top:0,behavior:'smooth'})}
+function drawBoard(){const top=scores().slice(0,15);E('localRows').innerHTML=top.length?top.map((s,i)=>`<tr><td>${i+1}</td><td>${safe(s.name)}<br><small>${safe(s.mission)} · ${safe(s.level)}</small></td><td>${Number(s.score).toLocaleString('es')}</td></tr>`).join(''):'<tr><td colspan="3">Aún no hay partidas guardadas.</td></tr>'}
+function showBoard(){drawBoard();hide('finishModal');show('board');focusScroll('board')}
+function hideBoard(){hide('board')}
+function csv(){const rows=[['Fecha','Jugador','Mision','Nivel','Modo','Puntos','Correctas','Respondidas'],...scores().map(x=>[x.date,x.name,x.mission,x.level,x.mode,x.score,x.correct,x.questions])];const blob=new Blob(['\ufeff'+rows.map(r=>r.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\r\n')],{type:'text/csv;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='RELICS_9_ranking.csv';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
+const stars=Array.from({length:95},(_,i)=>({x:((i*73.37)%997),y:((i*129.91)%240),r:.5+(i%3)*.6}));
+function bg(){const g=ctx.createLinearGradient(0,0,0,400);g.addColorStop(0,'#020714');g.addColorStop(.8,'#101a35');g.addColorStop(1,'#142536');ctx.fillStyle=g;ctx.fillRect(0,0,1000,400);for(let i=0;i<stars.length;i++){const s=stars[i];ctx.globalAlpha=.35+(i%5)*.1;ctx.fillStyle='#e6f8ff';ctx.fillRect(s.x,s.y,s.r,s.r)}ctx.globalAlpha=1}
+function text(txt,x,y,size=18,color='#d8edff',align='left'){ctx.fillStyle=color;ctx.font=`700 ${size}px system-ui`;ctx.textAlign=align;ctx.fillText(txt,x,y);ctx.textAlign='left'}
+function roundRect(x,y,w,h,r,fill){ctx.fillStyle=fill;ctx.beginPath();ctx.roundRect(x,y,w,h,r);ctx.fill()}
+function lander(x,y,thrust){ctx.save();ctx.translate(x,y);ctx.fillStyle='#e8edf5';ctx.fillRect(-21,-26,42,32);ctx.strokeStyle='#f9d879';ctx.lineWidth=4;ctx.beginPath();ctx.moveTo(-24,0);ctx.lineTo(-40,24);ctx.lineTo(-51,24);ctx.moveTo(24,0);ctx.lineTo(40,24);ctx.lineTo(51,24);ctx.stroke();ctx.fillStyle='#d2a650';ctx.fillRect(-27,-33,54,8);ctx.fillStyle='#3f687c';ctx.fillRect(-10,-19,20,11);ctx.fillStyle='#c2dbda';ctx.beginPath();ctx.moveTo(-30,-10);ctx.lineTo(-14,10);ctx.lineTo(14,10);ctx.lineTo(30,-10);ctx.closePath();ctx.fill();if(thrust){ctx.fillStyle='#ffca65';ctx.beginPath();ctx.moveTo(-10,8);ctx.lineTo(0,34+Math.random()*18);ctx.lineTo(10,8);ctx.fill();ctx.fillStyle='#fff0af';ctx.fillRect(-4,8,8,19)}ctx.restore()}
+function drawEagle(){bg();ctx.fillStyle='#b7b0a5';ctx.beginPath();ctx.moveTo(0,345);for(let x=0;x<=1000;x+=20)ctx.lineTo(x,336+Math.sin(x*.022)*11+Math.cos(x*.071)*4);ctx.lineTo(1000,400);ctx.lineTo(0,400);ctx.fill();roundRect(430,339,140,12,6,'#64e8da');ctx.shadowColor='#61e6d2';ctx.shadowBlur=16;roundRect(458,341,83,8,4,'#d4fffa');ctx.shadowBlur=0;text('ZONA SEGURA',500,382,14,'#12242e','center');lander(game.x*1000,game.y*400,!!keys.up&&game.fuel>0);roundRect(20,20,255,52,10,'#071728dd');text(`DESCENSOS: ${game.success}/3`,35,43,17,'#73e8d7');text(`Velocidad ${Math.abs(game.vy*100).toFixed(1)} u/s`,35,64,12,'#c8d4de');text('SIMULACIÓN DIDÁCTICA · NO HISTÓRICA',735,36,10,'#dcb973')}
+function drawRover(x,y){ctx.save();ctx.translate(x,y);ctx.fillStyle='#ddb975';roundRect(-41,-17,76,34,10,'#d4b47f');ctx.fillStyle='#14293c';for(const p of [-30,30]){ctx.beginPath();ctx.arc(p,-20,12,0,7);ctx.fill();ctx.beginPath();ctx.arc(p,20,12,0,7);ctx.fill()}ctx.fillStyle='#7eddea';ctx.fillRect(-17,-11,36,22);ctx.strokeStyle='#cbe7ef';ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(16,-12);ctx.lineTo(26,-42);ctx.stroke();ctx.fillStyle='#f8d178';ctx.beginPath();ctx.arc(27,-43,10,0,Math.PI*2);ctx.fill();ctx.restore()}
+function drawLRV(){bg();ctx.fillStyle='#393d47';ctx.fillRect(0,70,1000,280);for(let i=0;i<3;i++){ctx.fillStyle=i%2?'#49484d':'#41434b';ctx.fillRect(0,80+i*90,1000,80);ctx.strokeStyle='#c1bcb477';ctx.setLineDash([20,22]);ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(0,164+i*90);ctx.lineTo(1000,164+i*90);ctx.stroke();ctx.setLineDash([])}
+ for(const item of game.items){const y=125+item.lane*90;if(item.type==='rock'){ctx.fillStyle='#e57f7a';ctx.beginPath();ctx.moveTo(item.x-19,y+16);ctx.lineTo(item.x-24,y-7);ctx.lineTo(item.x,y-26);ctx.lineTo(item.x+23,y-8);ctx.lineTo(item.x+18,y+16);ctx.fill()}else{ctx.fillStyle='#74efe1';ctx.beginPath();ctx.arc(item.x,y,14,0,Math.PI*2);ctx.fill();text('✦',item.x,y+7,23,'#16465a','center')}}
+ drawRover(150,125+game.lane*90);text(`MUESTRAS RECUPERADAS: ${game.samples}/12`,22,37,19,'#81e8dd');text('FICCION: ESQUIVA OBSTÁCULOS',690,36,12,'#f5cc80')}
+function drawALSEP(){bg();ctx.fillStyle='#45464b';ctx.fillRect(0,65,1000,320);for(let i=0;i<3;i++){for(let j=0;j<5;j++){const xx=150+j*135, yy=85+i*97;roundRect(xx,yy,122,88,9,(i+j)%2?'#273443':'#23313f');ctx.strokeStyle='#3b5e72';ctx.lineWidth=1;ctx.strokeRect(xx+1,yy+1,120,86)}}
+ for(const t of game.towers){const xx=205+t.col*135,yy=132+t.lane*97;ctx.strokeStyle=t.type==='rtg'?'#f4ce7a':'#72e5d8';ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(xx-10,yy+20);ctx.lineTo(xx+10,yy+20);ctx.lineTo(xx,yy-20);ctx.closePath();ctx.stroke();text(t.type==='sismo'?'▥':t.type==='antena'?'◉':'⚡',xx,yy+5,27,t.type==='rtg'?'#ffd886':'#86e6e0','center')}
+ for(const mob of game.mobs){const yy=132+mob.lane*97;ctx.fillStyle='#ff7e91';ctx.beginPath();ctx.arc(mob.x,yy,17,0,Math.PI*2);ctx.fill();ctx.fillStyle='#54202e';ctx.beginPath();ctx.arc(mob.x,yy,8,0,Math.PI*2);ctx.fill();text(String(Math.ceil(mob.hp)),mob.x,yy+5,11,'#fff','center')}
+ roundRect(24,18,235,49,9,'#092034');text(`OLEADA ${game.wave}/3`,40,47,21,'#83eee1');text('ANOMALÍAS FICTICIAS',760,35,12,'#f7bb8b')}
+function draw(){if(!game||!game.life&&game.life!==0)return;if(mission==='eagle')drawEagle();else if(mission==='lrv')drawLRV();else drawALSEP()}
+function resetLander(){Object.assign(game,{x:.2+rng()*.18,y:.09,vx:.02+rng()*.016,vy:.025,elapsed:0,fuel:Math.max(game.fuel,65)})}
+function updateEagle(dt){game.elapsed+=dt;const g=.018,thrust=.048,h=.060;
+ if(keys.left)game.vx-=h*dt;if(keys.right)game.vx+=h*dt;game.vx*=Math.pow(.98,dt*60);game.x+=game.vx*dt;
+ game.vy+=g*dt;if(keys.up&&game.fuel>0){game.vy-=thrust*dt;game.fuel=clamp(game.fuel-8*dt,0,100)}
+ game.y+=game.vy*dt;if(game.x<.04||game.x>.96){game.x=clamp(game.x,.04,.96);game.vx=-game.vx*.45}
+ if(game.y>=.815){const ok=game.x>.455&&game.x<.545&&Math.abs(game.vy)<.086&&Math.abs(game.vx)<.062; if(ok){game.success++;addXP(190+game.success*90);toast(`✅ ¡Aterrizaje ${game.success}/3! Buen control de velocidad.`);if(game.success>=3){end(false);return}resetLander();ask();}else{game.life--;toast(`💥 Contacto demasiado rápido o fuera de la plataforma. Reintenta; controla el empuje.`);if(game.life<=0){end(false);return}resetLander()}}
+ if(game.elapsed>22){toast('⏱️ Descenso largo. Prueba con empuje intermitente.');game.elapsed=0}hud()}
+function updateLRV(dt){game.elapsed+=dt;game.spawn+=dt;game.invulnerable=Math.max(0,game.invulnerable-dt);game.fuel-=dt*.36;
+ if(game.spawn>1.10){game.spawn=0;game.items.push({x:1040,lane:Math.floor(rng()*3),type:rng()<.54?'sample':'rock'})}
+ for(const item of game.items)item.x-=155*dt;for(const item of game.items){if(!item.got&&item.x<190&&item.x>115&&item.lane===game.lane){item.got=true;if(item.type==='rock'){if(game.invulnerable<=0){game.life--;game.invulnerable=1.7;toast('💥 Obstáculo: cambia de carril con ▲ ▼.')} } else {game.samples++;addXP(65);toast('🔬 ¡Muestra recuperada! Progreso geológico aumentado.');if(game.samples%4===0){ask();break}}}}
+ game.items=game.items.filter(i=>i.x>-45&&!i.got);if(game.samples>=12){end(false);return}if(game.life<=0||game.fuel<=0){end(false);return}hud()}
+const tools={sismo:{price:40,damage:1.4,delay:1.05},antena:{price:45,damage:1.9,delay:1.3},rtg:{price:35,damage:0,delay:0}};
+function updateALSEP(dt){game.elapsed+=dt;game.spawn+=dt;
+ if(game.count<7&&game.spawn>2.2){game.spawn=0;game.count++;game.mobs.push({x:1020,lane:Math.floor(rng()*3),hp:2+game.wave*.45,speed:35+game.wave*12})}
+ for(const tower of game.towers){if(tower.type==='rtg'){game.energy+=dt*2.25;continue}tower.cool=(tower.cool||0)-dt;if(tower.cool<=0){const enemy=game.mobs.filter(m=>m.lane===tower.lane&&m.x>205+tower.col*135).sort((a,b)=>a.x-b.x)[0];if(enemy){enemy.hp-=tools[tower.type].damage;tower.cool=tools[tower.type].delay}}}
+ for(const mob of game.mobs){mob.x-=mob.speed*dt;if(mob.x<=100){mob.hp=0;game.life--;toast('⚠️ Una anomalía superó la defensa. Refuerza el carril.')}}
+ const dead=game.mobs.filter(m=>m.hp<=0).length;game.kills+=dead;game.mobs=game.mobs.filter(m=>m.hp>0);if(dead)addXP(dead*45);
+ if(game.life<=0){end(false);return}
+ if(game.count>=7&&game.mobs.length===0){if(game.wave>=3){end(false);return}game.wave++;game.count=0;game.spawn=0;game.energy+=50;toast(`🌟 Oleada ${game.wave}/3. Nueva oportunidad para investigar y colocar instrumentos.`);ask();}hud()}
+function tick(ts){const dt=clamp((ts-lastFrame)/1000||0,0,.05);lastFrame=ts;if(active&&!paused&&mode==='arcade'){if(mission==='eagle')updateEagle(dt);else if(mission==='lrv')updateLRV(dt);else updateALSEP(dt)}if(active)draw();animation=requestAnimationFrame(tick)}
+function handleCanvas(e){if(!active||paused||mission!=='alsep')return;const rect=canvas.getBoundingClientRect(),x=(e.clientX-rect.left)/rect.width*1000,y=(e.clientY-rect.top)/rect.height*400;const lane=Math.floor((y-85)/97),col=Math.floor((x-150)/135);if(lane<0||lane>2||col<0||col>4)return;
+ const tool=tools[game.tool];if(game.energy<tool.price){toast('🔋 Falta energía. Responde una pregunta científica para recargar.');return}
+ if(game.towers.find(t=>t.lane===lane&&t.col===col)){toast('Ya hay un instrumento en esa celda.');return}
+ game.energy-=tool.price;game.towers.push({lane,col,type:game.tool,cool:0});toast(`Instrumento colocado. Costó ${tool.price} unidades simuladas.`);hud();}
+function showHelp(){show('helpModal')}
+function onKey(e){const tag=(document.activeElement?.tagName||'').toLowerCase();if(['input','textarea'].includes(tag))return;
+ if(!E('questionModal').classList.contains('hidden')){const n=Number(e.key);if(n>=1&&n<=4&&!answered){e.preventDefault();answer(n-1)}if(e.key==='Enter'&&answered){e.preventDefault();nextQuestion()}return}
+ if(e.key==='Escape'){hide('helpModal');return}
+ if(!active||paused)return;
+ if(mission==='eagle'){if(['ArrowLeft','a','A'].includes(e.key))keys.left=true;if(['ArrowRight','d','D'].includes(e.key))keys.right=true;if(['ArrowUp','w','W',' '].includes(e.key))keys.up=true;if(['ArrowLeft','ArrowRight','ArrowUp',' '].includes(e.key))e.preventDefault()}
+ if(mission==='lrv'){if(['ArrowUp','w','W'].includes(e.key)){changeLane('up');e.preventDefault()}if(['ArrowDown','s','S'].includes(e.key)){changeLane('down');e.preventDefault()}}
+ if(mission==='alsep'){if(e.key==='1')game.tool='sismo';if(e.key==='2')game.tool='antena';if(e.key==='3')game.tool='rtg';chooseTool()}
+ if(e.key==='q'||e.key==='Q')ask()}
+function onKeyUp(e){if(['ArrowLeft','a','A'].includes(e.key))keys.left=false;if(['ArrowRight','d','D'].includes(e.key))keys.right=false;if(['ArrowUp','w','W',' '].includes(e.key))keys.up=false}
+function publishScore(){if(ws?.readyState===WebSocket.OPEN&&room)ws.send(JSON.stringify({type:'score',score,mission,level:difficulty,answered,correct}))}
+function join(){const raw=E('serverUrl').value.trim();if(!/^wss?:\/\//.test(raw)){setText('onlineStatus','Escribe una URL ws:// o wss:// de un servidor RELICS activo.');return}leave();try{ws=new WebSocket(raw)}catch(_){setText('onlineStatus','No se pudo crear la conexión WebSocket.');return}
+ ws.onopen=()=>{serverConnected=true;setText('onlineStatus','Conectado; esperando respuesta de sala…');ws.send(JSON.stringify({type:'join',name:E('nickname').value.trim()||'Explorador',room:E('roomCode').value.trim().toUpperCase()}))};
+ ws.onmessage=event=>{let m;try{m=JSON.parse(event.data)}catch(_){return}if(m.type==='welcome'){room=m.room;E('roomCode').value=room;setText('onlineStatus',`🟢 Sala ${room} · otros jugadores pueden entrar con el mismo código.`);publishScore()}if(m.type==='state'){const rows=m.players||[];E('onlineRows').innerHTML=rows.map((p,i)=>`<tr><td>${i+1}. ${safe(p.name)}</td><td>${safe(NAMES[p.mission]||p.mission||'—')}</td><td>${Number(p.score)||0}</td></tr>`).join('')}if(m.type==='error'){setText('onlineStatus','⚠ '+m.message)}};
+ ws.onclose=()=>{serverConnected=false;room='';setText('onlineStatus','Desconectado. El modo individual sigue funcionando.')};ws.onerror=()=>setText('onlineStatus','Error de red; revisa el servidor, HTTPS y el enlace WebSocket.')}
+function leave(){if(ws){try{ws.close()}catch(_){}}ws=null;room='';serverConnected=false;E('onlineRows').innerHTML='';setText('onlineStatus','Sin conexión. Las puntuaciones son locales.')}
+canvas.addEventListener('pointerdown',handleCanvas);document.addEventListener('keydown',onKey);document.addEventListener('keyup',onKeyUp);
+window.addEventListener('blur',()=>{keys={}});window.addEventListener('visibilitychange',()=>{if(document.hidden)keys={}});
+try{const def=(location.protocol==='http:'||location.protocol==='https:')?`${location.protocol==='https:'?'wss':'ws'}://${location.host}/ws`:'';E('serverUrl').value=def}catch(_){ }
+window.R9={pick,difficulty:selectDifficulty,start,ask,nextQuestion,end,retry,home,showBoard,hideBoard,export:csv,showHelp,join,leave,_debug:()=>({mission,difficulty,mode,active,score,asked,correct,game,bankCount:Object.fromEntries(Object.keys(BANK).map(m=>[m,Object.fromEntries(Object.keys(BANK[m]).map(d=>[d,BANK[m][d].length]))]))})};
+selectDifficulty('facil');pick('eagle');stats();requestAnimationFrame(tick);
+})();
+</script>
+</body></html>

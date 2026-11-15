@@ -1,0 +1,65 @@
+/* RELICS 10 · Laboratorio de ensamblajes 3D (sección aditiva e independiente). */
+.r3d-open{overflow:hidden!important}
+#r3dOverlay[hidden]{display:none!important}
+#r3dOverlay{position:fixed;inset:0;z-index:550;background:#050b17f7;color:#edf6ff;overflow:auto;overscroll-behavior:contain;font-family:system-ui,-apple-system,Segoe UI,sans-serif}
+#r3dOverlay *{box-sizing:border-box}
+.r3d-shell{width:min(1600px,100%);margin:0 auto;padding:16px 18px 35px}
+.r3d-kicker{font-weight:900;letter-spacing:1.8px;color:#66e9d6;font-size:10px}
+.r3d-top{display:flex;align-items:center;justify-content:space-between;gap:14px}
+.r3d-top h2{font-size:clamp(21px,3vw,30px);line-height:1.1;margin:7px 0 13px;color:#f0f8ff}
+.r3d-btn{background:#12354e;color:#e8f8ff;border:1px solid #37617d;border-radius:10px;min-height:39px;padding:9px 13px;font:800 12px system-ui,sans-serif;cursor:pointer}
+.r3d-btn:hover{background:#21516a;border-color:#69cbbb}
+.r3d-btn:focus-visible,.r3d-parts button:focus-visible,.r3d-tab:focus-visible{outline:2px solid #f3c569;outline-offset:3px}
+.r3d-btn.accent{background:#164e4b;border-color:#67dfc8}
+.r3d-btn.exit{background:#542842;border-color:#ab627f;white-space:nowrap}
+.r3d-tabs{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin:6px 0 13px}
+.r3d-tab{border:1px solid #3a6379;border-radius:9px;color:#d4f5ff;background:#15344b;padding:10px 13px;font:900 12px system-ui,sans-serif;cursor:pointer}
+.r3d-tab[aria-pressed=true]{background:#176056;border-color:#6ae3d5;box-shadow:0 0 0 2px #e3ad62;color:#eafffa}
+.r3d-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(290px,365px);gap:13px;align-items:start}
+.r3d-stage{position:relative;overflow:hidden;background:radial-gradient(circle at 50% 55%,#111b2d 0%,#030a15 75%);border:1px solid #365d7a;border-radius:14px;min-height:min(77vh,680px);height:min(77vh,680px)}
+.r3d-canvas{width:100%;height:100%;touch-action:none;display:block}
+.r3d-canvas canvas{display:block;width:100%!important;height:100%!important;outline:none}
+.r3d-stagebadge{position:absolute;top:15px;left:15px;max-width:65%;padding:6px 10px;border-radius:10px;background:#041522d7;border:1px solid #33576b;color:#89e8d7;font-size:11px;font-weight:900;pointer-events:none}
+.r3d-helper{position:absolute;bottom:12px;left:12px;right:12px;background:#071a2de0;border:1px solid #355569;border-radius:9px;padding:9px 11px;line-height:1.45;color:#c4dbe9;font-size:11px;pointer-events:none}
+.r3d-sidebar{background:linear-gradient(140deg,#10283e,#0a1b2d);border:1px solid #356080;border-radius:14px;padding:15px;max-height:min(77vh,680px);overflow:auto;scrollbar-color:#376983 #112a3d}
+.r3d-sidebar h3{font-size:17px;margin:0 0 8px;color:#fff;line-height:1.2}
+.r3d-description{font-size:11px!important;color:#b4d4e6!important;line-height:1.65!important;margin:4px 0 8px!important}
+.r3d-count{color:#8ae7d5;font-size:11px;font-weight:800;margin:7px 0 17px}
+.r3d-control{margin:11px 0;border:1px solid #37617b;padding:12px;border-radius:10px;background:#0b2639}
+.r3d-control label{display:flex;justify-content:space-between;gap:10px;color:#eef6fe;font-size:11px;font-weight:850;margin-bottom:8px}
+.r3d-control output{color:#f8c471}
+#r3dExplode{width:100%;accent-color:#65dbd3;cursor:pointer}
+.r3d-actionrow{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+.r3d-actionrow button{white-space:normal;min-height:54px;line-height:1.3;font-size:11px}
+.r3d-piece-title{color:#65e0d3;font-weight:950;letter-spacing:1px;font-size:10px;margin:17px 0 7px}
+.r3d-parts{display:grid;gap:5px;max-height:240px;overflow:auto;padding-right:3px}
+.r3d-piece{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px;align-items:center;background:#102b40;border:1px solid #365b74;border-radius:7px;padding:7px}
+.r3d-piece label{display:flex;gap:7px;align-items:center;cursor:pointer;min-width:0;line-height:1.3;font-size:11px;color:#e7f6ff}
+.r3d-piece label span{overflow:hidden;text-overflow:ellipsis}
+.r3d-piece input{accent-color:#5ee3ca;width:15px;height:15px;flex-shrink:0}
+.r3d-piece button{font-size:10px;cursor:pointer;color:#c8f7f2;background:#11374b;border:1px solid #3c7381;border-radius:6px;padding:6px}
+.r3d-lesson{margin-top:13px;padding:11px;background:#0a3433;border:1px solid #407e76;border-radius:9px;font-size:12px;color:#d5fff5;line-height:1.5}
+.r3d-lesson strong{color:#f5d189}
+.r3d-quiz{margin-top:13px;background:#13263b;border:1px solid #345774;padding:10px;border-radius:9px}
+.r3d-quiz h4{font-size:12px;margin:0 0 9px;color:#fce0a4}
+.r3d-quiz-options{display:grid;gap:6px}
+.r3d-quiz-options button{color:#ebf7fc;background:#153c50;border:1px solid #3b6c80;border-radius:7px;padding:9px;font-size:11px;cursor:pointer;text-align:left}
+.r3d-quiz-options button:disabled{opacity:.72;cursor:default}
+.r3d-quiz-feedback{font-size:11px;color:#adebd4;line-height:1.5;min-height:15px;margin:8px 0 0}
+.r3d-links{font-size:11px;margin-top:10px;line-height:1.5;color:#a5cada}
+.r3d-links a{color:#7ee0d0;text-decoration:underline}
+.r3d-disclosure{font-size:11px;line-height:1.6;padding:12px 14px;border:1px solid #3c5a6e;border-radius:10px;background:#091e30;margin-top:14px;color:#aecfe2}
+.r3d-disclosure strong{color:#f3c785}
+.r3d-gallery{margin-top:14px;background:#081c2f;border:1px solid #35657c;border-radius:10px;padding:13px;color:#c7e4ed;font-size:12px}
+.r3d-gallery summary{color:#a5f2e3;font-weight:900;cursor:pointer}
+.r3d-gallery p{font-size:11px;line-height:1.5}
+.r3d-images{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin-top:10px}
+.r3d-images figure{margin:0;background:#0a293d;border:1px solid #34556d;border-radius:8px;padding:7px}
+.r3d-images img{display:block;object-fit:contain;width:100%;height:180px;background:#050c14}
+.r3d-images figcaption{font-size:10px;padding:6px 3px;color:#b4dfed}
+.r3d-insert{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:14px;background:#0e2b40;border:1px solid #3b7581;padding:14px;border-radius:13px}
+.r3d-insert h3{font-size:15px;margin:0;color:#aaf3e6}
+.r3d-insert p{margin:3px 0 0;font-size:12px;color:#b8d9e9}
+.r3d-insert button{margin-left:auto}
+@media(max-width:900px){.r3d-layout{grid-template-columns:1fr}.r3d-stage{min-height:380px;height:52vh}.r3d-sidebar{max-height:none}.r3d-parts{max-height:180px}.r3d-shell{padding:10px 9px 30px}.r3d-images{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:500px){.r3d-stage{height:48vh;min-height:300px}.r3d-tab{font-size:11px;padding:8px 9px}.r3d-top h2{font-size:22px}.r3d-sidebar{padding:11px}.r3d-stagebadge{font-size:9px;max-width:80%}.r3d-top{align-items:flex-start}.r3d-insert button{margin-left:0}.r3d-images{grid-template-columns:1fr}}

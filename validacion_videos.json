@@ -1,0 +1,74 @@
+[
+  {
+    "id": "alsep",
+    "original": "Un terremoto golpea a la luna por horas _ Los Secretos de la Nasa _ Discovery Latinoamérica.mp4",
+    "original_bytes": 14788685,
+    "mobile_bytes": 7487867,
+    "duration_seconds": 184.2,
+    "poster_bytes": 6590
+  },
+  {
+    "id": "dawn",
+    "original": "La misión a Vesta y Ceres que dejó atónitos a los científicos _ La sonda Dawn de la NASA [Astrum] (1).mp4",
+    "original_bytes": 177267415,
+    "mobile_bytes": 34571505,
+    "duration_seconds": 1078.2,
+    "poster_bytes": 7388
+  },
+  {
+    "id": "eagle",
+    "original": "El Misterio del Apollo 11.mp4",
+    "original_bytes": 32637085,
+    "mobile_bytes": 8435292,
+    "duration_seconds": 356.0,
+    "poster_bytes": 19896
+  },
+  {
+    "id": "ingenuity",
+    "original": "Los martes de Marte_ Un vistazo al helicóptero Ingenuity.mp4",
+    "original_bytes": 63629178,
+    "mobile_bytes": 9920696,
+    "duration_seconds": 330.8,
+    "poster_bytes": 19652
+  },
+  {
+    "id": "insight",
+    "original": "SONIDO REAL captado en MARTE_ Misión InSight de la NASA _ Astrum Español.mp4",
+    "original_bytes": 100891891,
+    "mobile_bytes": 16833598,
+    "duration_seconds": 615.4,
+    "poster_bytes": 11653
+  },
+  {
+    "id": "lrv",
+    "original": "Apolo 17_ Sobre los Hombros de Gigantes.mp4",
+    "original_bytes": 90141627,
+    "mobile_bytes": 45725688,
+    "duration_seconds": 1699.5,
+    "poster_bytes": 16056
+  },
+  {
+    "id": "opportunity",
+    "original": "¿Qué descubrió el Rover Opportunity de la NASA en Marte_ [p. 1].mp4",
+    "original_bytes": 70205802,
+    "mobile_bytes": 19169232,
+    "duration_seconds": 583.3,
+    "poster_bytes": 82576
+  },
+  {
+    "id": "pioneer",
+    "original": "Se cumplen 50 años del lanzamiento de la sonda Pioneer 10.mp4",
+    "original_bytes": 20545557,
+    "mobile_bytes": 3964941,
+    "duration_seconds": 95.7,
+    "poster_bytes": 81562
+  },
+  {
+    "id": "sojourner",
+    "original": "🤖 🔴 LA PIONERA MARCIANA - 1x01 serie_ MARTE, EL PLANETA DE LOS ROBOTS.mp4",
+    "original_bytes": 101636216,
+    "mobile_bytes": 25003242,
+    "duration_seconds": 651.2,
+    "poster_bytes": 51867
+  }
+]

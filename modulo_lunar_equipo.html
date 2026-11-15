@@ -1,0 +1,1486 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>La NASA y el Módulo Lunar Apollo | Presentación Interactiva</title>
+  <style>
+    :root {
+      --bg-deep: #060b19;
+      --bg-panel: rgba(13, 23, 46, 0.84);
+      --bg-card: rgba(18, 32, 62, 0.78);
+      --border-cyan: rgba(56, 189, 248, 0.32);
+      --border-gold: rgba(245, 158, 11, 0.45);
+      --cyan: #38bdf8;
+      --cyan-bright: #7dd3fc;
+      --gold: #f59e0b;
+      --gold-bright: #fbbf24;
+      --emerald: #10b981;
+      --rose: #f43f5e;
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-deep);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      background-image:
+        radial-gradient(circle at 18% 20%, rgba(56, 189, 248, 0.08) 0%, transparent 45%),
+        radial-gradient(circle at 82% 78%, rgba(245, 158, 11, 0.08) 0%, transparent 45%),
+        linear-gradient(rgba(56, 189, 248, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(56, 189, 248, 0.04) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 44px 44px, 44px 44px;
+    }
+
+    /* Estrellas de fondo */
+    .starfield {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background-image:
+        radial-gradient(1.5px 1.5px at 12% 18%, #ffffff 60%, transparent),
+        radial-gradient(1px 1px at 28% 64%, #7dd3fc 60%, transparent),
+        radial-gradient(2px 2px at 44% 12%, #ffffff 60%, transparent),
+        radial-gradient(1.5px 1.5px at 67% 32%, #fde68a 60%, transparent),
+        radial-gradient(1px 1px at 81% 19%, #ffffff 60%, transparent),
+        radial-gradient(1.5px 1.5px at 90% 74%, #7dd3fc 60%, transparent),
+        radial-gradient(1px 1px at 19% 86%, #ffffff 60%, transparent),
+        radial-gradient(2px 2px at 56% 88%, #ffffff 60%, transparent),
+        radial-gradient(1px 1px at 73% 55%, #ffffff 60%, transparent),
+        radial-gradient(1.5px 1.5px at 36% 42%, #ffffff 60%, transparent);
+    }
+
+    /* Barra superior de telemetría */
+    header.topbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(6, 11, 25, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-cyan);
+      padding: 0.7rem 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .nasa-badge {
+      background: linear-gradient(135deg, #0b3d91, #1d4ed8);
+      border: 1px solid #60a5fa;
+      color: #fff;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      font-size: 0.85rem;
+      padding: 0.3rem 0.65rem;
+      border-radius: 6px;
+      box-shadow: 0 0 14px rgba(56, 189, 248, 0.35);
+    }
+
+    .brand-title {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--cyan-bright);
+    }
+
+    .topbar-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .slide-counter {
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      color: var(--gold-bright);
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid var(--border-gold);
+      padding: 0.28rem 0.65rem;
+      border-radius: 6px;
+    }
+
+    .btn-toc {
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid var(--border-cyan);
+      color: var(--text-main);
+      padding: 0.34rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-toc:hover {
+      background: rgba(56, 189, 248, 0.24);
+      border-color: var(--cyan);
+    }
+
+    /* Barra de progreso */
+    .progress-track {
+      position: fixed;
+      top: 52px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: rgba(148, 163, 184, 0.15);
+      z-index: 31;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 12.5%;
+      background: linear-gradient(90deg, var(--cyan), var(--gold));
+      transition: width 0.35s ease;
+    }
+
+    /* Menú Índice Desplegable */
+    .toc-drawer {
+      position: fixed;
+      top: 58px;
+      right: 1.4rem;
+      width: 320px;
+      max-width: calc(100vw - 2.8rem);
+      background: rgba(9, 17, 36, 0.97);
+      border: 1px solid var(--border-cyan);
+      border-radius: 12px;
+      padding: 0.9rem;
+      z-index: 40;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.75);
+      display: none;
+    }
+
+    .toc-drawer.open {
+      display: block;
+      animation: fadeIn 0.2s ease;
+    }
+
+    .toc-drawer h4 {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--cyan);
+      margin-bottom: 0.6rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+    }
+
+    .toc-item {
+      width: 100%;
+      text-align: left;
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--text-main);
+      padding: 0.5rem 0.6rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: flex;
+      gap: 0.55rem;
+      align-items: center;
+      margin-bottom: 0.25rem;
+    }
+
+    .toc-item:hover, .toc-item.active {
+      background: rgba(56, 189, 248, 0.14);
+      border-color: var(--border-cyan);
+    }
+
+    .toc-num {
+      font-family: var(--font-mono);
+      color: var(--gold-bright);
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    /* Contenedor Principal de Diapositivas */
+    main.deck {
+      position: relative;
+      z-index: 1;
+      flex: 1;
+      max-width: 1180px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 1.5rem 1.4rem 5.5rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .slide {
+      display: none;
+      width: 100%;
+      background: var(--bg-panel);
+      border: 1px solid var(--border-cyan);
+      border-radius: 18px;
+      padding: 2rem;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(10px);
+    }
+
+    .slide.active {
+      display: block;
+      animation: slideUp 0.35s ease;
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gold-bright);
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid var(--border-gold);
+      padding: 0.25rem 0.65rem;
+      border-radius: 999px;
+      margin-bottom: 0.85rem;
+    }
+
+    h1 {
+      font-size: clamp(1.75rem, 3.4vw, 2.65rem);
+      line-height: 1.16;
+      margin-bottom: 0.85rem;
+      background: linear-gradient(90deg, #ffffff, #bae6fd);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    h2 {
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      line-height: 1.22;
+      margin-bottom: 0.65rem;
+      color: #ffffff;
+    }
+
+    .lead {
+      font-size: 1.04rem;
+      line-height: 1.6;
+      color: #cbd5e1;
+      max-width: 78ch;
+      margin-bottom: 1.4rem;
+    }
+
+    /* Grids y Tarjetas */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.25rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.9rem;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid rgba(56, 189, 248, 0.22);
+      border-radius: 14px;
+      padding: 1.15rem;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .card:hover {
+      border-color: var(--cyan);
+      transform: translateY(-2px);
+    }
+
+    .card-gold {
+      border-color: var(--border-gold);
+      background: linear-gradient(160deg, rgba(245, 158, 11, 0.1), rgba(18, 32, 62, 0.85));
+    }
+
+    .card h3 {
+      font-size: 1.05rem;
+      color: var(--cyan-bright);
+      margin-bottom: 0.45rem;
+    }
+
+    .card-gold h3 {
+      color: var(--gold-bright);
+    }
+
+    .card p {
+      font-size: 0.92rem;
+      line-height: 1.55;
+      color: #cbd5e1;
+    }
+
+    .metric-big {
+      font-family: var(--font-mono);
+      font-size: 1.55rem;
+      font-weight: 800;
+      color: var(--gold-bright);
+      margin: 0.25rem 0;
+    }
+
+    /* Botones principales */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: linear-gradient(135deg, #0284c7, #2563eb);
+      color: #fff;
+      border: 1px solid #7dd3fc;
+      padding: 0.72rem 1.3rem;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(2, 132, 199, 0.35);
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 28px rgba(56, 189, 248, 0.45);
+    }
+
+    /* Diapositiva 2: Pilares interactivos NASA */
+    .pillar-btn {
+      text-align: left;
+      cursor: pointer;
+      background: var(--bg-card);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 12px;
+      padding: 1rem;
+      color: var(--text-main);
+      transition: all 0.2s ease;
+    }
+
+    .pillar-btn.selected, .pillar-btn:hover {
+      border-color: var(--gold);
+      background: rgba(245, 158, 11, 0.13);
+    }
+
+    .pillar-icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.45rem;
+      display: block;
+    }
+
+    .pillar-detail-box {
+      margin-top: 1rem;
+      background: rgba(8, 16, 34, 0.9);
+      border: 1px solid var(--border-gold);
+      border-radius: 14px;
+      padding: 1.25rem;
+    }
+
+    .tag-pill {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-family: var(--font-mono);
+      background: rgba(56, 189, 248, 0.14);
+      border: 1px solid var(--border-cyan);
+      color: var(--cyan-bright);
+      padding: 0.2rem 0.55rem;
+      border-radius: 6px;
+      margin-right: 0.4rem;
+      margin-top: 0.5rem;
+    }
+
+    /* Diapositiva 4: Diagrama Interactivo */
+    .anatomy-layout {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 1.3rem;
+      align-items: center;
+    }
+
+    .svg-stage {
+      background: radial-gradient(circle at center, rgba(14, 30, 62, 0.95), rgba(5, 10, 22, 0.98));
+      border: 1px solid var(--border-cyan);
+      border-radius: 14px;
+      padding: 0.8rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hotspot {
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .hotspot:hover circle.pulse-ring {
+      stroke: #fbbf24;
+      stroke-width: 3;
+    }
+
+    .part-selector {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .part-chip {
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid var(--border-cyan);
+      color: var(--text-main);
+      padding: 0.35rem 0.65rem;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      cursor: pointer;
+    }
+
+    .part-chip.active {
+      background: var(--gold);
+      color: #060b19;
+      border-color: var(--gold-bright);
+      font-weight: 700;
+    }
+
+    /* Diapositiva 6: Fórmulas Matemáticas */
+    .formula-box {
+      font-family: var(--font-mono);
+      background: rgba(5, 10, 22, 0.92);
+      border: 1px solid var(--border-cyan);
+      border-radius: 10px;
+      padding: 0.8rem 1rem;
+      font-size: 1.05rem;
+      color: var(--cyan-bright);
+      margin: 0.65rem 0;
+      text-align: center;
+    }
+
+    .compare-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 0.7rem;
+      border-radius: 8px;
+      margin-top: 0.45rem;
+      font-size: 0.88rem;
+    }
+
+    .row-ok {
+      background: rgba(16, 185, 129, 0.14);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: #a7f3d0;
+    }
+
+    .row-fail {
+      background: rgba(244, 63, 94, 0.14);
+      border: 1px solid rgba(244, 63, 94, 0.4);
+      color: #fecdd3;
+    }
+
+    /* Diapositiva 7: Simulador Interactivo */
+    .sim-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 1.3rem;
+    }
+
+    .control-group {
+      margin-bottom: 1rem;
+      background: rgba(8, 16, 34, 0.75);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      padding: 0.85rem 1rem;
+      border-radius: 12px;
+    }
+
+    .control-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      margin-bottom: 0.45rem;
+      font-weight: 600;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      accent-color: var(--cyan);
+      cursor: pointer;
+    }
+
+    .toggle-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.8rem;
+    }
+
+    .switch-btn {
+      padding: 0.45rem 0.9rem;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      border: 1px solid;
+    }
+
+    .switch-separated {
+      background: rgba(16, 185, 129, 0.2);
+      border-color: var(--emerald);
+      color: #6ee7b7;
+    }
+
+    .switch-attached {
+      background: rgba(244, 63, 94, 0.2);
+      border-color: var(--rose);
+      color: #fda4af;
+    }
+
+    .meter-bar {
+      height: 16px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid var(--border-cyan);
+      border-radius: 999px;
+      overflow: hidden;
+      position: relative;
+      margin: 0.6rem 0;
+    }
+
+    .meter-fill {
+      height: 100%;
+      width: 78%;
+      background: linear-gradient(90deg, var(--cyan), var(--emerald));
+      transition: width 0.25s ease, background 0.25s ease;
+    }
+
+    .threshold-marker {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 73.3%; /* 1833 / 2500 */
+      width: 2px;
+      background: var(--gold-bright);
+      box-shadow: 0 0 8px var(--gold);
+    }
+
+    .ascent-anim {
+      transition: transform 1.4s cubic-bezier(0.32, 0, 0.2, 1);
+    }
+
+    /* Enlaces Fuentes */
+    .source-link {
+      display: block;
+      text-decoration: none;
+      color: var(--text-main);
+      background: var(--bg-card);
+      border: 1px solid var(--border-cyan);
+      border-radius: 12px;
+      padding: 0.9rem 1rem;
+      margin-bottom: 0.65rem;
+      transition: all 0.2s ease;
+    }
+
+    .source-link:hover {
+      border-color: var(--gold);
+      transform: translateX(4px);
+    }
+
+    .source-link strong {
+      color: var(--cyan-bright);
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    .source-link span {
+      font-size: 0.83rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+
+    /* Barra inferior de navegación */
+    footer.nav-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      z-index: 30;
+      background: rgba(6, 11, 25, 0.94);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid var(--border-cyan);
+      padding: 0.65rem 1.4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .nav-btn {
+      background: rgba(30, 41, 59, 0.85);
+      border: 1px solid var(--border-cyan);
+      color: var(--text-main);
+      padding: 0.5rem 1.05rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .nav-btn:hover:not(:disabled) {
+      background: rgba(56, 189, 248, 0.22);
+      border-color: var(--cyan);
+    }
+
+    .nav-btn:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+
+    .nav-hint {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .grid-2, .grid-3, .grid-4, .anatomy-layout, .sim-grid {
+        grid-template-columns: 1fr;
+      }
+      .slide {
+        padding: 1.35rem;
+      }
+      .nav-hint {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="starfield"></div>
+
+  <!-- Barra superior -->
+  <header class="topbar">
+    <div class="brand">
+      <span class="nasa-badge">NASA // APOLLO</span>
+      <span class="brand-title">Misión Lunar &amp; Plataforma Eagle</span>
+    </div>
+    <div class="topbar-controls">
+      <span class="slide-counter" id="slideCounter">01 / 08</span>
+      <button class="btn-toc" id="tocToggle" aria-label="Abrir índice">☰ Índice</button>
+    </div>
+  </header>
+
+  <div class="progress-track">
+    <div class="progress-fill" id="progressFill"></div>
+  </div>
+
+  <!-- Índice desplegable -->
+  <nav class="toc-drawer" id="tocDrawer" aria-label="Índice de diapositivas">
+    <h4>Control de Misión — Capítulos</h4>
+    <div id="tocList"></div>
+  </nav>
+
+  <!-- Diapositivas -->
+  <main class="deck" id="deck">
+    <!-- SLIDE 1: PORTADA -->
+    <section class="slide active" data-title="Portada: De la Tierra a la Luna">
+      <div class="grid-2" style="align-items: center;">
+        <div>
+          <span class="eyebrow">Guía Divulgativa &amp; Ingeniería Espacial</span>
+          <h1>De la Tierra a la Luna: La NASA y el Módulo Lunar Apollo</h1>
+          <p class="lead">
+            Descubre primero qué es la <strong>NASA</strong> y cómo su ciencia transforma nuestra vida diaria, para luego explorar el ingenio detrás del <strong>Módulo Lunar "Eagle" (Apolo 11)</strong>: la nave que dejó su mitad inferior en la Luna para usarla como plataforma de lanzamiento de regreso a casa.
+          </p>
+          <div class="grid-3" style="margin-bottom: 1.4rem;">
+            <div class="card">
+              <div class="metric-big">1958</div>
+              <p>Creación de la NASA para explorar el aire y el espacio.</p>
+            </div>
+            <div class="card card-gold">
+              <div class="metric-big">1969</div>
+              <p>Alunizaje del <em>Eagle</em> en el Mar de la Tranquilidad.</p>
+            </div>
+            <div class="card">
+              <div class="metric-big">2,034 kg</div>
+              <p>Masa de la plataforma dejada atrás para despegar.</p>
+            </div>
+          </div>
+          <button class="btn-primary" onclick="goToSlide(1)">Iniciar Recorrido →</button>
+        </div>
+
+        <div class="svg-stage">
+          <svg viewBox="0 0 420 360" width="100%" style="max-width: 410px;" role="img" aria-label="Esquema del Módulo Lunar despegando sobre su etapa de descenso">
+            <!-- Fondo espacial y Tierra -->
+            <circle cx="330" cy="68" r="32" fill="#1d4ed8" stroke="#7dd3fc" stroke-width="1.5"/>
+            <path d="M312 58 Q328 48 344 62 Q335 78 318 75 Z" fill="#34d399" opacity="0.85"/>
+            <path d="M332 76 Q348 72 350 86 Q336 92 328 84 Z" fill="#34d399" opacity="0.8"/>
+
+            <!-- Superficie lunar -->
+            <path d="M0 305 Q110 288 210 302 T420 296 L420 360 L0 360 Z" fill="#334155"/>
+            <ellipse cx="95" cy="328" rx="34" ry="8" fill="#1e293b"/>
+            <ellipse cx="325" cy="332" rx="42" ry="9" fill="#1e293b"/>
+
+            <!-- Etapa de descenso (Plataforma en la Luna) -->
+            <g id="cover-descent">
+              <!-- Patas -->
+              <line x1="150" y1="265" x2="112" y2="306" stroke="#cbd5e1" stroke-width="4"/>
+              <line x1="270" y1="265" x2="308" y2="306" stroke="#cbd5e1" stroke-width="4"/>
+              <line x1="210" y1="268" x2="210" y2="310" stroke="#94a3b8" stroke-width="4"/>
+              <!-- Platos de apoyo -->
+              <ellipse cx="112" cy="307" rx="16" ry="4" fill="#f59e0b"/>
+              <ellipse cx="308" cy="307" rx="16" ry="4" fill="#f59e0b"/>
+              <ellipse cx="210" cy="311" rx="16" ry="4" fill="#f59e0b"/>
+              <!-- Cuerpo octogonal dorado -->
+              <rect x="148" y="228" width="124" height="42" rx="6" fill="#d97706" stroke="#fbbf24" stroke-width="2"/>
+              <rect x="166" y="234" width="88" height="30" fill="#b45309" opacity="0.7"/>
+              <text x="210" y="253" text-anchor="middle" fill="#fef3c7" font-size="10" font-family="monospace" font-weight="bold">PLATAFORMA DE DESPEGUE</text>
+            </g>
+
+            <!-- Llama de separación -->
+            <polygon points="194,185 226,185 210,226" fill="#38bdf8" opacity="0.85">
+              <animate attributeName="opacity" values="0.5;0.95;0.5" dur="1.2s" repeatCount="indefinite"/>
+            </polygon>
+
+            <!-- Etapa de ascenso -->
+            <g>
+              <animateTransform attributeName="transform" type="translate" values="0,0; 0,-14; 0,0" dur="3.4s" repeatCount="indefinite"/>
+              <!-- Cabina -->
+              <polygon points="172,115 248,115 264,155 248,184 172,184 156,155" fill="#e2e8f0" stroke="#38bdf8" stroke-width="2"/>
+              <rect x="184" y="96" width="52" height="20" rx="4" fill="#94a3b8"/>
+              <!-- Ventanas triangulares -->
+              <polygon points="178,136 198,136 188,150" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
+              <polygon points="222,136 242,136 232,150" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
+              <!-- Antenas -->
+              <line x1="210" y1="96" x2="210" y2="72" stroke="#38bdf8" stroke-width="2"/>
+              <path d="M196 74 Q210 86 224 74" fill="none" stroke="#fbbf24" stroke-width="2.5"/>
+              <text x="210" y="172" text-anchor="middle" fill="#0f172a" font-size="10" font-family="monospace" font-weight="bold">EAGLE ASCENSO</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 2: ¿QUÉ ES LA NASA Y QUÉ HACE? -->
+    <section class="slide" data-title="¿Qué es la NASA y qué hace?">
+      <span class="eyebrow">Contexto Fundamental · Fuente: nasa.gov/es/</span>
+      <h2>¿Qué es la NASA y qué hace realmente?</h2>
+      <p class="lead">
+        La <strong>NASA</strong> (<em>Administración Nacional de Aeronáutica y el Espacio</em>) es la agencia espacial civil de Estados Unidos, fundada en <strong>1958</strong>. Su misión es explorar lo desconocido en el aire y el espacio, innovar en beneficio de la humanidad e inspirar al mundo mediante el descubrimiento científico.
+      </p>
+
+      <div class="grid-4">
+        <button class="pillar-btn selected" onclick="selectPillar(0, this)">
+          <span class="pillar-icon">🚀</span>
+          <strong>1. Exploración Humana</strong>
+          <p style="font-size:0.83rem; color:#94a3b8; margin-top:0.3rem;">De Apollo a la Estación Espacial y Artemisa.</p>
+        </button>
+        <button class="pillar-btn" onclick="selectPillar(1, this)">
+          <span class="pillar-icon">🔭</span>
+          <strong>2. Ciencia del Cosmos</strong>
+          <p style="font-size:0.83rem; color:#94a3b8; margin-top:0.3rem;">Telescopios Webb, Hubble y sondas planetarias.</p>
+        </button>
+        <button class="pillar-btn" onclick="selectPillar(2, this)">
+          <span class="pillar-icon">✈️</span>
+          <strong>3. Aeronáutica y Spinoffs</strong>
+          <p style="font-size:0.83rem; color:#94a3b8; margin-top:0.3rem;">Vuelo limpio y tecnología en tu hogar.</p>
+        </button>
+        <button class="pillar-btn" onclick="selectPillar(3, this)">
+          <span class="pillar-icon">🌍</span>
+          <strong>4. Estudio de la Tierra</strong>
+          <p style="font-size:0.83rem; color:#94a3b8; margin-top:0.3rem;">Satélites que vigilan el clima y los océanos.</p>
+        </button>
+      </div>
+
+      <div class="pillar-detail-box" id="pillarDetail">
+        <!-- Se llena dinámicamente -->
+      </div>
+    </section>
+
+    <!-- SLIDE 3: EL RETO DE IR Y VOLVER DE LA LUNA -->
+    <section class="slide" data-title="El Reto de Ir y Volver de la Luna (LOR)">
+      <span class="eyebrow">Estrategia de Misión · Encuentro en Órbita Lunar</span>
+      <h2>¿Por qué no aterrizar un cohete entero en la Luna?</h2>
+      <p class="lead">
+        Para llevar humanos a la Luna en 1969 y traerlos de vuelta, los ingenieros de la NASA descartaron aterrizar un cohete gigante completo: habría requerido una nave tan pesada que ningún cohete terrestre podía lanzarla. La solución fue dividir la nave en especialistas mediante el <strong>Encuentro en Órbita Lunar (LOR)</strong>.
+      </p>
+
+      <div class="grid-3">
+        <div class="card">
+          <h3>1. Módulo de Mando "Columbia"</h3>
+          <p>
+            Permanece en órbita alrededor de la Luna pilotado por Michael Collins. Guarda el escudo térmico y el combustible necesarios para cruzar los <strong>384,400 km</strong> de regreso a la Tierra.
+          </p>
+        </div>
+        <div class="card card-gold">
+          <h3>2. Módulo Lunar "Eagle" (2 Etapas)</h3>
+          <p>
+            Es el único vehículo diseñado exclusivamente para volar en el vacío espacial. Baja a la superficie con sus dos etapas unidas (<strong>15,103 kg</strong> en total) con Armstrong y Aldrin a bordo.
+          </p>
+        </div>
+        <div class="card">
+          <h3>3. Separación en la Superficie</h3>
+          <p>
+            Al terminar la caminata lunar, el <em>Eagle</em> se divide en dos: la <strong>etapa de descenso</strong> se queda en la Luna y la ligera <strong>etapa de ascenso</strong> despega hacia el <em>Columbia</em>.
+          </p>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top: 1.1rem; border-color: rgba(16, 185, 129, 0.4);">
+        <p style="color: #e2e8f0;">
+          <strong>💡 Idea clave para entenderlo:</strong> Es como cruzar un océano en un barco grande (<em>Columbia</em>), anclarlo frente a una isla, bajar a la playa en una lancha ligera (<em>Módulo Lunar</em>) y dejar el remolque pesado en la arena para poder remar de vuelta al barco sin hundirse.
+        </p>
+      </div>
+    </section>
+
+    <!-- SLIDE 4: ANATOMÍA INTERACTIVA DEL EAGLE -->
+    <section class="slide" data-title="Anatomía del Módulo Lunar Eagle">
+      <span class="eyebrow">Ingeniería NASA NSSDCA · ID: 1969-059C</span>
+      <h2>Anatomía del Módulo Lunar "Eagle" (LM-5)</h2>
+      <p class="lead">
+        Como en la Luna <strong>no hay atmósfera ni viento</strong>, el Módulo Lunar no necesitaba forma aerodinámica de avión: cada gramo se diseñó para resistencia estructural y ahorro de peso. Haz clic en cada zona del diagrama para inspeccionarla.
+      </p>
+
+      <div class="anatomy-layout">
+        <div class="svg-stage">
+          <svg viewBox="0 0 440 360" width="100%" style="max-width: 430px;" role="img" aria-label="Diagrama técnico interactivo del Módulo Lunar Apollo">
+            <!-- Líneas de cota -->
+            <line x1="42" y1="55" x2="42" y2="305" stroke="#475569" stroke-dasharray="4 4"/>
+            <text x="34" y="185" fill="#94a3b8" font-size="11" font-family="monospace" transform="rotate(-90 34,185)" text-anchor="middle">ALTURA TOTAL: 7.04 m</text>
+
+            <line x1="90" y1="332" x2="350" y2="332" stroke="#475569" stroke-dasharray="4 4"/>
+            <text x="220" y="348" fill="#94a3b8" font-size="11" font-family="monospace" text-anchor="middle">ENVERGADURA PATAS: 9.40 m</text>
+
+            <!-- ETAPA DE ASCENSO -->
+            <g onclick="selectPart(0)" style="cursor:pointer;">
+              <polygon points="168,85 272,85 294,132 272,172 168,172 146,132" fill="#cbd5e1" stroke="#38bdf8" stroke-width="2.5"/>
+              <rect x="184" y="60" width="72" height="25" rx="4" fill="#94a3b8" stroke="#38bdf8" stroke-width="1.5"/>
+              <!-- Ventanas -->
+              <polygon points="178,108 202,108 190,126" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
+              <polygon points="238,108 262,108 250,126" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
+              <!-- Escotilla -->
+              <rect x="206" y="132" width="28" height="32" rx="3" fill="#475569" stroke="#e2e8f0" stroke-width="1.5"/>
+              <!-- Propulsores RCS -->
+              <rect x="132" y="124" width="14" height="18" rx="2" fill="#64748b"/>
+              <rect x="294" y="124" width="14" height="18" rx="2" fill="#64748b"/>
+            </g>
+
+            <!-- ANILLO DE SEPARACIÓN Y ESCUDO DORADO -->
+            <g onclick="selectPart(3)" style="cursor:pointer;">
+              <rect x="156" y="172" width="128" height="14" fill="#fbbf24" stroke="#ffffff" stroke-width="1"/>
+            </g>
+
+            <!-- MOTOR DE ASCENSO (INTERNO INDICADO) -->
+            <g onclick="selectPart(4)" style="cursor:pointer;">
+              <polygon points="204,172 236,172 244,196 196,196" fill="#38bdf8" opacity="0.85"/>
+            </g>
+
+            <!-- ETAPA DE DESCENSO -->
+            <g onclick="selectPart(1)" style="cursor:pointer;">
+              <rect x="142" y="186" width="156" height="68" rx="6" fill="#d97706" stroke="#fbbf24" stroke-width="2.5"/>
+              <rect x="166" y="194" width="108" height="52" fill="#92400e" opacity="0.65"/>
+              <!-- Tobera motor descenso -->
+              <polygon points="196,254 244,254 256,282 184,282" fill="#334155" stroke="#94a3b8" stroke-width="1.5"/>
+            </g>
+
+            <!-- PATAS Y ESCALERA -->
+            <g onclick="selectPart(2)" style="cursor:pointer;">
+              <line x1="142" y1="215" x2="92" y2="305" stroke="#e2e8f0" stroke-width="4.5"/>
+              <line x1="142" y1="248" x2="112" y2="270" stroke="#94a3b8" stroke-width="3"/>
+              <ellipse cx="92" cy="307" rx="18" ry="5" fill="#fbbf24"/>
+
+              <line x1="298" y1="215" x2="348" y2="305" stroke="#e2e8f0" stroke-width="4.5"/>
+              <line x1="298" y1="248" x2="328" y2="270" stroke="#94a3b8" stroke-width="3"/>
+              <ellipse cx="348" cy="307" rx="18" ry="5" fill="#fbbf24"/>
+
+              <!-- Pata frontal con escalera -->
+              <line x1="220" y1="254" x2="220" y2="312" stroke="#cbd5e1" stroke-width="5"/>
+              <line x1="214" y1="262" x2="226" y2="262" stroke="#38bdf8" stroke-width="2"/>
+              <line x1="214" y1="272" x2="226" y2="272" stroke="#38bdf8" stroke-width="2"/>
+              <line x1="214" y1="282" x2="226" y2="282" stroke="#38bdf8" stroke-width="2"/>
+              <ellipse cx="220" cy="314" rx="18" ry="5" fill="#fbbf24"/>
+            </g>
+
+            <!-- Hotspots numerados -->
+            <g class="hotspot" onclick="selectPart(0)">
+              <circle class="pulse-ring" cx="220" cy="112" r="14" fill="#060b19" stroke="#38bdf8" stroke-width="2"/>
+              <text x="220" y="116" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="bold">1</text>
+            </g>
+            <g class="hotspot" onclick="selectPart(1)">
+              <circle class="pulse-ring" cx="176" cy="220" r="14" fill="#060b19" stroke="#38bdf8" stroke-width="2"/>
+              <text x="176" y="224" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="bold">2</text>
+            </g>
+            <g class="hotspot" onclick="selectPart(2)">
+              <circle class="pulse-ring" cx="105" cy="285" r="14" fill="#060b19" stroke="#38bdf8" stroke-width="2"/>
+              <text x="105" y="289" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="bold">3</text>
+            </g>
+            <g class="hotspot" onclick="selectPart(3)">
+              <circle class="pulse-ring" cx="275" cy="179" r="14" fill="#060b19" stroke="#38bdf8" stroke-width="2"/>
+              <text x="275" y="183" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="bold">4</text>
+            </g>
+            <g class="hotspot" onclick="selectPart(4)">
+              <circle class="pulse-ring" cx="220" cy="192" r="14" fill="#060b19" stroke="#38bdf8" stroke-width="2"/>
+              <text x="220" y="196" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="bold">5</text>
+            </g>
+          </svg>
+        </div>
+
+        <div>
+          <div class="part-selector" id="partChips"></div>
+          <div class="card card-gold" id="partInfoCard" style="min-height: 235px;">
+            <!-- Contenido dinámico de la pieza -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 5: ¿POR QUÉ DEJAR LA ETAPA DE DESCENSO? -->
+    <section class="slide" data-title="La Etapa de Descenso como Plataforma">
+      <span class="eyebrow">Ingeniería de Separación · Apolo 11</span>
+      <h2>¿Por qué dejar la etapa de descenso como plataforma de lanzamiento?</h2>
+      <p class="lead">
+        El 21 de julio de 1969, tras 21 horas y 36 minutos en la Luna, la etapa inferior del <em>Eagle</em> cumplió su segunda gran misión: convertirse en una <strong>base de lanzamiento fija y segura</strong> en pleno Mar de la Tranquilidad.
+      </p>
+
+      <div class="grid-2" style="margin-bottom: 1.1rem;">
+        <div class="card">
+          <h3>1. Ahorro radical de peso muerto (2,034 kg)</h3>
+          <p>
+            Subir de regreso las patas de aterrizaje, los tanques vacíos de descenso y el motor de frenado habría exigido casi el doble de combustible. Dejarlos atrás liberó más del <strong>45 % de la masa seca</strong> del vehículo.
+          </p>
+        </div>
+        <div class="card">
+          <h3>2. Mesa plana y nivelada (4.5° de inclinación)</h3>
+          <p>
+            El terreno lunar tiene rocas, polvo y cráteres. La parte superior octogonal de la etapa de descenso ofreció una superficie metálica horizontal perfecta, con apenas <strong>4.5 grados</strong> de inclinación respecto a la vertical.
+          </p>
+        </div>
+        <div class="card">
+          <h3>3. Escudo deflector contra los gases del motor</h3>
+          <p>
+            El techo de la etapa inferior estaba recubierto de láminas aislantes de <strong>Kapton dorado</strong> y aluminio para desviar el chorro incandescente del motor de ascenso sin levantar rocas peligrosas.
+          </p>
+        </div>
+        <div class="card card-gold">
+          <h3>4. Monumento histórico aún visible hoy</h3>
+          <p>
+            Las <strong>6 etapas de descenso</strong> (Apolo 11, 12, 14, 15, 16 y 17) permanecen intactas en la Luna. La sonda orbital <strong>LRO de la NASA</strong> las ha fotografiado desde órbita junto a las huellas de los astronautas.
+          </p>
+        </div>
+      </div>
+
+      <div class="card" style="background: rgba(5, 10, 22, 0.9);">
+        <h3 style="margin-bottom: 0.5rem;">⏱️ Cronología exacta de la separación (21 de julio de 1969 · 17:54:00 UT)</h3>
+        <div class="grid-4">
+          <div><strong style="color:var(--gold-bright);">T - 0.5 s</strong><br><span style="font-size:0.84rem; color:#cbd5e1;">Presurización de tanques de helio y propelente de ascenso.</span></div>
+          <div><strong style="color:var(--gold-bright);">T - 0.0 s</strong><br><span style="font-size:0.84rem; color:#cbd5e1;">Detonación simultánea de 4 pernos explosivos y guillotinas de cables.</span></div>
+          <div><strong style="color:var(--gold-bright);">T + 0.0 s</strong><br><span style="font-size:0.84rem; color:#cbd5e1;">Ignición instantánea del motor APS (15,000 N de empuje).</span></div>
+          <div><strong style="color:var(--emerald);">T + 7m 14s</strong><br><span style="font-size:0.84rem; color:#cbd5e1;">Inserción exitosa en órbita lunar a 1,671 m/s hacia el Columbia.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 6: LA MATEMÁTICA EXPLICADA FÁCIL -->
+    <section class="slide" data-title="La Matemática Explicada Fácil">
+      <span class="eyebrow">Sustento Físico y Matemático · NASA TN D-7400</span>
+      <h2>La matemática detrás del despegue (explicada fácil)</h2>
+      <p class="lead">
+        No hace falta ser ingeniero aeroespacial para comprobar por qué era indispensable abandonar la etapa de descenso: tres ecuaciones fundamentales demuestran los números oficiales de la NASA.
+      </p>
+
+      <div class="grid-3">
+        <!-- Ecuación 1: Tsiolkovski -->
+        <div class="card">
+          <h3>1. Ecuación del Cohete (Tsiolkovski)</h3>
+          <p>Mide cuánta velocidad (<em>&Delta;v</em>) gana una nave al quemar su combustible:</p>
+          <div class="formula-box">&Delta;v = I<sub>sp</sub> &middot; g<sub>0</sub> &middot; ln(m<sub>0</sub> / m<sub>f</sub>)</div>
+          <p style="font-size:0.85rem;">
+            Con <strong>I<sub>sp</sub> = 293 s</strong> y <strong>2,376 kg</strong> de propelente (se necesitan <strong>1,833 m/s</strong> para llegar a órbita):
+          </p>
+          <div class="compare-row row-ok">
+            <span>✅ Soltando etapa (4,821 &rarr; 2,445 kg)</span>
+            <strong>1,949 m/s</strong>
+          </div>
+          <div class="compare-row row-fail">
+            <span>❌ Sin soltarla (6,855 &rarr; 4,479 kg)</span>
+            <strong>1,232 m/s</strong>
+          </div>
+        </div>
+
+        <!-- Ecuación 2: Vis-Viva -->
+        <div class="card">
+          <h3>2. Velocidad Orbital (Vis-Viva)</h3>
+          <p>Es la velocidad exacta para girar alrededor de la Luna sin caer ni escapar:</p>
+          <div class="formula-box">v = &radic;( &mu;<sub>Luna</sub> / r )</div>
+          <p style="font-size:0.86rem;">
+            Donde <strong>&mu;<sub>Luna</sub> = 4,904.87 km&sup3;/s&sup2;</strong> y el radio orbital es <strong>r = 1,737.4 + 110 km</strong> (altitud del módulo <em>Columbia</em>):
+          </p>
+          <div class="compare-row row-ok">
+            <span>🛰️ Velocidad orbital requerida</span>
+            <strong>1,671 m/s</strong>
+          </div>
+          <p style="font-size:0.82rem; color:#94a3b8; margin-top:0.5rem;">
+            Equivale a unos <strong>6,015 km/h</strong> (casi 5 veces la velocidad del sonido en la Tierra).
+          </p>
+        </div>
+
+        <!-- Ecuación 3: Gravedad 1/6 y Empuje-Peso -->
+        <div class="card card-gold">
+          <h3>3. Gravedad 1/6 y Empuje-Peso</h3>
+          <p>En la Luna la gravedad es <strong>6 veces menor</strong> que en la Tierra (1.62 m/s&sup2; frente a 9.81 m/s&sup2;):</p>
+          <div class="formula-box">T / W<sub>Luna</sub> = Empuje / (m<sub>0</sub> &middot; g<sub>Luna</sub>)</div>
+          <p style="font-size:0.86rem;">
+            El módulo de ascenso pesaba en la Luna solo <strong>7,810 N</strong> (unos 796 kg-fuerza), mientras su motor entregaba <strong>15,000 N</strong>:
+          </p>
+          <div class="compare-row row-ok">
+            <span>🚀 Relación Empuje/Peso en Luna</span>
+            <strong>1.92 (Sube rápido)</strong>
+          </div>
+          <div class="compare-row row-fail">
+            <span>🌍 Mismo motor en la Tierra</span>
+            <strong>0.32 (No despega)</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 7: SIMULADOR INTERACTIVO -->
+    <section class="slide" data-title="Simulador Interactivo de Despegue">
+      <span class="eyebrow">Laboratorio Interactivo · Pon a Prueba la Física</span>
+      <h2>Simulador de Despegue desde la Plataforma Lunar</h2>
+      <p class="lead">
+        Experimenta qué ocurre si intentas despegar dejando acoplada la etapa de descenso (+2,034 kg) o cambiando la cantidad de combustible y eficiencia del motor.
+      </p>
+
+      <div class="sim-grid">
+        <div>
+          <div class="control-group">
+            <div class="toggle-wrap">
+              <div>
+                <strong>1. Etapa de Descenso (2,034 kg)</strong>
+                <p style="font-size:0.82rem; color:#94a3b8;">¿La dejas como plataforma o intentas subirla?</p>
+              </div>
+              <button id="stageToggleBtn" class="switch-btn switch-separated" onclick="toggleDescentStage()">
+                Separada (Plataforma)
+              </button>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <div class="control-header">
+              <span>2. Masa de Propelente (Combustible + Oxidante)</span>
+              <span style="color:var(--cyan-bright); font-family:var(--font-mono);" id="propVal">2,376 kg</span>
+            </div>
+            <input type="range" id="propSlider" min="1200" max="2600" step="12" value="2376" oninput="updateSim()"/>
+            <div style="display:flex; justify-content:space-between; font-size:0.75rem; color:#94a3b8;">
+              <span>1,200 kg</span><span>Real Apollo 11: 2,376 kg</span><span>2,600 kg</span>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <div class="control-header">
+              <span>3. Eficiencia del Motor (Impulso Específico I<sub>sp</sub>)</span>
+              <span style="color:var(--cyan-bright); font-family:var(--font-mono);" id="ispVal">293 s</span>
+            </div>
+            <input type="range" id="ispSlider" min="275" max="325" step="1" value="293" oninput="updateSim()"/>
+            <div style="display:flex; justify-content:space-between; font-size:0.75rem; color:#94a3b8;">
+              <span>275 s</span><span>Real APS: 293 s</span><span>325 s</span>
+            </div>
+          </div>
+
+          <div class="card" id="simResultBox">
+            <div style="display:flex; justify-content:space-between; align-items:baseline;">
+              <span>Velocidad alcanzada (<strong>&Delta;v</strong>):</span>
+              <strong style="font-family:var(--font-mono); font-size:1.45rem;" id="dvReadout">1,949 m/s</strong>
+            </div>
+            <div class="meter-bar">
+              <div class="meter-fill" id="dvFill"></div>
+              <div class="threshold-marker" title="Umbral orbital: 1,833 m/s"></div>
+            </div>
+            <div style="display:flex; justify-content:space-between; font-size:0.78rem; color:#94a3b8; margin-bottom:0.5rem;">
+              <span>0 m/s</span>
+              <span style="color:var(--gold-bright);">Meta orbital: 1,833 m/s</span>
+              <span>2,500 m/s</span>
+            </div>
+            <p id="simStatusText" style="font-size:0.9rem; font-weight:600;"></p>
+          </div>
+        </div>
+
+        <!-- Visualización animada del lanzamiento -->
+        <div class="svg-stage" style="flex-direction: column; gap: 0.7rem;">
+          <svg viewBox="0 0 360 280" width="100%" style="max-width: 350px;">
+            <path d="M0 245 Q90 235 180 244 T360 240 L360 280 L0 280 Z" fill="#334155"/>
+            <!-- Plataforma -->
+            <g id="simPlatformGroup">
+              <line x1="130" y1="215" x2="98" y2="246" stroke="#cbd5e1" stroke-width="3.5"/>
+              <line x1="230" y1="215" x2="262" y2="246" stroke="#cbd5e1" stroke-width="3.5"/>
+              <ellipse cx="98" cy="247" rx="13" ry="3.5" fill="#fbbf24"/>
+              <ellipse cx="262" cy="247" rx="13" ry="3.5" fill="#fbbf24"/>
+              <rect x="128" y="184" width="104" height="34" rx="5" fill="#d97706" stroke="#fbbf24" stroke-width="2"/>
+            </g>
+            <!-- Nave Ascenso -->
+            <g id="simAscentShip" class="ascent-anim">
+              <polygon id="simFlame" points="168,184 192,184 180,214" fill="#38bdf8" opacity="0"/>
+              <polygon points="150,126 210,126 224,158 210,183 150,183 136,158" fill="#e2e8f0" stroke="#38bdf8" stroke-width="2"/>
+              <rect x="160" y="110" width="40" height="16" rx="3" fill="#94a3b8"/>
+              <polygon points="156,142 172,142 164,153" fill="#0f172a"/>
+              <polygon points="188,142 204,142 196,153" fill="#0f172a"/>
+            </g>
+          </svg>
+          <div style="display:flex; gap:0.6rem;">
+            <button class="btn-primary" onclick="triggerLaunch()">🚀 Probar Despegue</button>
+            <button class="nav-btn" onclick="resetLaunch()">↺ Reiniciar</button>
+          </div>
+          <span style="font-size:0.8rem; font-family:var(--font-mono); color:#94a3b8;" id="twReadout">
+            Masa inicial: 4,821 kg · Empuje/Peso Lunar: 1.92
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 8: FUENTES OFICIALES Y LEGADO ARTEMIS -->
+    <section class="slide" data-title="Fuentes Oficiales NASA y Legado Artemis">
+      <span class="eyebrow">Referencias Verificadas · Del Pasado al Futuro</span>
+      <h2>De Apollo a Artemisa: Fuentes Oficiales de la NASA</h2>
+      <p class="lead">
+        El mismo principio de diseñar módulos especializados para aterrizar y despegar de la Luna vive hoy en el <strong>Programa Artemis</strong> de la NASA, que prepara el regreso de astronautas y una futura base lunar. Consulta las fuentes oficiales utilizadas en esta presentación:
+      </p>
+
+      <div class="grid-2">
+        <div>
+          <a class="source-link" href="https://www.nasa.gov/es/" target="_blank" rel="noopener noreferrer">
+            <strong>1. NASA en Español — Portal Oficial</strong>
+            <span>https://www.nasa.gov/es/ · Misiones Artemis, Ciencia, Aeronáutica y Espacio</span>
+          </a>
+          <a class="source-link" href="https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1969-059C" target="_blank" rel="noopener noreferrer">
+            <strong>2. NASA NSSDCA — Ficha Técnica Apollo 11 Lunar Module / EASEP</strong>
+            <span>ID: 1969-059C · Masas oficiales (15,103 kg total; 2,034 kg etapa de descenso)</span>
+          </a>
+          <a class="source-link" href="https://ntrs.nasa.gov/citations/19730025093" target="_blank" rel="noopener noreferrer">
+            <strong>3. NASA Technical Reports Server (NTRS) — NASA TN D-7400</strong>
+            <span>Apollo Experience Report: Ascent Propulsion System (Empuje 15,000 N e Isp)</span>
+          </a>
+          <a class="source-link" href="https://ntrs.nasa.gov/citations/19720018264" target="_blank" rel="noopener noreferrer">
+            <strong>4. NASA Technical Reports Server (NTRS) — NASA TN D-6850</strong>
+            <span>Apollo Experience Report: Lunar Module Staging (Pernos explosivos y separación)</span>
+          </a>
+        </div>
+
+        <div class="card card-gold" style="display:flex; flex-direction:column; justify-content:space-between;">
+          <div>
+            <h3>🌕 El Legado Continúa con Artemisa</h3>
+            <p style="margin-bottom:0.8rem;">
+              En 1969, el <em>Eagle</em> demostró que podíamos alunizar con precisión, realizar experimentos científicos (como el sismómetro pasivo y el retrorreflector láser que aún responde desde la Luna) y usar la etapa de descenso como plataforma de lanzamiento.
+            </p>
+            <p>
+              Hoy, a través de <strong>Artemisa (Artemis)</strong>, la NASA y sus socios internacionales aplican estas mismas leyes físicas para establecer una presencia sostenible en el polo sur lunar y preparar el camino hacia Marte.
+            </p>
+          </div>
+          <div style="margin-top: 1.2rem;">
+            <button class="btn-primary" onclick="goToSlide(0)">↺ Volver al Inicio de la Presentación</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Barra inferior de navegación -->
+  <footer class="nav-bar">
+    <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">← Anterior</button>
+    <span class="nav-hint">Usa las flechas <strong>&larr; / &rarr;</strong>, la barra espaciadora o desliza en pantalla táctil</span>
+    <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">Siguiente →</button>
+  </footer>
+
+  <script>
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    let currentSlide = 0;
+
+    // Datos Diapositiva 2: Pilares de la NASA
+    const pillars = [
+      {
+        title: "🚀 Exploración Humana y el Espacio Profundo",
+        desc: "La NASA lleva a seres humanos más allá de la Tierra. Tras lograr los seis alunizajes históricos del programa Apollo (1969-1972) y operar durante más de dos décadas la Estación Espacial Internacional (EEI), hoy lidera el programa Artemisa para volver a la Luna y preparar las futuras misiones tripuladas a Marte.",
+        tags: ["Programa Apollo", "Estación Espacial Internacional", "Misiones Artemisa", "Base Lunar"]
+      },
+      {
+        title: "🔭 Ciencia del Universo y el Sistema Solar",
+        desc: "Mediante observatorios espaciales y sondas robóticas, la NASA investiga cómo nacieron las estrellas, busca planetas habitables y explora nuestros mundos vecinos. Desde los telescopios James Webb, Hubble y Roman hasta las sondas Voyager en el espacio interestelar o Dragonfly rumbo a Titán.",
+        tags: ["Telescopio James Webb", "Hubble y Roman", "Voyager 1", "Misión Dragonfly"]
+      },
+      {
+        title: "✈️ Aeronáutica y Tecnología en la Vida Cotidiana (Spinoffs)",
+        desc: "La primera 'A' de NASA significa Aeronáutica: investiga aviones más silenciosos, eficientes y seguros (como la tecnología supersónica silenciosa). Además, sus inventos espaciales dieron origen a miles de tecnologías cotidianas: cámaras digitales miniaturizadas, filtros purificadores de agua, espuma viscoelástica y mejoras en paneles solares.",
+        tags: ["Aviación Supersónica Silenciosa", "Control de Tráfico Aéreo", "Cámaras de Celulares", "Purificación de Agua"]
+      },
+      {
+        title: "🌍 Ciencias de la Tierra y Vigilancia Climática",
+        desc: "La NASA no solo mira hacia afuera; también observa nuestro propio planeta desde el espacio con una flota de satélites. Mide la temperatura de los océanos, el deshielo polar, los huracanes, la calidad del aire y los bosques para ayudar a proteger vidas y comprender el cambio climático.",
+        tags: ["Satélites Terrestres", "Pronóstico de Tormentas", "Nivel del Mar", "Cambio Climático"]
+      }
+    ];
+
+    function selectPillar(idx, btnEl) {
+      document.querySelectorAll('.pillar-btn').forEach(b => b.classList.remove('selected'));
+      if (btnEl) btnEl.classList.add('selected');
+      const p = pillars[idx];
+      const box = document.getElementById('pillarDetail');
+      box.innerHTML = `
+        <h3 style="color:var(--gold-bright); margin-bottom:0.45rem;">${p.title}</h3>
+        <p style="line-height:1.6; color:#e2e8f0;">${p.desc}</p>
+        <div style="margin-top:0.4rem;">
+          ${p.tags.map(t => `<span class="tag-pill">${t}</span>`).join('')}
+        </div>
+      `;
+    }
+
+    // Datos Diapositiva 4: Partes del Módulo Lunar
+    const parts = [
+      {
+        chip: "1. Etapa de Ascenso",
+        title: "1. Etapa de Ascenso (La Cabina de Regreso)",
+        specs: "Masa seca: 2,445 kg · Propelente: 2,376 kg · Volumen cabina: 6.65 m³",
+        desc: "Alojaba a los dos astronautas en una cabina presurizada sin asientos (volaban de pie sujetos por arneses para ahorrar peso y ganar visibilidad por las ventanas triangulares). Es la única parte del Eagle que despegó de la Luna."
+      },
+      {
+        chip: "2. Etapa de Descenso",
+        title: "2. Etapa de Descenso (La Plataforma en la Luna)",
+        specs: "Masa seca: 2,034 kg · Propelente inicial: 8,248 kg · Ancho: 4.2 m",
+        desc: "Prisma octogonal con cuatro compartimentos para tanques de combustible, agua, oxígeno y el paquete científico EASEP. Frenó la caída desde la órbita lunar y se quedó permanentemente en el Mar de la Tranquilidad."
+      },
+      {
+        chip: "3. Patas y Escalera",
+        title: "3. Tren de Aterrizaje y Escalera de 9 Peldaños",
+        specs: "Envergadura: 9.40 m · Amortiguadores tipo panal de abeja",
+        desc: "Cuatro patas desplegables con platos circulares de 94 cm de diámetro para no hundirse en el polvo lunar (regolito). En la pata delantera iba la escalera por la que bajó Neil Armstrong y la placa conmemorativa de 1969."
+      },
+      {
+        chip: "4. Anillo y Escudo Dorado",
+        title: "4. Anillo de Separación y Escudo Térmico Kapton",
+        specs: "4 pernos pirotécnicos + guillotina de cables + láminas Kapton",
+        desc: "En el instante del despegue, pequeñas cargas explosivas cortaban los pernos y cables que unían ambas etapas. Las famosas láminas doradas protegían la estructura del calor extremo del motor de ascenso."
+      },
+      {
+        chip: "5. Motor de Ascenso",
+        title: "5. Motor de Ascenso (APS - 15,000 N)",
+        specs: "Empuje fijo: 15,000 N · Combustible hipergólico (Aerozina 50 + N2O4)",
+        desc: "Motor ultraconfiable sin piezas móviles complejas ni bujías: el combustible y el oxidante ardían espontáneamente al tocarse, garantizando que el encendido en la Luna nunca fallara."
+      }
+    ];
+
+    function selectPart(idx) {
+      const chipsContainer = document.getElementById('partChips');
+      chipsContainer.innerHTML = parts.map((p, i) =>
+        `<button class="part-chip ${i === idx ? 'active' : ''}" onclick="selectPart(${i})">${p.chip}</button>`
+      ).join('');
+
+      const part = parts[idx];
+      document.getElementById('partInfoCard').innerHTML = `
+        <h3>${part.title}</h3>
+        <div class="tag-pill" style="margin-bottom:0.75rem;">${part.specs}</div>
+        <p style="line-height:1.62; color:#f1f5f9;">${part.desc}</p>
+      `;
+    }
+
+    // Simulador Diapositiva 7
+    let stageSeparated = true;
+
+    function toggleDescentStage() {
+      stageSeparated = !stageSeparated;
+      const btn = document.getElementById('stageToggleBtn');
+      if (stageSeparated) {
+        btn.textContent = "Separada (Plataforma)";
+        btn.className = "switch-btn switch-separated";
+      } else {
+        btn.textContent = "Acoplada (+2,034 kg)";
+        btn.className = "switch-btn switch-attached";
+      }
+      resetLaunch();
+      updateSim();
+    }
+
+    function updateSim() {
+      const mProp = Number(document.getElementById('propSlider').value);
+      const isp = Number(document.getElementById('ispSlider').value);
+      document.getElementById('propVal').textContent = `${mProp.toLocaleString('es-ES')} kg`;
+      document.getElementById('ispVal').textContent = `${isp} s`;
+
+      const dryAscent = 2445;
+      const dryDescent = stageSeparated ? 0 : 2034;
+      const mf = dryAscent + dryDescent;
+      const m0 = mf + mProp;
+      const g0 = 9.80665;
+      const gMoon = 1.62;
+      const thrust = 15000;
+
+      const dv = isp * g0 * Math.log(m0 / mf);
+      const twLunar = thrust / (m0 * gMoon);
+
+      document.getElementById('dvReadout').textContent = `${Math.round(dv).toLocaleString('es-ES')} m/s`;
+      document.getElementById('twReadout').textContent =
+        `Masa inicial: ${m0.toLocaleString('es-ES')} kg · Empuje/Peso Lunar: ${twLunar.toFixed(2)}`;
+
+      const pct = Math.min(100, Math.max(5, (dv / 2500) * 100));
+      const fill = document.getElementById('dvFill');
+      fill.style.width = `${pct}%`;
+
+      const statusEl = document.getElementById('simStatusText');
+      if (dv >= 1833) {
+        fill.style.background = "linear-gradient(90deg, #38bdf8, #10b981)";
+        statusEl.style.color = "#6ee7b7";
+        statusEl.textContent = "✅ ¡ÉXITO ORBITAL! Supera los 1,833 m/s necesarios para reunirse con el Columbia.";
+      } else {
+        fill.style.background = "linear-gradient(90deg, #f59e0b, #f43f5e)";
+        statusEl.style.color = "#fda4af";
+        statusEl.textContent = "⚠️ VELOCIDAD INSUFICIENTE: La nave no alcanza la órbita lunar y vuelve a caer.";
+      }
+      return dv;
+    }
+
+    function triggerLaunch() {
+      const dv = updateSim();
+      const ship = document.getElementById('simAscentShip');
+      const plat = document.getElementById('simPlatformGroup');
+      const flame = document.getElementById('simFlame');
+
+      flame.setAttribute('opacity', '0.95');
+      if (dv >= 1833) {
+        ship.style.transform = "translateY(-115px)";
+        plat.style.transform = stageSeparated ? "translateY(0px)" : "translateY(-115px)";
+      } else {
+        ship.style.transform = "translateY(-26px)";
+        plat.style.transform = stageSeparated ? "translateY(0px)" : "translateY(-26px)";
+        setTimeout(() => {
+          ship.style.transform = "translateY(0px)";
+          plat.style.transform = "translateY(0px)";
+          flame.setAttribute('opacity', '0');
+        }, 1200);
+      }
+    }
+
+    function resetLaunch() {
+      const ship = document.getElementById('simAscentShip');
+      const plat = document.getElementById('simPlatformGroup');
+      const flame = document.getElementById('simFlame');
+      plat.style.transition = "transform 0.6s ease";
+      ship.style.transform = "translateY(0px)";
+      plat.style.transform = "translateY(0px)";
+      flame.setAttribute('opacity', '0');
+    }
+
+    // Navegación entre diapositivas
+    function buildTOC() {
+      const tocList = document.getElementById('tocList');
+      tocList.innerHTML = slides.map((s, i) => `
+        <button class="toc-item ${i === currentSlide ? 'active' : ''}" onclick="goToSlide(${i}); toggleTOC(false);">
+          <span class="toc-num">0${i + 1}</span>
+          <span>${s.dataset.title}</span>
+        </button>
+      `).join('');
+    }
+
+    function updateSlideUI() {
+      slides.forEach((s, i) => s.classList.toggle('active', i === currentSlide));
+      document.getElementById('slideCounter').textContent = `0${currentSlide + 1} / 0${slides.length}`;
+      document.getElementById('progressFill').style.width = `${((currentSlide + 1) / slides.length) * 100}%`;
+      document.getElementById('prevBtn').disabled = currentSlide === 0;
+      document.getElementById('nextBtn').disabled = currentSlide === slides.length - 1;
+      buildTOC();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function changeSlide(delta) {
+      const next = currentSlide + delta;
+      if (next >= 0 && next < slides.length) {
+        currentSlide = next;
+        updateSlideUI();
+      }
+    }
+
+    function goToSlide(index) {
+      if (index >= 0 && index < slides.length) {
+        currentSlide = index;
+        updateSlideUI();
+      }
+    }
+
+    function toggleTOC(forceState) {
+      const drawer = document.getElementById('tocDrawer');
+      if (typeof forceState === 'boolean') {
+        drawer.classList.toggle('open', forceState);
+      } else {
+        drawer.classList.toggle('open');
+      }
+    }
+
+    document.getElementById('tocToggle').addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleTOC();
+    });
+
+    document.addEventListener('click', (e) => {
+      const drawer = document.getElementById('tocDrawer');
+      if (drawer.classList.contains('open') && !drawer.contains(e.target)) {
+        toggleTOC(false);
+      }
+    });
+
+    // Atajos de teclado
+    document.addEventListener('keydown', (e) => {
+      if (e.target.tagName === 'INPUT') return;
+      if (e.key === 'ArrowRight' || e.key === ' ') {
+        e.preventDefault();
+        changeSlide(1);
+      } else if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        changeSlide(-1);
+      } else if (e.key === 'Escape') {
+        toggleTOC(false);
+      }
+    });
+
+    // Gestos táctiles (Swipe)
+    let touchStartX = 0;
+    document.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    document.addEventListener('touchend', (e) => {
+      const dx = e.changedTouches[0].screenX - touchStartX;
+      if (Math.abs(dx) > 55) {
+        changeSlide(dx < 0 ? 1 : -1);
+      }
+    }, { passive: true });
+
+    // Inicialización
+    selectPillar(0, document.querySelector('.pillar-btn'));
+    selectPart(0);
+    updateSim();
+    updateSlideUI();
+  </script>
+</body>
+</html>

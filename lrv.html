@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LRV-3 POV · Apolo 17 (1972 – 2026)</title>
+  <style>
+    :root {
+      --bg: #03060d;
+      --cyan: #38bdf8;
+      --amber: #f59e0b;
+      --red: #ef4444;
+      --green: #10b981;
+      --glass: rgba(8, 15, 30, 0.72);
+      --border: rgba(56, 189, 248, 0.28);
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; }
+
+    body {
+      background: var(--bg);
+      color: #f8fafc;
+      font-family: var(--sans);
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Lienzo Principal Fullscreen */
+    #povCanvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      z-index: 1;
+      cursor: grab;
+    }
+    #povCanvas:active { cursor: grabbing; }
+
+    /* Efecto Scanlines y Viñeta de Lente RCA GCTA */
+    .lens-overlay {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 2;
+      background:
+        radial-gradient(circle at center, transparent 58%, rgba(0, 0, 0, 0.72) 100%),
+        repeating-linear-gradient(
+          0deg,
+          rgba(255, 255, 255, 0.02) 0px,
+          rgba(255, 255, 255, 0.02) 1px,
+          transparent 1px,
+          transparent 3px
+        );
+    }
+
+    /* Marcas Fiduciales de Calibración NASA (Cruces en el lente) */
+    .fiducials {
+      position: fixed;
+      inset: 14%;
+      pointer-events: none;
+      z-index: 3;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+    }
+    .cross {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+    .cross::before, .cross::after {
+      content: "";
+      position: absolute;
+      background: rgba(255, 255, 255, 0.26);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .cross::before { width: 16px; height: 1px; }
+    .cross::after { width: 1px; height: 16px; }
+
+    /* HUD Superior Minimalista */
+    .hud-top {
+      position: fixed;
+      top: 16px;
+      left: 20px;
+      right: 20px;
+      z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      pointer-events: none;
+      font-family: var(--mono);
+      font-size: 0.78rem;
+    }
+
+    .hud-pill {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(8px);
+      padding: 6px 12px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      letter-spacing: 0.06em;
+    }
+
+    .rec-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--red);
+      box-shadow: 0 0 10px var(--red);
+      animation: blink 1.2s infinite;
+    }
+    .rec-dot.standby {
+      background: var(--amber);
+      box-shadow: 0 0 10px var(--amber);
+      animation: none;
+    }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
+
+    /* Etiqueta Flotante de Escena (Corta y Cinematográfica) */
+    .scene-caption {
+      position: fixed;
+      top: 66px;
+      left: 20px;
+      z-index: 10;
+      pointer-events: none;
+      max-width: 420px;
+    }
+    .scene-tag {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--amber);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+    .scene-title {
+      font-size: clamp(1.35rem, 2.5vw, 1.95rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      text-shadow: 0 4px 18px rgba(0, 0, 0, 0.9);
+      margin-top: 2px;
+    }
+    .scene-sub {
+      font-size: 0.88rem;
+      color: #cbd5e1;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95);
+      margin-top: 3px;
+    }
+
+    /* Hotspots Interactivos en Pantalla (Escenas 3 y 5) */
+    .hotspot-layer {
+      position: fixed;
+      inset: 0;
+      z-index: 8;
+      pointer-events: none;
+    }
+    .hs-btn {
+      position: absolute;
+      pointer-events: auto;
+      transform: translate(-50%, -50%);
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: rgba(6, 12, 24, 0.8);
+      border: 2px solid var(--amber);
+      color: #fff;
+      font-family: var(--mono);
+      font-weight: bold;
+      font-size: 0.8rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 18px rgba(245, 158, 11, 0.55);
+      transition: transform 0.2s, background 0.2s;
+    }
+    .hs-btn:hover, .hs-btn.active {
+      transform: translate(-50%, -50%) scale(1.2);
+      background: var(--amber);
+      color: #03060d;
+    }
+
+    .hs-card {
+      position: fixed;
+      right: 24px;
+      top: 110px;
+      width: 270px;
+      background: var(--glass);
+      border: 1px solid var(--amber);
+      backdrop-filter: blur(12px);
+      border-radius: 12px;
+      padding: 14px;
+      z-index: 12;
+      display: none;
+      animation: popIn 0.2s ease;
+    }
+    .hs-card.visible { display: block; }
+    .hs-card h4 { color: var(--amber); font-size: 0.95rem; margin-bottom: 4px; }
+    .hs-card p { font-size: 0.82rem; color: #e2e8f0; line-height: 1.4; }
+    .hs-stat {
+      margin-top: 8px;
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--cyan);
+    }
+
+    @keyframes popIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Panel de Controles Interactivos por Escena (Abajo al centro) */
+    .controls-dock {
+      position: fixed;
+      bottom: 72px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 11;
+      background: var(--glass);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+      border-radius: 14px;
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
+      max-width: 92vw;
+    }
+
+    .ctrl-label {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--cyan);
+      white-space: nowrap;
+    }
+
+    input[type="range"] {
+      width: 190px;
+      accent-color: var(--amber);
+      cursor: pointer;
+    }
+
+    .action-btn {
+      background: linear-gradient(135deg, #d97706, #f59e0b);
+      color: #03060d;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-weight: 800;
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      white-space: nowrap;
+      box-shadow: 0 0 20px rgba(245, 158, 11, 0.4);
+      transition: transform 0.15s;
+    }
+    .action-btn:hover { transform: scale(1.04); }
+    .action-btn.cyan {
+      background: linear-gradient(135deg, #0284c7, #38bdf8);
+      color: #fff;
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+    }
+
+    /* Barra de Navegación Inferior (6 Escenas) */
+    .scene-nav {
+      position: fixed;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 12;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(3, 6, 13, 0.88);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      padding: 6px 10px;
+      border-radius: 999px;
+      backdrop-filter: blur(10px);
+    }
+
+    .step-btn {
+      background: transparent;
+      border: 1px solid transparent;
+      color: #94a3b8;
+      font-family: var(--mono);
+      font-size: 0.76rem;
+      padding: 5px 11px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .step-btn:hover { color: #fff; }
+    .step-btn.active {
+      background: rgba(56, 189, 248, 0.18);
+      border-color: var(--cyan);
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .arrow-nav {
+      background: rgba(255, 255, 255, 0.08);
+      border: none;
+      color: #fff;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .arrow-nav:hover { background: rgba(56, 189, 248, 0.3); }
+
+    @media (max-width: 720px) {
+      .hud-top { font-size: 0.68rem; }
+      .step-btn span.txt { display: none; }
+      input[type="range"] { width: 130px; }
+      .hs-card { right: 12px; left: 12px; width: auto; top: auto; bottom: 138px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Lienzo Interactivo Principal -->
+  <canvas id="povCanvas"></canvas>
+
+  <!-- Capa Óptica de Cámara RCA GCTA -->
+  <div class="lens-overlay"></div>
+  <div class="fiducials">
+    <div class="cross"></div><div class="cross"></div><div class="cross"></div>
+    <div class="cross"></div><div class="cross"></div><div class="cross"></div>
+    <div class="cross"></div><div class="cross"></div><div class="cross"></div>
+  </div>
+
+  <!-- Telemetría Superior -->
+  <div class="hud-top">
+    <div class="hud-pill">
+      <span class="rec-dot" id="recDot"></span>
+      <span id="hudCamStatus">RCA GCTA · LIVE HOUSTON</span>
+    </div>
+    <div class="hud-pill">
+      <span id="hudGet">GET 169:58:12</span>
+      <span style="color:#475569">|</span>
+      <span id="hudTemp" style="color:var(--amber)">+68°C</span>
+      <span style="color:#475569">|</span>
+      <span id="hudYear" style="color:var(--cyan)">14 DIC 1972</span>
+    </div>
+  </div>
+
+  <!-- Título Corto de Escena -->
+  <div class="scene-caption">
+    <div class="scene-tag" id="sceneTag">ESCENA 01 / 06 · 145 M DEL CHALLENGER</div>
+    <div class="scene-title" id="sceneTitle">El Último Ajuste</div>
+    <div class="scene-sub" id="sceneSub">Ed Fendell alinea el lente desde Houston antes de la partida.</div>
+  </div>
+
+  <!-- Hotspots Dinámicos -->
+  <div class="hotspot-layer" id="hotspotLayer"></div>
+  <div class="hs-card" id="hsCard">
+    <h4 id="hsTitle"></h4>
+    <p id="hsDesc"></p>
+    <div class="hs-stat" id="hsStat"></div>
+  </div>
+
+  <!-- Controles Interactivos por Escena -->
+  <div class="controls-dock" id="controlsDock"></div>
+
+  <!-- Navegación Inferior -->
+  <nav class="scene-nav">
+    <button class="arrow-nav" onclick="prevScene()" title="Anterior">‹</button>
+    <button class="step-btn active" onclick="setScene(0)">01 <span class="txt">ENCUADRE</span></button>
+    <button class="step-btn" onclick="setScene(1)">02 <span class="txt">IGNICIÓN</span></button>
+    <button class="step-btn" onclick="setScene(2)">03 <span class="txt">360°</span></button>
+    <button class="step-btn" onclick="setScene(3)">04 <span class="txt">50 AÑOS</span></button>
+    <button class="step-btn" onclick="setScene(4)">05 <span class="txt">ROVER</span></button>
+    <button class="step-btn" onclick="setScene(5)">06 <span class="txt">ARTEMIS</span></button>
+    <button class="arrow-nav" onclick="nextScene()" title="Siguiente">›</button>
+  </nav>
+
+  <script>
+    const canvas = document.getElementById('povCanvas');
+    const ctx = canvas.getContext('2d');
+    let W = canvas.width = window.innerWidth;
+    let H = canvas.height = window.innerHeight;
+
+    window.addEventListener('resize', () => {
+      W = canvas.width = window.innerWidth;
+      H = canvas.height = window.innerHeight;
+      generateStars();
+    });
+
+    // Estrellas fijas
+    let stars = [];
+    function generateStars() {
+      stars = Array.from({ length: 180 }, () => ({
+        x: Math.random() * W,
+        y: Math.random() * (H * 0.72),
+        r: Math.random() * 1.4 + 0.3,
+        a: Math.random() * 0.7 + 0.3
+      }));
+    }
+    generateStars();
+
+    // Estado Global de la Simulación
+    let scene = 0;
+    let tiltAngle = 0;          // Escena 1: -15 a +25
+    let launchActive = false;   // Escena 2: secuencia despegue
+    let launchProgress = 0;     // 0 a 1
+    let particles = [];
+    let panX = 0;               // Escena 3: arrastre 360
+    let isDragging = false;
+    let dragStartX = 0;
+    let timelineYear = 1972;    // Escena 4: 1972 a 2026
+    let artemisProgress = 0;    // Escena 6: descenso nueva nave
+
+    // Datos de Hotspots para Escena 3 (Paisaje) y Escena 5 (Anatomía LRV-3)
+    const landscapeSpots = [
+      { xPct: 0.50, yPct: 0.62, title: "Etapa de Descenso Challenger", desc: "Base octogonal dorada de 2,034 kg usada como plataforma de lanzamiento.", stat: "DISTANCIA: 145 METROS" },
+      { xPct: 0.27, yPct: 0.67, title: "Bandera de EE. UU.", desc: "Desplegada por Cernan y Schmitt; ligeramente inclinada por los gases del despegue.", stat: "COORD: 20°11'27\" N, 30°46'18\" E" },
+      { xPct: 0.72, yPct: 0.76, title: "Últimas Huellas y Rodadas", desc: "Sin viento ni lluvia en el vacío lunar, intactas durante millones de años.", stat: "RECORRIDO TOTAL: 35.9 KM" },
+      { xPct: 0.15, yPct: 0.65, title: "Estación Científica ALSEP", desc: "Instrumentos geofísicos alimentados por generador nuclear RTG.", stat: "TRANSMISIÓN: 1972–1977" }
+    ];
+
+    const roverSpots = [
+      { xPct: 0.36, yPct: 0.34, title: "Cámara RCA GCTA", desc: "Lente zoom 6x controlado remotamente desde Houston con 1.3 s de retardo.", stat: "RESOLUCIÓN: TV COLOR FSC" },
+      { xPct: 0.45, yPct: 0.25, title: "Antena Parabólica High-Gain", desc: "Malla bañada en oro apuntada hacia la Tierra para enviar video en vivo.", stat: "BANDA S · 2.28 GHz" },
+      { xPct: 0.66, yPct: 0.63, title: "Ruedas de Malla de Zinc", desc: "Sin aire; tejidas con alambre de piano y bandas de titanio contra el polvo.", stat: "PESO LUNAR: 34 KG (210 KG TIERRA)" },
+      { xPct: 0.52, yPct: 0.53, title: "Chasis Plegable de Aluminio", desc: "Guardabarros reparado con cinta adhesiva y mapas laminados por la tripulación.", stat: "VEL. MÁXIMA: 18 KM/H" }
+    ];
+
+    // Arrastre para panorámica en Escena 3
+    canvas.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      dragStartX = e.clientX - panX;
+    });
+    window.addEventListener('mousemove', (e) => {
+      if (isDragging && scene === 2) {
+        panX = Math.max(-260, Math.min(260, e.clientX - dragStartX));
+        renderHotspots();
+      }
+    });
+    window.addEventListener('mouseup', () => { isDragging = false; });
+
+    canvas.addEventListener('touchstart', (e) => {
+      isDragging = true;
+      dragStartX = e.touches[0].clientX - panX;
+    }, { passive: true });
+    window.addEventListener('touchmove', (e) => {
+      if (isDragging && scene === 2) {
+        panX = Math.max(-260, Math.min(260, e.touches[0].clientX - dragStartX));
+        renderHotspots();
+      }
+    }, { passive: true });
+    window.addEventListener('touchend', () => { isDragging = false; });
+
+    // Configuración de cada una de las 6 escenas
+    const scenesMeta = [
+      {
+        tag: "ESCENA 01 / 06 · 145 M DEL CHALLENGER",
+        title: "El Último Ajuste",
+        sub: "Mueve el inclinómetro para centrar el módulo antes de la partida.",
+        hudStatus: "RCA GCTA · LIVE HOUSTON",
+        hudGet: "GET 169:58:12",
+        hudTemp: "+68°C",
+        hudYear: "14 DIC 1972",
+        standby: false,
+        controls: `
+          <span class="ctrl-label">TILT CÁMARA:</span>
+          <input type="range" min="-15" max="24" value="0" oninput="tiltAngle = Number(this.value); document.getElementById('tiltVal').textContent = this.value + '°'">
+          <span class="ctrl-label" id="tiltVal" style="color:#fff">0°</span>
+          <button class="action-btn cyan" onclick="tiltAngle = 8; document.querySelector('#controlsDock input').value = 8; document.getElementById('tiltVal').textContent = '8°'">AUTO-ENCUADRE</button>
+        `
+      },
+      {
+        tag: "ESCENA 02 / 06 · DESPEGUE EN SILENCIO",
+        title: "GET 170:01:56 · Ignición",
+        sub: "Los últimos humanos en la Luna encienden el motor de ascenso.",
+        hudStatus: "TRACKING · ED FENDELL",
+        hudGet: "GET 170:01:56",
+        hudTemp: "+71°C",
+        hudYear: "14 DIC 1972",
+        standby: false,
+        controls: `
+          <button class="action-btn" onclick="startLaunch()">🔥 INICIAR IGNICIÓN</button>
+          <button class="action-btn cyan" onclick="resetLaunch()">↺ REPETIR</button>
+        `
+      },
+      {
+        tag: "ESCENA 03 / 06 · VALLE TAURUS-LITTROW",
+        title: "Soledad en 360°",
+        sub: "Arrastra el horizonte y toca los marcadores brillantes.",
+        hudStatus: "CARRIER OFF · STANDBY",
+        hudGet: "GET 171:15:00",
+        hudTemp: "+74°C",
+        hudYear: "15 DIC 1972",
+        standby: true,
+        controls: `
+          <span class="ctrl-label">↔ ARRASTRA EL PAISAJE · TOCA LOS PUNTOS DORADOS</span>
+        `
+      },
+      {
+        tag: "ESCENA 04 / 06 · CICLOS EXTREMOS",
+        title: "54 Años de Sol y Sombra",
+        sub: "Desliza la línea temporal desde 1972 hasta 2026.",
+        hudStatus: "OPTICAL SENSOR · IDLE",
+        hudGet: "SOLAR CYCLES: 668",
+        hudTemp: "+120°C / -170°C",
+        hudYear: "1972 → 2026",
+        standby: true,
+        controls: `
+          <span class="ctrl-label">AÑO:</span>
+          <input type="range" min="1972" max="2026" value="1972" oninput="updateTimeline(Number(this.value))">
+          <span class="ctrl-label" id="yearVal" style="color:#fff">1972</span>
+        `
+      },
+      {
+        tag: "ESCENA 05 / 06 · TESTIGO SILENCIOSO",
+        title: "Anatomía del LRV-3",
+        sub: "Toca cada componente del vehículo que sigue estacionado allí.",
+        hudStatus: "TELEMETRY ARCHIVE",
+        hudGet: "MASS: 210 KG (34 KG)",
+        hudTemp: "-45°C",
+        hudYear: "TAURUS-LITTROW",
+        standby: true,
+        controls: `
+          <span class="ctrl-label">TOCA LOS PUNTOS PARA INSPECCIONAR EL ROVER</span>
+        `
+      },
+      {
+        tag: "ESCENA 06 / 06 · EL REGRESO",
+        title: "Mirando al Cielo · Artemis",
+        sub: "Décadas después, nuevos destellos descienden hacia el horizonte lunar.",
+        hudStatus: "SIGNAL DETECTED · ARTEMIS",
+        hudGet: "RETURN ERA",
+        hudTemp: "+18°C",
+        hudYear: "2026+",
+        standby: false,
+        controls: `
+          <button class="action-btn cyan" onclick="artemisProgress = 0">⬇ SIMULAR DESCENSO</button>
+          <button class="action-btn" onclick="setScene(0)">↺ VOLVER A 1972</button>
+        `
+      }
+    ];
+
+    function setScene(idx) {
+      scene = idx;
+      const meta = scenesMeta[idx];
+
+      document.getElementById('sceneTag').textContent = meta.tag;
+      document.getElementById('sceneTitle').textContent = meta.title;
+      document.getElementById('sceneSub').textContent = meta.sub;
+      document.getElementById('hudCamStatus').textContent = meta.hudStatus;
+      document.getElementById('hudGet').textContent = meta.hudGet;
+      document.getElementById('hudTemp').textContent = meta.hudTemp;
+      document.getElementById('hudYear').textContent = meta.hudYear;
+      document.getElementById('controlsDock').innerHTML = meta.controls;
+
+      const dot = document.getElementById('recDot');
+      dot.classList.toggle('standby', meta.standby);
+
+      document.querySelectorAll('.step-btn').forEach((b, i) => b.classList.toggle('active', i === idx));
+      document.getElementById('hsCard').classList.remove('visible');
+
+      if (idx === 0) tiltAngle = 0;
+      if (idx === 1) resetLaunch();
+      if (idx === 2) panX = 0;
+      if (idx === 3) updateTimeline(1972);
+      if (idx === 5) artemisProgress = 0;
+
+      renderHotspots();
+    }
+
+    function nextScene() { setScene((scene + 1) % scenesMeta.length); }
+    function prevScene() { setScene((scene - 1 + scenesMeta.length) % scenesMeta.length); }
+
+    function startLaunch() {
+      launchActive = true;
+      launchProgress = 0;
+      particles = [];
+    }
+
+    function resetLaunch() {
+      launchActive = false;
+      launchProgress = 0;
+      particles = [];
+    }
+
+    function updateTimeline(yr) {
+      timelineYear = yr;
+      document.getElementById('yearVal').textContent = yr;
+      document.getElementById('hudYear').textContent = `AÑO ${yr}`;
+      const isNight = (yr % 2 === 1);
+      document.getElementById('hudTemp').textContent = yr === 2009 ? "LRO ORBITAL SCAN" : (isNight ? "-170°C (NOCHE)" : "+120°C (DÍA)");
+    }
+
+    function renderHotspots() {
+      const layer = document.getElementById('hotspotLayer');
+      layer.innerHTML = '';
+      let list = [];
+      if (scene === 2) list = landscapeSpots;
+      if (scene === 4) list = roverSpots;
+
+      list.forEach((spot, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'hs-btn';
+        btn.textContent = i + 1;
+        const offsetX = scene === 2 ? panX : 0;
+        btn.style.left = `calc(${spot.xPct * 100}% + ${offsetX}px)`;
+        btn.style.top = `${spot.yPct * 100}%`;
+        btn.onclick = (e) => {
+          e.stopPropagation();
+          document.querySelectorAll('.hs-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const card = document.getElementById('hsCard');
+          document.getElementById('hsTitle').textContent = spot.title;
+          document.getElementById('hsDesc').textContent = spot.desc;
+          document.getElementById('hsStat').textContent = spot.stat;
+          card.classList.add('visible');
+        };
+        layer.appendChild(btn);
+      });
+    }
+
+    // Dibujo del Módulo Lunar Challenger (Etapa Descenso + Ascenso)
+    function drawChallenger(cx, cy, scale, ascentOffsetY, flameOn) {
+      ctx.save();
+      ctx.translate(cx, cy);
+      ctx.scale(scale, scale);
+
+      // Sombra en el suelo
+      ctx.fillStyle = 'rgba(0,0,0,0.65)';
+      ctx.beginPath();
+      ctx.ellipse(0, 44, 65, 11, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      // --- ETAPA DE DESCENSO (Permanece en la Luna) ---
+      ctx.strokeStyle = '#cbd5e1';
+      ctx.lineWidth = 3.5;
+      // Patas
+      ctx.beginPath();
+      ctx.moveTo(-36, 12); ctx.lineTo(-58, 42);
+      ctx.moveTo(36, 12);  ctx.lineTo(58, 42);
+      ctx.moveTo(0, 14);   ctx.lineTo(0, 46);
+      ctx.stroke();
+
+      // Platos dorados
+      ctx.fillStyle = '#f59e0b';
+      [[-58, 42], [58, 42], [0, 46]].forEach(([px, py]) => {
+        ctx.beginPath();
+        ctx.ellipse(px, py, 10, 3, 0, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      // Cuerpo dorado Kapton
+      ctx.fillStyle = '#d97706';
+      ctx.strokeStyle = '#fbbf24';
+      ctx.lineWidth = 2;
+      ctx.fillRect(-38, -12, 76, 28);
+      ctx.strokeRect(-38, -12, 76, 28);
+
+      // --- ETAPA DE ASCENSO ---
+      ctx.save();
+      ctx.translate(0, ascentOffsetY);
+
+      if (flameOn) {
+        // Destello hipergólico y anillo de gases
+        const grad = ctx.createRadialGradient(0, 6, 2, 0, 14, 48);
+        grad.addColorStop(0, 'rgba(255, 255, 255, 0.95)');
+        grad.addColorStop(0.4, 'rgba(251, 191, 36, 0.75)');
+        grad.addColorStop(1, 'rgba(56, 189, 248, 0)');
+        ctx.fillStyle = grad;
+        ctx.beginPath();
+        ctx.arc(0, 10, 48, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // Cabina poligonal
+      ctx.fillStyle = '#e2e8f0';
+      ctx.strokeStyle = '#94a3b8';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.moveTo(-24, -54);
+      ctx.lineTo(24, -54);
+      ctx.lineTo(34, -30);
+      ctx.lineTo(24, -12);
+      ctx.lineTo(-24, -12);
+      ctx.lineTo(-34, -30);
+      ctx.closePath();
+      ctx.fill();
+      ctx.stroke();
+
+      // Ventanas triangulares
+      ctx.fillStyle = '#0f172a';
+      ctx.beginPath();
+      ctx.moveTo(-20, -40); ctx.lineTo(-8, -40); ctx.lineTo(-14, -30); ctx.closePath();
+      ctx.moveTo(20, -40);  ctx.lineTo(8, -40);  ctx.lineTo(14, -30);  ctx.closePath();
+      ctx.fill();
+
+      // Antena superior
+      ctx.strokeStyle = '#38bdf8';
+      ctx.beginPath();
+      ctx.moveTo(0, -54); ctx.lineTo(0, -68);
+      ctx.stroke();
+
+      ctx.restore();
+      ctx.restore();
+    }
+
+    // Dibujo del Paisaje Taurus-Littrow
+    function drawLunarTerrain(offsetX, nightMode) {
+      const horizonY = H * 0.60;
+
+      // Cielo negro profundo
+      ctx.fillStyle = '#02040a';
+      ctx.fillRect(0, 0, W, H);
+
+      // Estrellas (más brillantes de noche)
+      stars.forEach(s => {
+        ctx.fillStyle = `rgba(255, 255, 255, ${nightMode ? s.a : s.a * 0.45})`;
+        ctx.beginPath();
+        ctx.arc((s.x + offsetX * 0.15 + W) % W, s.y, s.r, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      // Tierra azul en el cielo lunar
+      const earthX = W * 0.78 + offsetX * 0.25;
+      const earthY = H * 0.22;
+      const earthGrad = ctx.createRadialGradient(earthX - 6, earthY - 6, 4, earthX, earthY, 26);
+      earthGrad.addColorStop(0, '#7dd3fc');
+      earthGrad.addColorStop(0.55, '#1d4ed8');
+      earthGrad.addColorStop(1, '#091534');
+      ctx.fillStyle = earthGrad;
+      ctx.beginPath();
+      ctx.arc(earthX, earthY, 26, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Macizos montañosos North & South Massif
+      ctx.fillStyle = nightMode ? '#0b101d' : '#1e2533';
+      ctx.beginPath();
+      ctx.moveTo(-300 + offsetX * 0.45, horizonY);
+      ctx.lineTo(W * 0.12 + offsetX * 0.45, horizonY - 125);
+      ctx.lineTo(W * 0.36 + offsetX * 0.45, horizonY - 35);
+      ctx.lineTo(W * 0.64 + offsetX * 0.45, horizonY - 145);
+      ctx.lineTo(W * 0.92 + offsetX * 0.45, horizonY - 40);
+      ctx.lineTo(W + 300 + offsetX * 0.45, horizonY);
+      ctx.closePath();
+      ctx.fill();
+
+      // Suelo de regolito lunar
+      const groundGrad = ctx.createLinearGradient(0, horizonY, 0, H);
+      if (nightMode) {
+        groundGrad.addColorStop(0, '#111827');
+        groundGrad.addColorStop(1, '#030712');
+      } else {
+        groundGrad.addColorStop(0, '#475569');
+        groundGrad.addColorStop(0.4, '#334155');
+        groundGrad.addColorStop(1, '#1e293b');
+      }
+      ctx.fillStyle = groundGrad;
+      ctx.fillRect(0, horizonY, W, H - horizonY);
+
+      // Cráteres y rodadas del LRV-3
+      ctx.strokeStyle = nightMode ? 'rgba(255,255,255,0.08)' : 'rgba(15,23,42,0.45)';
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.moveTo(W * 0.45 + offsetX, H);
+      ctx.quadraticCurveTo(W * 0.62 + offsetX, H * 0.78, W * 0.75 + offsetX, H * 0.72);
+      ctx.moveTo(W * 0.48 + offsetX, H);
+      ctx.quadraticCurveTo(W * 0.65 + offsetX, H * 0.78, W * 0.78 + offsetX, H * 0.72);
+      ctx.stroke();
+
+      // Bandera
+      const flagX = W * 0.27 + offsetX;
+      const flagY = H * 0.67;
+      ctx.strokeStyle = '#e2e8f0';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(flagX, flagY);
+      ctx.lineTo(flagX + 2, flagY - 34);
+      ctx.stroke();
+      ctx.fillStyle = '#ef4444';
+      ctx.fillRect(flagX + 2, flagY - 34, 20, 12);
+      ctx.fillStyle = '#1d4ed8';
+      ctx.fillRect(flagX + 2, flagY - 34, 8, 6);
+    }
+
+    // Dibujo Técnico del LRV-3 (Escena 5)
+    function drawRoverBlueprint() {
+      ctx.fillStyle = '#040914';
+      ctx.fillRect(0, 0, W, H);
+
+      // Retícula técnica
+      ctx.strokeStyle = 'rgba(56, 189, 248, 0.08)';
+      ctx.lineWidth = 1;
+      for (let x = 0; x < W; x += 40) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke(); }
+      for (let y = 0; y < H; y += 40) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); }
+
+      const cx = W * 0.5;
+      const cy = H * 0.56;
+
+      // Sombra suelo
+      ctx.fillStyle = 'rgba(56, 189, 248, 0.12)';
+      ctx.beginPath();
+      ctx.ellipse(cx, cy + 72, 210, 18, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Chasis principal
+      ctx.strokeStyle = '#38bdf8';
+      ctx.fillStyle = 'rgba(15, 23, 42, 0.9)';
+      ctx.lineWidth = 2.5;
+      ctx.beginPath();
+      ctx.roundRect(cx - 150, cy - 10, 300, 34, 8);
+      ctx.fill();
+      ctx.stroke();
+
+      // Asientos plegables
+      ctx.strokeStyle = '#94a3b8';
+      ctx.strokeRect(cx - 25, cy - 58, 42, 48);
+      ctx.strokeRect(cx + 25, cy - 58, 42, 48);
+
+      // Mástil y Cámara RCA GCTA (Izquierda)
+      ctx.strokeStyle = '#fbbf24';
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.moveTo(cx - 115, cy - 10);
+      ctx.lineTo(cx - 115, cy - 95);
+      ctx.stroke();
+      ctx.fillStyle = '#f59e0b';
+      ctx.fillRect(cx - 135, cy - 115, 42, 22);
+      // Lente
+      ctx.fillStyle = '#38bdf8';
+      ctx.beginPath();
+      ctx.arc(cx - 90, cy - 104, 8, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Antena Parabólica High-Gain
+      ctx.strokeStyle = '#fbbf24';
+      ctx.lineWidth = 2.5;
+      ctx.beginPath();
+      ctx.moveTo(cx - 45, cy - 10);
+      ctx.lineTo(cx - 45, cy - 125);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(cx - 45, cy - 140, 34, 0.2 * Math.PI, 0.8 * Math.PI);
+      ctx.stroke();
+
+      // Ruedas de malla
+      [cx - 115, cx + 115].forEach(wx => {
+        ctx.fillStyle = '#0f172a';
+        ctx.strokeStyle = '#38bdf8';
+        ctx.lineWidth = 4;
+        ctx.beginPath();
+        ctx.arc(wx, cy + 36, 36, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.strokeStyle = '#fbbf24';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.arc(wx, cy + 36, 16, 0, Math.PI * 2);
+        ctx.stroke();
+      });
+    }
+
+    // Bucle de Renderizado Principal (60 FPS)
+    function loop() {
+      ctx.clearRect(0, 0, W, H);
+
+      if (scene === 0) {
+        // Escena 1: Ajuste de Tilt hacia Challenger
+        ctx.save();
+        ctx.translate(0, tiltAngle * 5);
+        drawLunarTerrain(0, false);
+        drawChallenger(W * 0.5, H * 0.62, 1.15, 0, false);
+        ctx.restore();
+      }
+      else if (scene === 1) {
+        // Escena 2: Ignición y seguimiento vertical
+        if (launchActive) {
+          launchProgress = Math.min(1, launchProgress + 0.0042);
+          // Partículas de gases en el vacío
+          if (launchProgress < 0.85) {
+            for (let i = 0; i < 4; i++) {
+              particles.push({
+                x: W * 0.5 + (Math.random() - 0.5) * 40,
+                y: H * 0.62 - launchProgress * (H * 0.55),
+                vx: (Math.random() - 0.5) * 9,
+                vy: (Math.random() - 0.2) * 5,
+                life: 1
+              });
+            }
+          }
+        }
+
+        const camFollowY = launchProgress * (H * 0.36);
+        ctx.save();
+        ctx.translate(0, camFollowY);
+        drawLunarTerrain(0, false);
+
+        const ascentY = -Math.pow(launchProgress, 1.7) * (H * 0.88);
+        drawChallenger(W * 0.5, H * 0.62, 1.15, ascentY, launchActive && launchProgress > 0.02);
+
+        // Dibujar partículas
+        particles.forEach(p => {
+          p.x += p.vx;
+          p.y += p.vy;
+          p.life -= 0.025;
+          if (p.life > 0) {
+            ctx.fillStyle = `rgba(251, 191, 36, ${p.life * 0.7})`;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, 3.5 * p.life, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        });
+        particles = particles.filter(p => p.life > 0);
+        ctx.restore();
+      }
+      else if (scene === 2) {
+        // Escena 3: Panorámica 360 interactiva
+        drawLunarTerrain(panX, false);
+        drawChallenger(W * 0.5 + panX, H * 0.62, 1.15, -9999, false); // Solo etapa descenso
+      }
+      else if (scene === 3) {
+        // Escena 4: 54 años de Sol y Sombra + Vista Orbital LRO
+        if (timelineYear === 2009) {
+          // Simulación vista orbital NASA LRO
+          ctx.fillStyle = '#1e293b';
+          ctx.fillRect(0, 0, W, H);
+          ctx.fillStyle = '#0f172a';
+          ctx.beginPath(); ctx.arc(W * 0.3, H * 0.4, 90, 0, Math.PI * 2); ctx.fill();
+          ctx.beginPath(); ctx.arc(W * 0.75, H * 0.65, 65, 0, Math.PI * 2); ctx.fill();
+
+          // Punto brillante Etapa Descenso Challenger + LRV-3
+          ctx.fillStyle = '#fbbf24';
+          ctx.fillRect(W * 0.5 - 6, H * 0.5 - 6, 12, 12);
+          ctx.strokeStyle = '#38bdf8';
+          ctx.strokeRect(W * 0.5 - 24, H * 0.5 - 24, 48, 48);
+          ctx.fillStyle = '#38bdf8';
+          ctx.font = '12px monospace';
+          ctx.fillText('LRO NAC · CHALLENGER DESCENT STAGE', W * 0.5 + 34, H * 0.5 - 6);
+
+          ctx.fillStyle = '#10b981';
+          ctx.fillRect(W * 0.62, H * 0.54, 7, 7);
+          ctx.fillText('LRV-3 ROVER (145M)', W * 0.62 + 14, H * 0.54 + 6);
+        } else {
+          const isNight = (timelineYear % 2 === 1);
+          drawLunarTerrain(0, isNight);
+          drawChallenger(W * 0.5, H * 0.62, 1.15, -9999, false);
+        }
+      }
+      else if (scene === 4) {
+        // Escena 5: Rayos X LRV-3
+        drawRoverBlueprint();
+      }
+      else if (scene === 5) {
+        // Escena 6: Mirando al cielo · Regreso Artemis
+        artemisProgress = Math.min(1, artemisProgress + 0.003);
+        drawLunarTerrain(0, false);
+        drawChallenger(W * 0.5, H * 0.62, 1.15, -9999, false);
+
+        // Destello de motor descendiendo en el horizonte
+        const shipX = W * 0.38;
+        const shipY = H * 0.14 + artemisProgress * (H * 0.34);
+
+        const glow = ctx.createRadialGradient(shipX, shipY + 12, 2, shipX, shipY + 12, 38);
+        glow.addColorStop(0, '#ffffff');
+        glow.addColorStop(0.4, 'rgba(56, 189, 248, 0.85)');
+        glow.addColorStop(1, 'rgba(56, 189, 248, 0)');
+        ctx.fillStyle = glow;
+        ctx.beginPath();
+        ctx.arc(shipX, shipY + 12, 38, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Silueta módulo Artemis
+        ctx.fillStyle = '#f8fafc';
+        ctx.beginPath();
+        ctx.moveTo(shipX, shipY - 14);
+        ctx.lineTo(shipX + 10, shipY + 6);
+        ctx.lineTo(shipX - 10, shipY + 6);
+        ctx.closePath();
+        ctx.fill();
+      }
+
+      requestAnimationFrame(loop);
+    }
+
+    // Controles de teclado
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') nextScene();
+      if (e.key === 'ArrowLeft') prevScene();
+    });
+
+    setScene(0);
+    loop();
+  </script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+apollo,conjunto,fecha_encendido_utc,fecha_apagado_utc,estado_final,vida_diseno_dias,downlink_mhz,uplink_mhz,fuente
+11,EASEP,1969-07-21,1969-08-27,Apagado,14,2276.5,2119.0,https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm
+12,ALSEP A,1969-11-19,1977-09-30,Apagado,365,2278.5,2119.0,https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm
+14,ALSEP C,1971-02-05,,Fallo en enero de 1976 (día no especificado),365,2279.5,2119.0,https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm
+15,ALSEP A-2,1971-07-31,1977-09-30,Apagado,365,2278.0,2119.0,https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm
+16,ALSEP D,1972-04-21,1977-09-30,Apagado,365,2276.0,2119.0,https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm
+17,ALSEP E,1972-12-12,1977-09-30,Apagado,730,2275.5,2119.0,https://www.nasa.gov/wp-content/uploads/static/history/SP-4029/Apollo_18-31_ALSEP_Arrays_and_Status.htm
